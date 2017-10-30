@@ -146,7 +146,7 @@ class GUI(QtGui.QWidget):
         super(GUI, self).__init__()
         
         # Is loaded the file that get the GUI.  
-        self.MyGUI = uic.loadUi('D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorSecuenceOfMovements\AnimationDataBaseCreatorGUI.ui', self)
+        self.MyGUI = uic.loadUi('...\AnimationDataBaseCreatorGUI.ui', self)
         
         # Are associated the different options that have the GUI with its corresponding functions.
         self.connect(self.Btn_Conect_To_Pepper, QtCore.SIGNAL("clicked()"), self.InitConection)
@@ -261,7 +261,7 @@ class GUI(QtGui.QWidget):
         
         # Is saved the motion sequences name.
         self.FileName = str(self.Text_File_Name.text())
-        VideoFilePath =  str("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorSecuenceOfMovements\BaseDeDatos\ " + self.FileName + ".avi")
+        VideoFilePath =  str("...\Motion_Sequences\ " + self.FileName + ".avi")
         
         # Is definite the format of the video file.
         VideoFileType = cv2.VideoWriter_fourcc('M','J','P','G')
@@ -563,7 +563,7 @@ class GUI(QtGui.QWidget):
         '''
         # Is saved the name of the motion sequence.
         AnimationName = str(self.Text_Animation.text())
-        FileName = str("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorSecuenceOfMovements\BaseDeDatos\ " + self.FileName + ".csv")
+        FileName = str(".../Motion_Sequences\ " + self.FileName + ".csv")
         
         # Is created the .csv file.
         File = open(FileName, 'w')                                              
@@ -650,11 +650,11 @@ class GUI(QtGui.QWidget):
         # Is loaded the .avi and .csv files.
         try:
             # .csv file. 
-            FileName = str("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorSecuenceOfMovements\BaseDeDatos\ " + str(self.Text_File_Name.text()) + ".csv")
+            FileName = str("...\Motion_Sequences\ " + str(self.Text_File_Name.text()) + ".csv")
             File = pd.read_csv(FileName, header = 0)
             
             # .av file.
-            self.VideoName = str("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorSecuenceOfMovements\BaseDeDatos\ " + str(self.Text_File_Name.text()) + ".avi")
+            self.VideoName = str("...\Motions_Sequences\ " + str(self.Text_File_Name.text()) + ".avi")
             self.Video = cv2.VideoCapture(self.VideoName)
             
             PlayVideo = 1                                                       # Check the correct load.    
@@ -663,7 +663,7 @@ class GUI(QtGui.QWidget):
 
             try:
                 # .csv file 
-                FileName = str("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorSecuenceOfMovements\DataBaseGeneratedByRNA\ " + str(self.Text_File_Name.text()) + ".csv")
+                FileName = str("...\Motion_Sequences_Generate_By_RNA\ " + str(self.Text_File_Name.text()) + ".csv")
                 File = pd.read_csv(FileName, header = None)
                 
                 PlayVideo = 2                                                   # Check the partial load.
@@ -679,8 +679,9 @@ class GUI(QtGui.QWidget):
         # saved using the lists created for each angle to be played by the Robot 
         # Pepper, and also is played the video saved in the .avi file.
         #
-        # If just the .csv file are loaded correctly, the motion sequence is saved
-        # using the lists created for each angle to be played by the Robot Pepper.
+        # If just the .csv file are loaded correctly, or just exist a .csv file,
+        # the motion sequence is saved using the lists created for each angle 
+        # to be played by the Robot Pepper.
         #
         # If the both files are not loaded correctly, the user is informed to 
         # put a correct name to load the files.   

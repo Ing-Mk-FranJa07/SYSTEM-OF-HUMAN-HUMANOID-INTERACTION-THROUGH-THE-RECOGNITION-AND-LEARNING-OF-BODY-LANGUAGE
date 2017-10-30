@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Frame</class>
+ <widget class="QWidget" name="Frame">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>910</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1200</width>
+    <height>910</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1200</width>
+    <height>910</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Recognition of Emotion from Body Posture</string>
+  </property>
+  <widget class="QPushButton" name="Btn_ConectKinect">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>710</y>
+     <width>171</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Conect Kinect</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="Box_Emotion">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>269</x>
+     <y>670</y>
+     <width>841</width>
+     <height>201</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>GroupBox</string>
+   </property>
+   <widget class="QLabel" name="Lbl_Happy">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>140</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
+    <property name="text">
+     <string>HAPPY !</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::AutoText</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Lbl_Sad">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>140</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
+    <property name="text">
+     <string>SAD !</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::AutoText</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Lbl_Angry">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>140</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
+    <property name="text">
+     <string>ANGRY !</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::AutoText</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Lbl_Surprised">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>140</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
+    <property name="text">
+     <string>SURPRISED !</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::AutoText</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Lbl_Reflexive">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>140</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
+    <property name="text">
+     <string>REFLEXIVE !</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::AutoText</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Lbl_Normal">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>140</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Panel</enum>
+    </property>
+    <property name="text">
+     <string>NORMAL !</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::AutoText</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Frame_Happy">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>120</width>
+      <height>120</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>120</width>
+      <height>120</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>120</width>
+      <height>120</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/Happy/Happy.png);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Frame_Sad">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>10</y>
+      <width>120</width>
+      <height>120</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>120</width>
+      <height>120</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>120</width>
+      <height>120</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/Sad/Sad.png);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Frame_Angry">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>10</y>
+      <width>120</width>
+      <height>120</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>120</width>
+      <height>120</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>120</width>
+      <height>120</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/Angry/Angry.png);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Frame_Surprised">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>10</y>
+      <width>120</width>
+      <height>120</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>120</width>
+      <height>120</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>120</width>
+      <height>120</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/Surprised/Surprised.png);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Frame_Reflexive">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>10</y>
+      <width>120</width>
+      <height>120</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>120</width>
+      <height>120</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>120</width>
+      <height>120</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/Reflexive/Reflexive.png);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Frame_Normal">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>10</y>
+      <width>120</width>
+      <height>120</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>120</width>
+      <height>120</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>120</width>
+      <height>120</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/Normal/Normal.png);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="KinectFrame">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>30</y>
+     <width>1080</width>
+     <height>630</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>1080</width>
+     <height>630</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>1080</width>
+     <height>630</height>
+    </size>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Panel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Plain</enum>
+   </property>
+   <property name="lineWidth">
+    <number>2</number>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Lbl_Listening">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>880</y>
+     <width>171</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::AutoText</enum>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Lbl_PrintAnswer">
+   <property name="geometry">
+    <rect>
+     <x>700</x>
+     <y>880</y>
+     <width>411</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::AutoText</enum>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Lbl_PepperSay">
+   <property name="geometry">
+    <rect>
+     <x>560</x>
+     <y>880</y>
+     <width>121</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="text">
+    <string>Pepper Say:</string>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::AutoText</enum>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="CheckBox_Speech">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>820</y>
+     <width>181</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Speech Recognition deactivated</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Lbl_UserSay">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>880</y>
+     <width>71</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="text">
+    <string>You said:</string>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::AutoText</enum>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="Emojies.qrc"/>
+ </resources>
+ <connections/>
+</ui>

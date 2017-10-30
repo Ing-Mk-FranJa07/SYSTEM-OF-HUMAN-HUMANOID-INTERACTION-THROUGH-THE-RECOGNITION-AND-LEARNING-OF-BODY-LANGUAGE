@@ -99,7 +99,7 @@ Y_Pred = RNA.predict(X_Test); print('Prediction of the output of the test data',
  
 # Is evaluated the perform of the neural network.
 Score = RNA.evaluate(X_Test, Y_Test, verbose = 2) 
-print('Accuracy of the neural network', '\n', Score); print('\n'*4)
+print('Accuracy of the neural network', '\n', Score)
 
 # Is determined the index of the each class of the output test and output predicted.
 for i in range(len(Y_Test)):

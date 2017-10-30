@@ -19,11 +19,11 @@ The train parameters of the networks can be modified from the main of the script
 in the line that call the train function.
 '''
 import time
-mjc
+
 # Wrappers to handling of data.
 import pandas as pd
 import numpy as np
-cm
+
 # Wrapper to build, train and test neural networks
 from keras.layers import LeakyReLU, Dropout
 from keras.layers import Reshape, Dense, Activation, Flatten

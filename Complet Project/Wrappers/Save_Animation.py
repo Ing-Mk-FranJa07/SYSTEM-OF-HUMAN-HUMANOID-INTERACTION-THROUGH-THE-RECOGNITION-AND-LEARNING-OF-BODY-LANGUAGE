@@ -299,7 +299,7 @@ def CreateFile(Animation):
     
     while Continue:
         try:
-            FileName = str("D:\Tesis\Python\Liclipse\Tesis\ImplementRNAs\GraduationsProject\Data_And_RNA_Models\New_Animation_Data\New_Animation_" + str(FileNumber) + ".csv")
+            FileName = str("...\Data_And_RNA_Models\New_Animation_Data\New_Animation_" + str(FileNumber) + ".csv")
             File = pd.read_csv(FileName, header = None)
             
             FileNumber += 1
@@ -310,7 +310,7 @@ def CreateFile(Animation):
     # ------------------------------------------------------------------------
     # Is created a new .csv file to save the joint angles.
         
-    FileName = str("D:\Tesis\Python\Liclipse\Tesis\ImplementRNAs\GraduationsProject\Data_And_RNA_Models\New_Animation_Data\New_Animation_" + str(FileNumber) + ".csv")
+    FileName = str("...\Data_And_RNA_Models\New_Animation_Data\New_Animation_" + str(FileNumber) + ".csv")
     File = open(FileName, 'w') 
      
     for M in range(0,len(Header)):

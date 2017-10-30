@@ -75,7 +75,7 @@ class DCGAN(object):
         
             for i in range(1,11):
                 
-                FileName = str("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorSecuenceOfMovements\BaseDeDatos\ Emotion " + str(i) + ".csv")
+                FileName = str("...\Motion_Sequences\ Emotion " + str(i) + ".csv")
                 Data = pd.read_csv(FileName, header = 0, index_col = 0)
                 Data['Head Yaw'] = 0
 
@@ -95,7 +95,7 @@ class DCGAN(object):
             # Motions sequences used to used in conversations.
             for i in range(1,23):
                  
-                FileName = str("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorSecuenceOfMovements\BaseDeDatos\ Animation " + str(i) + ".csv")
+                FileName = str("...\Motion_Sequences\ Animation " + str(i) + ".csv")
                 Data = pd.read_csv(FileName, header = 0, index_col = 0)
                 Data['Head Yaw'] = 0
 
@@ -355,15 +355,15 @@ class DCGAN(object):
             ListAnimations[I,:,:,:] = FakeAnimations
         
         # Are saved the nueral networks models.
-        Adversarial.save('D:\Tesis\Python\Liclipse\Tesis\ImplementRNAs\Prueba_GAN\Adversarial Model ' + Version)
-        Discriminator.save('D:\Tesis\Python\Liclipse\Tesis\ImplementRNAs\Prueba_GAN\Discriminator Model ' + Version)
-        Generator.save('D:\Tesis\Python\Liclipse\Tesis\ImplementRNAs\Prueba_GAN\Generator Model ' + Version)
+        Adversarial.save('...\Adversarial Model ' + Version)
+        Discriminator.save('...\Discriminator Model ' + Version)
+        Generator.save('...\Generator Model ' + Version)
  
         # Are saved the new motion sequences in .cvs files.
         for L in range(len(ListAnimations)):
             for A in range(len(FakeAnimations)) :
                 DataFrame = pd.DataFrame(ListAnimations[L, A, :, :])
-                DataFrame.to_csv("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorSecuenceOfMovements\DataBaseGeneratedByRNA\ NewAnimation Prueba" + str(L+1) + "-" + str(A+1) + ".csv", sep = ",", header = False, index = False, index_label = 'Node')
+                DataFrame.to_csv("...\DataBaseGeneratedByRNA\ NewAnimation " + str(L+1) + "-" + str(A+1) + ".csv", sep = ",", header = False, index = False, index_label = 'Node')
         
 if __name__ == '__main__':
     

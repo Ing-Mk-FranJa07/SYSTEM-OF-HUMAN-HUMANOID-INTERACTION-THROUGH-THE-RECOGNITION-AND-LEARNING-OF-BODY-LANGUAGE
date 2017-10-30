@@ -68,7 +68,7 @@ class Recognition_And_Learning_BodyLenguage_System(QtGui.QWidget):
         super(Recognition_And_Learning_BodyLenguage_System, self).__init__()
         
         # Is "imported" the file that get the GUI.                
-        self.MyGUI = uic.loadUi('D:\Tesis\Python\Liclipse\Tesis\ImplementRNAs\GraduationsProject\Recognition_And_Learning_BodyLenguageGUI.ui', self)
+        self.MyGUI = uic.loadUi('...\Recognition_And_Learning_BodyLenguageGUI.ui', self)
         
         # Are created timers to have interruptions that allow execute functions.
         self.TimerKinect = QtCore.QTimer(self.MyGUI)                            # Timer that control the image tracking.

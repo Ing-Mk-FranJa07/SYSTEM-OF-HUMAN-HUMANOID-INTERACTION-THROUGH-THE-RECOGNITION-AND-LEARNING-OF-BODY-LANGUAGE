@@ -42,9 +42,9 @@ class Neural_Networks_Models(object):
         self.AnimationsDataBase.set_index("Animation", inplace = True)
         
         # Are loaded the GAN models, that perform the creation of Motion animation sequences.
-        #self.Adversarial = load_model('D:\Tesis\Python\Liclipse\Tesis\ImplementRNAs\GraduationsProject\Data_And_RNA_Models\Adversarial Model')
-        #self.Discriminator = load_model('D:\Tesis\Python\Liclipse\Tesis\ImplementRNAs\GraduationsProject\Data_And_RNA_Models\Discriminator Model')
-        #self.Generator = load_model('D:\Tesis\Python\Liclipse\Tesis\ImplementRNAs\GraduationsProject\Data_And_RNA_Models\Generator Model')
+        #self.Adversarial = load_model('...\Data_And_RNA_Models\Adversarial Model')
+        #self.Discriminator = load_model('...\Data_And_RNA_Models\Discriminator Model')
+        #self.Generator = load_model('...\Data_And_RNA_Models\Generator Model')
         
         # Is configured a ChatBot model that allow get answers to pre-define questions.         
         self. PepperSay = ChatBot('Pepper Answers', 
@@ -183,7 +183,7 @@ class Neural_Networks_Models(object):
         AnimationData = np.random.randint(33); AnimationData = [1 if AnimationData == 0 else AnimationData]; AnimationData = [300 if AnimationData == 301 else AnimationData]
         
         # Is loaded a original animation of the DataSet.
-        FileName = ("D:\Tesis\Python\Liclipse\Tesis\ImplementRNAs\GraduationsProject\Data_And_RNA_Models\DataBaseGeneratedByRNA\ NewAnimation " + str(Iteration[0][0]) + "-" + str(AnimationData[0][0]) + ".csv")
+        FileName = ("...\Data_And_RNA_Models\DataBaseGeneratedByRNA\ NewAnimation " + str(Iteration[0][0]) + "-" + str(AnimationData[0][0]) + ".csv")
         File = pd.read_csv(FileName, header = None)
         
         # Is created an array with the file loaded.

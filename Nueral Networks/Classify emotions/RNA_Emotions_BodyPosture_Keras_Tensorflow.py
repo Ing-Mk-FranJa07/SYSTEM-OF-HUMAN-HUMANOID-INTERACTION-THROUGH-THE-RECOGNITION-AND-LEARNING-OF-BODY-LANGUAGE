@@ -29,7 +29,7 @@ import itertools
 def Plot_Confusion_Matrix(Matrix, Title, Cmap, Normalize = 'True'):
     '''
     Function that allow plot the confusion matrix, in two formats, 
-    percentage and total data.
+    percentage or total data.
     '''
     
     if Normalize:

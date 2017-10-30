@@ -117,7 +117,7 @@ class HumanPostureAndEmotion(QtGui.QWidget):
         super(HumanPostureAndEmotion, self).__init__()
         
         # Is loaded the file that get the GUI.   
-        self.MyGUI = uic.loadUi('D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorHumanPosture\DataBaseCreatorHumanPostureGUI.ui', self)
+        self.MyGUI = uic.loadUi('...\DataBaseCreatorHumanPostureGUI.ui', self)
 
         # Are associated the different options that have the GUI with its corresponding functions.
         self.connect(self.Btn_Kinect, QtCore.SIGNAL("clicked()"), self.InitKinect)
@@ -458,7 +458,7 @@ class HumanPostureAndEmotion(QtGui.QWidget):
                         LKneeYawList[M] = LKneeYawList[M-I]
     
         # Is saved the name of the .csv file.
-        FileName = str("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorHumanPosture\DataBasePostures\ " + str(self.Text_Save.text()) + ".csv")
+        FileName = str("...\Emotions_DataBase\ " + str(self.Text_Save.text()) + ".csv")
         
         # Is created the .csv file.
         File = open(FileName, 'w') 
@@ -564,11 +564,11 @@ class HumanPostureAndEmotion(QtGui.QWidget):
         # Are loaded the .avi and .csv files
         try: 
             # .csv file.
-            FileName = str("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorHumanPosture\DataBasePostures\ " + str(self.Text_Load.text()) + ".csv")
+            FileName = str("...\Emotions_DataBase\ " + str(self.Text_Load.text()) + ".csv")
             File = pd.read_csv(FileName, header = 0)
 
             # .avi file.
-            VideoName = str("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorHumanPosture\DataBasePostures\ " + str(self.Text_Load.text()) + ".avi")
+            VideoName = str("...\Emotions_DataBase\ " + str(self.Text_Load.text()) + ".avi")
             self.Video = cv2.VideoCapture(VideoName)
 
             FileLoad = 1                                                        # Check the correct load.
@@ -833,7 +833,7 @@ class HumanPostureAndEmotion(QtGui.QWidget):
         Function that create .avi file with the format selected.
         '''
         # Is saved the name of the .avi file
-        VideoFilePath =  str("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorHumanPosture\DataBasePostures\ " + str(self.Text_Save.text()) + ".avi")
+        VideoFilePath =  str("...\Emotions_DataBase\ " + str(self.Text_Save.text()) + ".avi")
         
         # Is defined the format of the file.
         VideoFileType = cv2.VideoWriter_fourcc('M','J','P','G')                 

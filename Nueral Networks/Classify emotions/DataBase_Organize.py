@@ -32,10 +32,10 @@ def UnifiedCategories(File_Category, File_Number, File_Code):
     of the total data saved and the another has the 20% of the total data saved.
     '''
     # Are created the new files.
-    Category_Train = open("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorHumanPosture\DataBasePostures\Postures_Train " + str(File_Code) + ".csv", "w") 
+    Category_Train = open("...\DataSet_Organized\Emotions_Unified\Postures_Train " + str(File_Code) + ".csv", "w") 
     Category_Train_csv = csv.writer(Category_Train)
     
-    Category_Test = open("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorHumanPosture\DataBasePostures\Postures_Test " + str(File_Code) + ".csv", "w") 
+    Category_Test = open("...\DataSet_Organized\Emotions_Unified\Postures_Test " + str(File_Code) + ".csv", "w") 
     Category_Test_csv = csv.writer(Category_Test)
     
     # Is saved the header in both files.
@@ -51,7 +51,7 @@ def UnifiedCategories(File_Category, File_Number, File_Code):
     
     # The data are unified, creating a train and test data files.
     for F in range(1, File_Number):
-            FileName = str("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorHumanPosture\DataBasePostures\ " + str(File_Category) + " " + str(F) + ".csv")
+            FileName = str("...\Emotions_Data_Base\ " + str(File_Category) + " " + str(F) + ".csv")
             File = pd.read_csv(FileName, header = 0)
               
             for L in range (1,int((File.shape[0]-2)*0.8)):
@@ -70,10 +70,10 @@ def UnifiedFiles():
     neural network.
     '''
     # Are created the two files.
-    Postures_Train = open("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorHumanPosture\DataSetPostures_Train.csv", "w") 
+    Postures_Train = open("...\DataSet_Organized\DataSetPostures_Train.csv", "w") 
     Postures_Train_csv = csv.writer(Postures_Train)
     
-    Postures_Test = open("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorHumanPosture\DataSetPostures_Test.csv", "w") 
+    Postures_Test = open("...\DataSet_Organized\DataSetPostures_Test.csv", "w") 
     Postures_Test_csv = csv.writer(Postures_Test)
       
     # Is saved the header in both files.
@@ -91,14 +91,14 @@ def UnifiedFiles():
     for F in range(1,7):
             
             # Train data file.
-            FileName = str("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorHumanPosture\DataBasePostures\Postures_Train " + str(F) + ".csv")
+            FileName = str("...\DataSet_Organized\Emotions_Unified\Postures_Train " + str(F) + ".csv")
             File = pd.read_csv(FileName, header = 0)
                
             for L in range (0,len(File)):
                 Postures_Train_csv.writerow(File.loc[L])
                 
             # Test data file.
-            FileName_Test = str("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorHumanPosture\DataBasePostures\Postures_Test " + str(F) + ".csv")
+            FileName_Test = str("...\DataSet_Organized\Emotions_Unified\Postures_Test " + str(F) + ".csv")
             File_Test = pd.read_csv(FileName_Test, header = 0)
                
             for L in range (0,len(File_Test)):
@@ -113,7 +113,7 @@ def AddOutput(File_Type):
     are used like output to the neural network.
     '''
     # Is loaded the file.
-    Data = pd.read_csv("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorHumanPosture\DataSetPostures_" + str(File_Type) + ".csv", header = 0)
+    Data = pd.read_csv("...\DataSet_Organized\DataSetPostures_" + str(File_Type) + ".csv", header = 0)
     
     # Are added new columns to the output code.
     Data['Emotion Code 6'] = 0
@@ -137,7 +137,7 @@ def AddOutput(File_Type):
     print(Data)
     
     # Is saved the data file.
-    Data.to_csv("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorHumanPosture\DataSetPostures__" + str(File_Type) + ".csv", header = True)
+    Data.to_csv("...\DataSet_Organized\DataSetPostures__" + str(File_Type) + ".csv", header = True)
 
 UnifiedCategories("Happy", 41, 1)
 UnifiedCategories("Sad", 41, 2)

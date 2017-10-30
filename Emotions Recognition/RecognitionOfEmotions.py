@@ -66,7 +66,7 @@ SkeletonColors = [pygame.color.THECOLORS["green"],
                   pygame.color.THECOLORS["red"]]
 
 # Is loaded the neural netowrk model.
-RNA = load_model('D:\Tesis\Python\Liclipse\Tesis\ImplementRNAs\EmotionsRecognition\Model_RNA_Recognition_Of_Emotions')
+RNA = load_model('...\Model_RNA_Recognition_Of_Emotions')
 
 # Is activated the tracking of the wrist.
 ENABLE_WRIST = True
@@ -105,7 +105,7 @@ class EmotionsRecognition(QtGui.QWidget):
         super(EmotionsRecognition, self).__init__()
                 
         # Is loaded the file that get the GUI.    
-        self.MyGUI = uic.loadUi('D:\Tesis\Python\Liclipse\Tesis\ImplementRNAs\EmotionsRecognition\RecognitionOfEmotionGUI.ui', self)
+        self.MyGUI = uic.loadUi('...\RecognitionOfEmotionsGUI.ui', self)
               
         # Are created timers to have interruptions that allow execute functions.
         self.Timer = QtCore.QTimer(self.MyGUI)                                  # Timer that control the image tracking.

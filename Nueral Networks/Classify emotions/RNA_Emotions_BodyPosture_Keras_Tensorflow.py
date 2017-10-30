@@ -22,8 +22,8 @@ from keras.layers import Dense, Dropout
 from keras.optimizers import SGD
 
 # Are loaded the Train and Test data.
-Data_Train = pd.read_csv("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorHumanPosture\DataSetPostures_Train.csv", header = 0, index_col = 0)
-Data_Test = pd.read_csv("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorHumanPosture\DataSetPostures_Test.csv", header = 0, index_col = 0)
+Data_Train = pd.read_csv("...\DataSet_Organized\DataSetPostures_Train.csv", header = 0, index_col = 0)
+Data_Test = pd.read_csv("...\DataSet_Organized\DataSetPostures_Test.csv", header = 0, index_col = 0)
 
 # Are created the Train and Test input and output.
 X_Train = np.array(Data_Train.ix[:,2:25]) 
@@ -64,4 +64,4 @@ print('Accuracy of the neural network', '\n', Score); print('\n'*4)
 
 # Is saved the model of the neural network.
 Version = '1' # Version of the model created.
-RNA.save('D:\Tesis\Python\Liclipse\Tesis\ImplementRNAs\EmotionsRecognition\Model_RNA_Recognition_Of_Emotions ' + Version)
+RNA.save('...\Model_RNA_Recognition_Of_Emotions ' + Version)

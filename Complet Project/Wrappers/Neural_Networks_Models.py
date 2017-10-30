@@ -35,10 +35,10 @@ class Neural_Networks_Models(object):
     '''
     def __init__(self):
         # Is loaded the RNA model that perform the recognitions of emotions, using the joint angles information.
-        self.RNA_Emotions = load_model('D:\Tesis\Python\Liclipse\Tesis\ImplementRNAs\GraduationsProject\Data_And_RNA_Models\Model_RNA_Recognition_Of_Emotions')
+        self.RNA_Emotions = load_model('...\Data_And_RNA_Models\Model_RNA_Recognition_Of_Emotions')
         
         # Is loaded the Motion animations database.
-        self.AnimationsDataBase = pd.read_csv('D:\Tesis\Python\Liclipse\Tesis\ImplementRNAs\GraduationsProject\Data_And_RNA_Models\Animations Sequence.csv', header = 0)
+        self.AnimationsDataBase = pd.read_csv('...\Data_And_RNA_Models\Animations Sequence.csv', header = 0)
         self.AnimationsDataBase.set_index("Animation", inplace = True)
         
         # Are loaded the GAN models, that perform the creation of Motion animation sequences.

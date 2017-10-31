@@ -1,6 +1,7 @@
 # Artificial Neural Network which to classify the emotions using data from body posture.
 
-This script was developed to create, train and test an artificial neural network which classify the mood of one person using like input a vector that containing 23 angles, each angle descrive the orientation of a specific joint of the body. 
+This script was developed to create, train and test an artificial neural network which classify the mood of one person using like input 
+a vector that containing 23 angles, each angle descrive the orientation of a specific joint of the body. 
 
 This script was developed using PYTHON 3.6 (64 bits) in WINDOWS 10 and the following wrappers.
 
@@ -12,7 +13,11 @@ This script was developed using PYTHON 3.6 (64 bits) in WINDOWS 10 and the follo
 - sklearn version 0.18.2
 - csv version 1.0.0
 
-The first step is create a data base with the tool "DataBaseCreatorHumanPosture.py" which you can found in the following link: https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Emotions%20Data%20Base%20Creator; this tool generate a .csv file in which is saved a matrix like 
+The first step is create a data base with the tool "DataBaseCreatorHumanPosture.py" which you can found in the following link:
+https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Emotions%20Data%20Base%20Creator
+
+This tool generate a .csv file in which is saved a matrix that containing 25 joints angles and the description of the emotion that is 
+being represented.
 
 Head Yaw,Head Roll,Head Pitch,Right Shoulder Roll,Right Shoulder Pitch,Right Elbow Yaw,Right Elbow Roll,Right Wrist Yaw,Right Hand,Left Shoulder Roll,Left Shoulder Pitch,Left Elbow Yaw,Left Elbow Roll,Left Wrist Yaw,Left Hand,Waist Roll,Waist Pitch,Right Hip Roll,Right Hip Pitch,Right Knee Yaw,Right Knee Roll,Left Hip Roll,Left Hip Pitch,Left Knee Yaw,Left Knee Roll,Emotion
 0.0,0.0,-0.205911565018,-0.371897461017,1.03971349107,0.221350259538,1.0811820174,-0.0325460937213,Unknow,0.0102765891239,0.807714091734,0.107030793181,-1.41553328715,2.79107054255,Unknow,0.0772471328941,0.176825844711,1.19263929325,-1.47621442633,0.943036177496,0.0556739582251,-1.26985825509,-0.53370397088,-0.0727215378137,0.271315147242,Angry
@@ -43,6 +48,7 @@ Head Yaw,Head Roll,Head Pitch,Right Shoulder Roll,Right Shoulder Pitch,Right Elb
 0.0,0.0,-0.199185937381,-0.33331913673,1.00948947083,0.321607793547,1.22404751737,-0.133932659214,Unknow,0.000426203149085,0.840559150262,0.0934256815247,-1.46237961183,2.82561313217,Unknow,0.0821288599382,0.182416679968,1.19925283914,-1.44723735418,0.899132247694,0.0358152808337,-1.26720859102,-0.643748599323,-0.0918906550782,0.247324789544,Angry
 0.0,0.0,-0.198425724988,-0.330374296521,1.00694884199,0.32096269069,1.21992121304,-0.157211399495,Unknow,0.00397887546628,0.83920464001,0.0548603202988,-1.42214563394,2.8557613796,Unknow,0.0822870544561,0.182563238504,1.1976933243,-1.44879318268,0.89614074111,0.0393918901699,-1.26762201792,-0.637456017877,-0.0861450200749,0.251033856163,Angry
 0.0,0.0,-0.197352104909,-0.330429395313,1.01110310012,0.322688455005,1.21746422433,-0.159668178538,Unknow,0.012816897925,0.8318390641,0.0920039126499,-1.43537820443,2.76601937937,Unknow,0.0830093936003,0.18305879943,1.19798821315,-1.42632688594,0.875366023045,0.0314724264183,-1.26511228178,-0.670951518878,-0.106967653761,0.242599222985,Angry
+
 
 
 

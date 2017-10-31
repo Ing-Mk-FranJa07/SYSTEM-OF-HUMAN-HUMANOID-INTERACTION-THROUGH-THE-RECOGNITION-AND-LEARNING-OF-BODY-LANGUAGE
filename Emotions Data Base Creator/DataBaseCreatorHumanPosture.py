@@ -742,7 +742,7 @@ class HumanPostureAndEmotion(QtGui.QWidget):
         
         self.Text_RWrist_Yaw.setText(str("%.3f" %(RWristYawList[self.Sec])))
         
-        self.Text_RHand.setText(RHandList[self.Sec])
+        self.Text_RHand.setText(str("%.3f" %(RHandList[self.Sec])))
         
         self.Text_LShoulder_Pitch.setText(str("%.3f" %(LShoulderPitchList[self.Sec])))
         self.Text_LShoulder_Roll.setText(str("%.3f" %(LShoulderRollList[self.Sec])))
@@ -752,7 +752,7 @@ class HumanPostureAndEmotion(QtGui.QWidget):
         
         self.Text_LWrist_Yaw.setText(str("%.3f" %(LWristYawList[self.Sec])))
         
-        self.Text_LHand.setText(LHandList[self.Sec])
+        self.Text_LHand.setText(str("%.3f" %(LHandList[self.Sec])))
 
         # End the playing of the .avi and .csv file.
         if self.Sec == self.Limit:
@@ -1058,7 +1058,7 @@ class HumanPostureAndEmotion(QtGui.QWidget):
                             else:
                                 HandR = 3                                       # Unknown state.
                             
-                            self.Text_RHand.setText(HandR)
+                            self.Text_RHand.setText(str("%.3f" %(HandR)))
                     
                     else:
                         HandR = None
@@ -1127,7 +1127,7 @@ class HumanPostureAndEmotion(QtGui.QWidget):
                             else:
                                 HandL = 3                                       # Unknown state.
                             
-                            self.Text_LHand.setText(HandL)
+                            self.Text_LHand.setText(str("%.3f" %(HandL)))
                     
                     else:
                         HandL = None

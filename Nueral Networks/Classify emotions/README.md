@@ -1,23 +1,4 @@
-# Artificial Neural Network which to classify the emotions using data from body posture.
 
-This script was developed to create, train and test an artificial neural network which classify the mood of one person using like input 
-a vector that containing 23 angles, each angle descrive the orientation of a specific joint of the body. 
-
-This script was developed using PYTHON 3.6 (64 bits) in WINDOWS 10 and the following wrappers.
-
-- keras version 2.0.6
-- Tensorflow version 1.2.1 (keras backend engine)
-- pandas version 0.19.2
-- numpy version 1.11.3
-- matplotlib version 2.0.0
-- sklearn version 0.18.2
-- csv version 1.0.0
-
-The first step is create a data base with the tool "DataBaseCreatorHumanPosture.py" which you can found in the following link:
-https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Emotions%20Data%20Base%20Creator
-
-This tool generate a .csv file in which is saved a matrix that containing 25 joints angles and the description of the emotion that is 
-being represented.
 
 Head Yaw,Head Roll,Head Pitch,Right Shoulder Roll,Right Shoulder Pitch,Right Elbow Yaw,Right Elbow Roll,Right Wrist Yaw,Right Hand,Left Shoulder Roll,Left Shoulder Pitch,Left Elbow Yaw,Left Elbow Roll,Left Wrist Yaw,Left Hand,Waist Roll,Waist Pitch,Right Hip Roll,Right Hip Pitch,Right Knee Yaw,Right Knee Roll,Left Hip Roll,Left Hip Pitch,Left Knee Yaw,Left Knee Roll,Emotion
 0.0,0.0,-0.205911565018,-0.371897461017,1.03971349107,0.221350259538,1.0811820174,-0.0325460937213,Unknow,0.0102765891239,0.807714091734,0.107030793181,-1.41553328715,2.79107054255,Unknow,0.0772471328941,0.176825844711,1.19263929325,-1.47621442633,0.943036177496,0.0556739582251,-1.26985825509,-0.53370397088,-0.0727215378137,0.271315147242,Angry

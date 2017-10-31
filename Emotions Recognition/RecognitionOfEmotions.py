@@ -116,7 +116,6 @@ class EmotionsRecognition(QtGui.QWidget):
         
         # Are associated the different options that have the GUI with its corresponding functions.
         self.connect(self.Btn_ConectKinect, QtCore.SIGNAL("clicked()"), self.InitKinect)
-        self.connect(self.Btn_ConectPepper, QtCore.SIGNAL("clicked()"), self.ConnectionPepper)
         self.connect(self.CheckBox_Speech, QtCore.SIGNAL("clicked()"), self.SpeechRecognition)
         
         # Is created a pixel map to put in the GUI the image get with the Kinect Sensor.

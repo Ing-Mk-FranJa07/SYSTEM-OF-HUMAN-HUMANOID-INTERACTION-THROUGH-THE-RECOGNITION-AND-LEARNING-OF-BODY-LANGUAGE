@@ -19,7 +19,7 @@ https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-T
 This tool generate a .csv file in which is saved a matrix that containing 25 joints angles and the description of the emotion that is 
 being represented.
 
-![](http://dummyimage.com/150 "De 150 x 150 píxeles")
+![Hols](http://dummyimage.com/150 "De 150 x 150 píxeles")
 
 
 

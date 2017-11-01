@@ -30,7 +30,7 @@ The script [DataBase_Organize.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-H
 Also, this script add the codification to each category, in the both files, used like output of the neural network.
 
 **WARNINGS**
-* Please make sure of the path that get the ubication of the .csv files be correct in the follow lines:
+* Please make sure of the path that has the address of the .csv files be correct in the follow lines (don't change or delete the files names that are wroten after the last slash):
 ```[PYTHON]
     35     Category_Train = open("...\DataSet_Organized\Emotions_Unified\Postures_Train " + str(File_Code) + ".csv", "w") 
    ...
@@ -49,8 +49,7 @@ Also, this script add the codification to each category, in the both files, used
    116    Data = pd.read_csv("...\DataSet_Organized\DataSetPostures_" + str(File_Type) + ".csv", header = 0)
    ...
    143    Data.to_csv("...\DataSet_Organized\DataSetPostures__" + str(File_Type) + ".csv", header = True)
- ```
- * If you want work the the files created by the autor, don't change the name posted after the last '\'.
+ ``` 
  * Note that in the lines 117-119 are being changed information into the .csv files; if you're working with the [.csv files created by the autor](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Emotions%20Data%20Base%20Creator/Emotions%20DataBase), don't change or delet this lines. If you're working with new data created used the tool: [DataBaseCreatorHumanPosture.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Emotions%20Data%20Base%20Creator), these lines are not necessaries.
  ```[PYTHON]
      117    Data = Data_Train.replace("Opened", 1)

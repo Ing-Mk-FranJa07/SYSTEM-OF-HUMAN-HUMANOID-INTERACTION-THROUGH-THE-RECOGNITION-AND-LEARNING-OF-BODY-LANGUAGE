@@ -51,14 +51,14 @@ def UnifiedCategories(File_Category, File_Number, File_Code):
     
     # The data are unified, creating a train and test data files.
     for F in range(1, File_Number):
-            FileName = str("...\Emotions_Data_Base\ " + str(File_Category) + " " + str(F) + ".csv")
-            File = pd.read_csv(FileName, header = 0)
-              
-            for L in range (1,int((File.shape[0]-2)*0.8)):
-                Category_Train_csv.writerow(File.loc[L])
-            
-            for L in range (int((File.shape[0]-2)*0.8), File.shape[0]-2):
-                Category_Test_csv.writerow(File.loc[L])
+        FileName = str("...\Emotions_Data_Base\ " + str(File_Category) + " " + str(F) + ".csv")
+        File = pd.read_csv(FileName, header = 0)
+          
+        for L in range (1,int((File.shape[0]-2)*0.8)):
+            Category_Train_csv.writerow(File.loc[L])
+        
+        for L in range (int((File.shape[0]-2)*0.8), File.shape[0]-2):
+            Category_Test_csv.writerow(File.loc[L])
       
     Category_Train.close()
     Category_Test.close()
@@ -90,19 +90,19 @@ def UnifiedFiles():
     # The data are unified, creating a train and test data files.
     for F in range(1,7):
             
-            # Train data file.
-            FileName = str("...\DataSet_Organized\Emotions_Unified\Postures_Train " + str(F) + ".csv")
-            File = pd.read_csv(FileName, header = 0)
-               
-            for L in range (0,len(File)):
-                Postures_Train_csv.writerow(File.loc[L])
-                
-            # Test data file.
-            FileName_Test = str("...\DataSet_Organized\Emotions_Unified\Postures_Test " + str(F) + ".csv")
-            File_Test = pd.read_csv(FileName_Test, header = 0)
-               
-            for L in range (0,len(File_Test)):
-                Postures_Test_csv.writerow(File_Test.loc[L])
+        # Train data file.
+        FileName = str("...\DataSet_Organized\Emotions_Unified\Postures_Train " + str(F) + ".csv")
+        File = pd.read_csv(FileName, header = 0)
+           
+        for L in range (0,len(File)):
+            Postures_Train_csv.writerow(File.loc[L])
+            
+        # Test data file.
+        FileName_Test = str("...\DataSet_Organized\Emotions_Unified\Postures_Test " + str(F) + ".csv")
+        File_Test = pd.read_csv(FileName_Test, header = 0)
+           
+        for L in range (0,len(File_Test)):
+            Postures_Test_csv.writerow(File_Test.loc[L])
        
     Postures_Train.close()
     Postures_Test.close()

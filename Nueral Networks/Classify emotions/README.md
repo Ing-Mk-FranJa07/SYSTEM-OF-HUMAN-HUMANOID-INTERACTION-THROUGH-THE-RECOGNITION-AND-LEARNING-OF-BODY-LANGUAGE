@@ -62,7 +62,7 @@ Also, this script add the codification to each category, in the both files, used
  ```
 ### Third step: Neural Network structure.
 
-The first part of the code in the script: [RNA_Emotions_BodyPosture_Keras_Tensorflow.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Nueral%20Networks/Classify%20emotions/RNA_Emotions_BodyPosture_Keras_Tensorflow.py) load the traininig and the testing data, creating the sets to train and test the neural network. 
+The first part of the code in the script: [RNA_Emotions_BodyPosture_Keras_Tensorflow.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Nueral%20Networks/Classify%20emotions/RNA_Emotions_BodyPosture_Keras_Tensorflow.py) load the training and the testing data, creating the sets to train and test the neural network. 
 
 **WARNING**
 * Please make sure of the path that has the address of the .csv files be correct in the follow lines (don't change or delete the files names that are written after the last slash):

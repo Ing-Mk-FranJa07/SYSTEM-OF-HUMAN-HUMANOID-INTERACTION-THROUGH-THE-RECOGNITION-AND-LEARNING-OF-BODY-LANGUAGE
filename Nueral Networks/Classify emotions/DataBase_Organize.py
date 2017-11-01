@@ -114,6 +114,9 @@ def AddOutput(File_Type):
     '''
     # Is loaded the file.
     Data = pd.read_csv("...\DataSet_Organized\DataSetPostures_" + str(File_Type) + ".csv", header = 0)
+    Data = Data_Train.replace("Opened", 1)
+    Data = Data_Train.replace("Closed", 2)
+    Data = Data_Train.replace("Unknow", 3)
     
     # Are added new columns to the output code.
     Data['Emotion Code 6'] = 0

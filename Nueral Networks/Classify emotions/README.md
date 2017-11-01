@@ -28,7 +28,7 @@ For the implementation of the system developed: [RecognitionOfEmotions.py](https
 The script [DataBase_Organize.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Nueral%20Networks/Classify%20emotions/DataBase_Organize.py) was wrote to organize the data base unifying alls .csv files and creating two new .csv files, the first of them has the 80% of the whole data used to train the neural network and the second file has the 20% of the data used to test the neural network.
 
 Also, this script add the codification to each category, in the both files, used like output of the neural network.
-
+D:\Tesis\Pictures
 **WARNINGS**
 * Please make sure of the path that has the address of the .csv files be correct in the follow lines (don't change or delete the files names that are wroten after the last slash):
 ```[PYTHON]
@@ -58,6 +58,25 @@ Also, this script add the codification to each category, in the both files, used
  ```
 ### Third step: Neural Network structure.
 
+The first part of the code in the script: [RNA_Emotions_BodyPosture_Keras_Tensorflow.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Nueral%20Networks/Classify%20emotions/RNA_Emotions_BodyPosture_Keras_Tensorflow.py) load the traininig and the testing data, creating the sets to train and test the neural network. 
+
+**WARNING**
+* Please make sure of the path that has the address of the .csv files be correct in the follow lines (don't change or delete the files names that are wroten after the last slash):
+```[PYTHON]
+   60 Data_Train = pd.read_csv("...\DataSet_Organized\DataSetPostures_Train.csv", header = 0, index_col = 0)
+   61 Data_Test = pd.read_csv("...\DataSet_Organized\DataSetPostures_Test.csv", header = 0, index_col = 0)
+```
+The two first columns (angles: Head Roll and Head Pitch) are not used in the input training and testing set because they're not toasting information; also is created the ouput training and testing with the codification of each category.
+```[PYTHON]
+   64 X_Train = np.array(Data_Train.ix[:,2:25]) 
+   65 Y_Train = np.array(Data_Train.ix[:,25:33])
+   66 X_Test = np.array(Data_Test.ix[:,2:25])
+   67 Y_Test = np.array(Data_Test.ix[:,25:33])
+```
+Aster that the Data has been loaded and schuffled in training and testing sets; is created the model of the neural network. The neural network has 23 inputs and two hidden layers, the first of them has the same numbers of nodes that the inputs, and the second hidden layer has 17 nodes; the both layers have a Relu activation function. The ouput layer has 6 nodes and its activation function is sigmoidal because each node just can take two values: (0, 1) The total output is an "one hot" vector that contains six values. 
+
+The next image is a representation of the neural network designed.
+[Neural Network which classify emotions](D:\Tesis\Pictures\ANN Classification Problem.PNG)
 
 
 

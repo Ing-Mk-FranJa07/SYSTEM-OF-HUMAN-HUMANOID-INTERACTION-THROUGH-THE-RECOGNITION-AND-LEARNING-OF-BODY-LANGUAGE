@@ -103,7 +103,7 @@ After that the Data has been loaded and schuffled in training and testing sets; 
 The next image is a representation of the neural network designed.
 ![Ann classification problem](https://user-images.githubusercontent.com/31509775/32282186-e80f7e7a-beee-11e7-85a2-af58946356f5.PNG)
 
-After that the neural network has been created, is trained and then is tested; the accuracy of the neural network designed by the author is the almost the 94%; to check the performance of the neural network; has been written a function that organize and show the cunfusion matrix; this function can show the matrix in two modes, porcentage or total data, just changing a bolean value ('Normalize') when it is called. 
+After that the neural network has been created, is trained and then is tested; the accuracy of the neural network designed by the author is the almost the 94%; to check the performance of the neural network; has been written a function that organize and show the cunfusion matrix; this function can show the matrix in two modes, porcentage or total data, just changing a boolean value ('Normalize') when it is called. 
 ```[PYTHON]
    29 def Plot_Confusion_Matrix(Matrix, Title, Cmap, Normalize = True):
    30     '''

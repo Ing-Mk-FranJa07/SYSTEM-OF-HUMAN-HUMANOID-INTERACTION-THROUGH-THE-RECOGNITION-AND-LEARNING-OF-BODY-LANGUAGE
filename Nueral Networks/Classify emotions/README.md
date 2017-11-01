@@ -34,7 +34,7 @@ Also, this script add the codification to each category, in the both files, used
 
 **WARNINGS**
 * It's recommended extract the [.csv files created by the author](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Emotions%20Data%20Base%20Creator/Emotions%20DataBase) from each folder and save them in just one folder to use correctly the script written.
-* Please make sure of the path that has the address of the .csv files be correct in the follow lines (don't change or delete the files names that are wroten after the last slash):
+* Please make sure of the path that has the address of the .csv files be correct in the follow lines (don't change or delete the files names that are written after the last slash):
 ```[PYTHON]
     35     Category_Train = open("...\DataSet_Organized\Emotions_Unified\Postures_Train " + str(File_Code) + ".csv", "w") 
    ...
@@ -65,7 +65,7 @@ Also, this script add the codification to each category, in the both files, used
 The first part of the code in the script: [RNA_Emotions_BodyPosture_Keras_Tensorflow.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Nueral%20Networks/Classify%20emotions/RNA_Emotions_BodyPosture_Keras_Tensorflow.py) load the traininig and the testing data, creating the sets to train and test the neural network. 
 
 **WARNING**
-* Please make sure of the path that has the address of the .csv files be correct in the follow lines (don't change or delete the files names that are wroten after the last slash):
+* Please make sure of the path that has the address of the .csv files be correct in the follow lines (don't change or delete the files names that are written after the last slash):
 ```[PYTHON]
    60 Data_Train = pd.read_csv("...\DataSet_Organized\DataSetPostures_Train.csv", header = 0, index_col = 0)
    61 Data_Test = pd.read_csv("...\DataSet_Organized\DataSetPostures_Test.csv", header = 0, index_col = 0)
@@ -153,7 +153,7 @@ Finally is saved the model created to be used in the differents tools developed:
 
 **WARNING**
 * You can change the "version" of the model saved to don't rewrite the previous model saved using the line 121.
-* Please make sure of the path that has the address of the neural network model be correct in the line 122 (don't change or delete the model name that are wroten after the last slash, if you do it, please check the path to load the model in the tools that use the model):
+* Please make sure of the path that has the address of the neural network model be correct in the line 122 (don't change or delete the model name that are written after the last slash, if you do it, please check the path to load the model in the tools that use the model):
 ```[PYTHON]
   120 # Is saved the model of the neural network.
   121 Version = '1' # Version of the model created.

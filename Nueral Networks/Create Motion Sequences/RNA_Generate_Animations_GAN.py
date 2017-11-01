@@ -73,11 +73,10 @@ class DCGAN(object):
         plus = 0                                                                # Variable used to increase the original animation in the input data.
         self.DataSet = np.empty([Repetition*32,40,16])                          # Input Data.
         
-        # Motion sequences used to represent emotions:
+        # Is loaded the motion sequences.
         for D in range(Repetition):
-        
-            for i in range(1,11):
-                
+            # Motion sequences used to represent emotions:
+            for i in range(1,11):                
                 FileName = str("...\Motion_Sequences\ Emotion " + str(i) + ".csv")
                 Data = pd.read_csv(FileName, header = 0, index_col = 0)
 
@@ -87,16 +86,14 @@ class DCGAN(object):
     #             self.DataSet[i - 1, 0, :] = np.array(Data.ix[0,:])
     #             self.DataSet[i - 1, 1:, :] = np.array(Data.ix[:,:])
                 
-#                 for D in range(Repetition):
-#                      
+#                 for D in range(Repetition):#                      
 #                     self.DataSet[plus + D, 0, :] = np.array(Data.ix[0,:])
 #                     self.DataSet[plus + D, 1:, :] = np.array(Data.ix[:,:])
 #              
 #                 plus += Repetition
                 
             # Motions sequences used to used in conversations.
-            for i in range(1,23):
-                 
+            for i in range(1,23):                 
                 FileName = str("...\Motion_Sequences\ Animation " + str(i) + ".csv")
                 Data = pd.read_csv(FileName, header = 0, index_col = 0)
 
@@ -106,8 +103,7 @@ class DCGAN(object):
     #             self.DataSet[9 + i, 0, :] = np.array(Data.ix[0,:])
     #             self.DataSet[9 + i, 1:, :] = np.array(Data.ix[:,:])
                 
-#                 for D in range(Repetition):
-#                   
+#                 for D in range(Repetition):#                   
 #                     self.DataSet[plus + D, 0, :] = np.array(Data.ix[0,:])
 #                     self.DataSet[plus + D, 1:, :] = np.array(Data.ix[:,:])
 #                  

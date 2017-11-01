@@ -1,3 +1,4 @@
+
 # Artificial Neural Network which classify the emotions using data from body posture.
 
 ### Description:
@@ -23,6 +24,8 @@ It's necesarry to have a data base, and it's possible create it with the tool: [
 
 For the implementation of the system developed: [RecognitionOfEmotions.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Emotions%20Recognition) were created 40 .csv files of each category: [Happy, Sad, Angry, Surprised, Reflexive and Normal](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Emotions%20Data%20Base%20Creator/Emotions%20DataBase). 
 
+For the "Normal" category were created 30 .csv files.
+
 ### Second step: Organize the Data Base.
 
 The script [DataBase_Organize.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Nueral%20Networks/Classify%20emotions/DataBase_Organize.py) was wrote to organize the data base unifying alls .csv files and creating two new .csv files, the first of them has the 80% of the whole data used to train the neural network and the second file has the 20% of the data used to test the neural network.
@@ -30,6 +33,7 @@ The script [DataBase_Organize.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-H
 Also, this script add the codification to each category, in the both files, used like output of the neural network.
 D:\Tesis\Pictures
 **WARNINGS**
+* It's recommended extract the [.csv files created by the autor](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Emotions%20Data%20Base%20Creator/Emotions%20DataBase) from each folder and save them in just one folder to use correctly the script written.
 * Please make sure of the path that has the address of the .csv files be correct in the follow lines (don't change or delete the files names that are wroten after the last slash):
 ```[PYTHON]
     35     Category_Train = open("...\DataSet_Organized\Emotions_Unified\Postures_Train " + str(File_Code) + ".csv", "w") 
@@ -101,7 +105,7 @@ The next image is a representation of the neural network designed.
 
 After that the neural network has been created, is trained and then is tested; the accuracy of the neural network designed by the autor is the almost the 94%; to check the performance of the neural network; has been written a function that organize and show the cunfusion matrix; this function can show the matrix in two modes, porcentage or total data, just changing a bolean value ('Normalize') when it is called. 
 ```[PYTHON]
-   29 def Plot_Confusion_Matrix(Matrix, Title, Cmap, Normalize = 'True'):
+   29 def Plot_Confusion_Matrix(Matrix, Title, Cmap, Normalize = True):
    30     '''
    31     Function that allow plot the confusion matrix, in two formats, 
    32     percentage or total data.
@@ -145,7 +149,16 @@ After that the neural network has been created, is trained and then is tested; t
 The next image show the confusion matrix that represent the performance of the neural network designed by the autor.
 ![confusion matrix](https://user-images.githubusercontent.com/31509775/32284284-bf32ebda-bef4-11e7-820e-b14aba8524b3.png)
 
+Finally is saved the model created to be used in the differents tools developed: [RNA_Emotions_BodyPosture_Keras_Tensorflow.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Nueral%20Networks/Classify%20emotions/RNA_Emotions_BodyPosture_Keras_Tensorflow.py) and [Recognition_And_Learning_BodyLenguage_System.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Complet%20Project).
 
+**WARNING**
+* You can change the "version" of the model saved to don't rewrite the previous model saved using the line 121.
+* Please make sure of the path that has the address of the neural network model be correct in the line 122 (don't change or delete the model name that are wroten after the last slash, if you do it, please check the path to load the model in the tools that use the model):
+```[PYTHON]
+  120 # Is saved the model of the neural network.
+  121 Version = '1' # Version of the model created.
+  122 RNA.save('...\Model_RNA_Recognition_Of_Emotions ' + Version)
+```
 
 
 

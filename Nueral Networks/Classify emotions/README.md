@@ -60,7 +60,7 @@ Also, this script add the codification to each category, in the both files, used
     118    Data = Data_Train.replace("Closed", 2)
     119    Data = Data_Train.replace("Unknow", 3)
  ```
-### Third step: Neural Network structure.
+### Third step: Neural Network Structure.
 
 The first part of the code in the script: [RNA_Emotions_BodyPosture_Keras_Tensorflow.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Nueral%20Networks/Classify%20emotions/RNA_Emotions_BodyPosture_Keras_Tensorflow.py) load the training and the testing data, creating the sets to train and test the neural network. 
 

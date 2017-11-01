@@ -31,9 +31,9 @@ Also, this script add the codification to each category, in the both files, used
 
 **WARNINGS**
 * Please make sure of the path that get the ubication of the .csv files be correct in the follow lines:
-´´´[PYTHON]
+```[PYTHON]
     Category_Train = open("...\DataSet_Organized\Emotions_Unified\Postures_Train " + str(File_Code) + ".csv", "w") 
-´´´
+```
 
 
 

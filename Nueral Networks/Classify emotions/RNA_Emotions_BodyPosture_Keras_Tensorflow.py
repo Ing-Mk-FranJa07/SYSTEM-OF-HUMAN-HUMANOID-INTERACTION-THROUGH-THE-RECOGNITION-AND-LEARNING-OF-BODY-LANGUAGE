@@ -26,7 +26,7 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix
 import itertools
 
-def Plot_Confusion_Matrix(Matrix, Title, Cmap, Normalize = 'True'):
+def Plot_Confusion_Matrix(Matrix, Title, Cmap, Normalize = True):
     '''
     Function that allow plot the confusion matrix, in two formats, 
     percentage or total data.

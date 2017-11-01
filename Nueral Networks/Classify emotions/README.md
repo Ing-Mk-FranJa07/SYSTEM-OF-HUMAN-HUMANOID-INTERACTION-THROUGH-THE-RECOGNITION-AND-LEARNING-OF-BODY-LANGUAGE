@@ -1,4 +1,4 @@
-# Artificial Neural Network which to classify the emotions using data from body posture.
+# Artificial Neural Network which classify the emotions using data from body posture.
 
 ### Description:
 

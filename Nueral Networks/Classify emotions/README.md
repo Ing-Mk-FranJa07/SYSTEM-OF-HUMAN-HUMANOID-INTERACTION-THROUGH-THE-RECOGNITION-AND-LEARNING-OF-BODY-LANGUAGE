@@ -35,7 +35,7 @@ Also, this script add the codification to each category, in the both files, used
 **WARNINGS**
 * It's recommended extract the [.csv files created by the author](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Emotions%20Data%20Base%20Creator/Emotions%20DataBase) from each folder and save them in just one folder to use correctly the script written.
 * Please make sure of the path that has the address of the .csv files be correct in the follow lines (don't change or delete the files names that are written after the last slash):
-```[PYTHON]
+```python
     35     Category_Train = open("...\DataSet_Organized\Emotions_Unified\Postures_Train " + str(File_Code) + ".csv", "w") 
    ...
     38     Category_Test = open("...\DataSet_Organized\Emotions_Unified\Postures_Test " + str(File_Code) + ".csv", "w") 

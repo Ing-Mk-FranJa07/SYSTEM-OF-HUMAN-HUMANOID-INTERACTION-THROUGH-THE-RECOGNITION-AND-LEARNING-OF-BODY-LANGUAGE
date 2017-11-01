@@ -31,7 +31,6 @@ def Plot_Confusion_Matrix(Matrix, Title, Cmap, Normalize = 'True'):
     Function that allow plot the confusion matrix, in two formats, 
     percentage or total data.
     '''
-    
     if Normalize:
         Confusion_Matrix = Matrix.astype('float') / Matrix.sum(axis=1)[:, np.newaxis]
     else:

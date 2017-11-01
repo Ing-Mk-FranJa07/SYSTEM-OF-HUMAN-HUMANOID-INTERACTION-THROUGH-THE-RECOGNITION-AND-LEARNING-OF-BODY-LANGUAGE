@@ -1,4 +1,4 @@
-# Generative Adversarial Network (GAN): Neural network model used to increase the motion sequences data base created to perform the interaction between the Robot Pepper and the humans.
+*# Generative Adversarial Network (GAN): Neural network model used to increase the motion sequences data base created to perform the interaction between the Robot Pepper and the humans.
 
 ### Description:
 
@@ -14,7 +14,7 @@ The image show a representation of the GAN model created.
 
 ![gan model](https://user-images.githubusercontent.com/31509775/32291493-3500cbd2-bf0b-11e7-8102-68e7da40dbc6.PNG)
 
-This script was developed using *PYHTON 3.6 (64 bits) in WINDOWS 10* and the following wrappers.
+This script was developed using **PYHTON 3.6 (64 bits) in WINDOWS 10** and the following wrappers.
 * Keras version 2.0.6
 * Tensorflow version 1.2.1 (keras backend engine)
 * pandas version 0.19.2

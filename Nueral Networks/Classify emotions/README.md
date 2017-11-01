@@ -101,6 +101,7 @@ After that the Data has been loaded and schuffled in training and testing sets; 
    92             metrics = ['accuracy'])
 ```
 The next image is a representation of the neural network designed.
+
 ![Ann classification problem](https://user-images.githubusercontent.com/31509775/32282186-e80f7e7a-beee-11e7-85a2-af58946356f5.PNG)
 
 After that the neural network has been created, is trained and then is tested; the accuracy of the neural network designed by the author is the almost the 94%; to check the performance of the neural network; has been written a function that organize and show the cunfusion matrix; this function can show the matrix in two modes, porcentage or total data, just changing a boolean value ('Normalize') when it is called. 
@@ -147,6 +148,7 @@ After that the neural network has been created, is trained and then is tested; t
   109 Confusion_Matrix = confusion_matrix(Index_Y_Test,Index_Y_Pred)
 ```
 The next image show the confusion matrix that represent the performance of the neural network designed by the author.
+
 ![confusion matrix](https://user-images.githubusercontent.com/31509775/32284284-bf32ebda-bef4-11e7-820e-b14aba8524b3.png)
 
 Finally is saved the model created to be used in the differents tools developed: [RNA_Emotions_BodyPosture_Keras_Tensorflow.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Nueral%20Networks/Classify%20emotions/RNA_Emotions_BodyPosture_Keras_Tensorflow.py) and [Recognition_And_Learning_BodyLenguage_System.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Complet%20Project).

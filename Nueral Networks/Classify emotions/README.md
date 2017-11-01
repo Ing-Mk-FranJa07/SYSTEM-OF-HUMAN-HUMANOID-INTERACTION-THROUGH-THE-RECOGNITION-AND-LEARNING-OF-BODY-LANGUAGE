@@ -76,7 +76,7 @@ The two first columns (angles: Head Roll and Head Pitch) are not used in the inp
 Aster that the Data has been loaded and schuffled in training and testing sets; is created the model of the neural network. The neural network has 23 inputs and two hidden layers, the first of them has the same numbers of nodes that the inputs, and the second hidden layer has 17 nodes; the both layers have a Relu activation function. The ouput layer has 6 nodes and its activation function is sigmoidal because each node just can take two values: (0, 1) The total output is an "one hot" vector that contains six values. 
 
 The next image is a representation of the neural network designed.
-![Neural Network which classify emotions](D:\Tesis\Pictures\ANN Classification Problem.PNG)
+![Neural Network which classify emotions](D:\Tesis\Pictures\ANNClassificationProblem.png)
 
 
 

@@ -31,6 +31,9 @@ from keras.layers import Conv2D, UpSampling2D, Conv2DTranspose, BatchNormalizati
 from keras.models import Sequential
 from keras.optimizers import Adam, RMSprop, SGD
 
+# Wrapper to plot data.
+import matplotlib.pyplot as plt
+
 class TakeTime(object):
     '''
     Wrapper object that determined the time employee to train the neural network.

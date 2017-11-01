@@ -170,6 +170,26 @@ class DCGAN(object):
             return X_Train, X_Test
         else:
             return self.DataSet, np.zeros([1, 40, 16, 1])
+  
+    def Plot_Loss(self, Losses):
+        '''
+        Function that plot the Adversarial and Discriminative Losses.
+        '''
+        plt.figure(figsize=(10,8))
+        plt.plot(Losses['D'], label = 'Discriminative loss')
+        plt.plot(Losses['A'], label = 'Adversarial loss')
+        plt.legend()
+        plt.show()
+
+    def Plot_Acc(self, Acc):
+        '''
+        Function that plot the Adversarial and Discriminative accuracies.
+        '''
+        plt.figure(figsize=(10,8))
+        plt.plot(Acc['D'], label = 'Discriminative accuracy')
+        plt.plot(Acc['A'], label = 'Adversarial accuracy')
+        plt.legend()
+        plt.show()
         
     def CreateGen(self):
         '''
@@ -297,7 +317,7 @@ class DCGAN(object):
         return A
 
     # Se crea una funcion que permite entrenar el modelo de la red GAN.
-    def Train(self, Iterations = 10, Batch_Size = 32, Version = str('1'), shuffle = False, OptimizerType = 0):
+    def Train(self, Iterations = 10, Batch_Size = 32, Version = str('1'), shuffle = False, OptimizerType = 0, Plot_Freq = 300):
         '''
         Function that train the GAN model.
         First is trained the Discriminator network, using the original motions 
@@ -313,6 +333,9 @@ class DCGAN(object):
         Generator = self.CreateGen()
         
         ListAnimations = np.empty([Iterations, Batch_Size, 39, 16])             # List used to save the new motion sequences.
+    
+        Losses = {'D':[], 'A':[]}                                               # List used to save the discriminative and the adversarial losses.
+        Accs = {'D':[], 'A':[]}                                                 # List used to save the discriminative and the adversarial accuracies.
         
         # The networks are trained.
         for I in range(Iterations):
@@ -345,6 +368,14 @@ class DCGAN(object):
             log_mesg = "%d: [D loss: %f, acc: %f]" % (I, Dis_loss[0], Dis_loss[1])
             log_mesg = "%s  [A loss: %f, acc: %f]" % (log_mesg, Adv_loss[0], Adv_loss[1])
             print(log_mesg)
+         
+            # Is saved the discriminative and the adversarial losses to be plotted.
+            Losses['D'].append(Dis_loss[0])
+            Losses['A'].append(Adv_loss[0])
+            
+            # Is saved the discriminative and the adversarial accuracies to be plotted.
+            Accs['D'].append(Dis_loss[1])
+            Accs['A'].append(Adv_loss[1])
             
             # Is denormalize the new motion sequences.
             FakeAnimations = FakeAnimations.reshape(FakeAnimations.shape[0], FakeAnimations.shape[1], FakeAnimations.shape[2])
@@ -353,6 +384,11 @@ class DCGAN(object):
             
             # The new motion sequences are added to the list.
             ListAnimations[I,:,:,:] = FakeAnimations
+           
+            # Are plotted the both losses and accuracies.
+            if I % Plot_Freq == Plot_Freq - 1:
+                self.Plot_Loss(Losses)
+                self.Plot_Acc(Accs)
         
         # Are saved the nueral networks models.
         Adversarial.save('...\Adversarial Model ' + Version)
@@ -369,5 +405,5 @@ if __name__ == '__main__':
     
     GAN = DCGAN()
     Timer = TakeTime()
-    GAN.Train(Iterations = 300, Batch_Size = 32, Version = str('1'), shuffle = False, OptimizerType = 2)
+    GAN.Train(Iterations = 300, Batch_Size = 32, Version = str('1'), shuffle = False, OptimizerType = 2, Plot_Freq = 300)
     Timer.Time()

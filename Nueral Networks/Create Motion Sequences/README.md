@@ -25,4 +25,63 @@ To use correctly this script, please consider the follow steps.
 
 ### First step: Create Data Base.
 
-It's necessary to have a data base, and it's possible create it with the tool: [AnimationDataBaseCreator.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Motion%20Sequences%20Data%20Base%20Creator), this tool generate a .csv file in which is saved a matrix that containing 39 rows and 15 columns, each column has the information about a specific joint of the Robot Pepper; and there are 39 angles values of each joint. The [Animation 1.csv](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Motion%20Sequences%20Data%20Base%20Creator/Motion%20Sequences/Animation%201.csv) is an example of a motion sequence developed by the author with the tool.
+It's necessary to have a data base, and it's possible create it with the tool: [AnimationDataBaseCreator.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Motion%20Sequences%20Data%20Base%20Creator), this tool generate a .csv file in which is saved a matrix that containing 40 rows and 17 columns (The first row has the header and the first column has the name of the motion sequence), there are 16 columns that have the information about a specific joint of the Robot Pepper; and there are 39 angles values of each joint. The [Animation 1.csv](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Motion%20Sequences%20Data%20Base%20Creator/Motion%20Sequences/Animation%201.csv) is an example of a motion sequence developed by the author with the tool.
+
+For the implementation of the system developed [Recognition_And_Learning_BodyLenguage_System.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Complet%20Project) were created 10 motion sequences used to the Robot Pepper interactue with the humans being coherent with their mood, and 22 motion sequences used to the Robot Pepper interactue with the humans being coherente with the conversation.
+
+### Second step: Neural Network Structure.
+
+The script [Generate_Animations_GAN.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Nueral%20Networks/Create%20Motion%20Sequences/RNA_Generate_Animations_GAN.py) has two classes, the first class "TakeTime" is used to calculate the time spent to train the GAN model. The second class "DCGAN" is used to build and train the GAN model, also save the models and the motion sequences created by the GAN model; the init function allow load the data and organize it in the structure used by the model.
+
+The data structure used by the model is an array that contain the data in a matrix that has: (40 rows, 16 columns, 1 channel), like a gray image = 1 channel, to generate this, the whole data, that is to say, all movement sequences are grouped, and to each sequences is added one raw copying the first raw. This is done, because the structure of the Generative model goes increasing the kernel in a multiple of 2.
+
+**WARNINGS**
+* Please make sure of the path that has the address of the .csv files be correct in the lines 80 and 97 (don't change or delete the files names that are written after the last slash):
+* The code has a few commented lines (87-95, 106-112), that you can use or change to add copies of the 32 motion sequences created, this is because the author was traying to generete better motion sequences and the data set is pretty short, but the advice is try to create more and more motion sequences, or generete a random noise to the motion sequences created trying to have more data; also, you can load the same data several times to increase the data set.
+```python
+   76         # Is loaded the motion sequences.
+   77         for D in range(Repetition):
+   78             # Motion sequences used to represent emotions:
+   79             for i in range(1,11):                
+   80                 FileName = str("...\Motion_Sequences\ Emotion " + str(i) + ".csv")
+   81                 Data = pd.read_csv(FileName, header = 0, index_col = 0)
+   82
+   83                 self.DataSet[plus + i - 1, 0, :] = np.array(Data.ix[0,:])
+   84                 self.DataSet[plus + i - 1, 1:, :] = np.array(Data.ix[:,:])
+   85
+   86     #             self.DataSet[i - 1, 0, :] = np.array(Data.ix[0,:])
+   87     #             self.DataSet[i - 1, 1:, :] = np.array(Data.ix[:,:])
+   88
+   89 #                 for D in range(Repetition):#                      
+   90 #                     self.DataSet[plus + D, 0, :] = np.array(Data.ix[0,:])
+   91 #                     self.DataSet[plus + D, 1:, :] = np.array(Data.ix[:,:])
+   92 #              
+   93 #                 plus += Repetition
+   94
+   95             # Motions sequences used to used in conversations.
+   96             for i in range(1,23):                 
+   97                 FileName = str("...\Motion_Sequences\ Animation " + str(i) + ".csv")
+   98                 Data = pd.read_csv(FileName, header = 0, index_col = 0)
+   99
+  100                 self.DataSet[plus + 9 + i, 0, :] = np.array(Data.ix[0,:])
+  101                 self.DataSet[plus + 9 + i, 1:, :] = np.array(Data.ix[:,:])
+  102
+  103     #             self.DataSet[9 + i, 0, :] = np.array(Data.ix[0,:])
+  104     #             self.DataSet[9 + i, 1:, :] = np.array(Data.ix[:,:])
+  105
+  106 #                 for D in range(Repetition):#                   
+  107 #                     self.DataSet[plus + D, 0, :] = np.array(Data.ix[0,:])
+  108 #                     self.DataSet[plus + D, 1:, :] = np.array(Data.ix[:,:])
+  109 #                  
+  110 #                 plus += Repetition
+  111
+  112 #            plus += 31
+```
+* Take care with the parameters to handling the long of the data set in the lines 72-74.
+```python
+   71       # Parameters used to build the input data set.
+   72        Repetition = 1                                                          # Variable used to increase the original animation in the input data.
+   73        plus = 0                                                                # Variable used to increase the original animation in the input data.
+   74        self.DataSet = np.empty([Repetition*32,40,16])                          # Input Data.
+```
+

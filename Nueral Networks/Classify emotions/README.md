@@ -73,10 +73,33 @@ The two first columns (angles: Head Roll and Head Pitch) are not used in the inp
    66 X_Test = np.array(Data_Test.ix[:,2:25])
    67 Y_Test = np.array(Data_Test.ix[:,25:33])
 ```
-Aster that the Data has been loaded and schuffled in training and testing sets; is created the model of the neural network. The neural network has 23 inputs and two hidden layers, the first of them has the same numbers of nodes that the inputs, and the second hidden layer has 17 nodes; the both layers have a Relu activation function. The ouput layer has 6 nodes and its activation function is sigmoidal because each node just can take two values: (0, 1) The total output is an "one hot" vector that contains six values. 
-
+After that the Data has been loaded and schuffled in training and testing sets; is created the model of the neural network (lines 73-92) The neural network has 23 inputs and two hidden layers, the first of them has the same numbers of nodes that the inputs, and the second hidden layer has 17 nodes; the both layers have a Relu activation function. The ouput layer has 6 nodes and its activation function is sigmoidal because each node just can take two values: (0, 1) The total output is an "one hot" vector that contains six values; the neural network has like optimization function the categorical cross entropy loss, and it used the Stochastic downward gradient like the optimization type. 
+```[PYTHON]
+   73 # Are defined the parameters of the neural network and the model.
+   74 HL_1_Nodes = 23
+   75 HL_2_Nodes = 17
+   76 RNA = Sequential()
+   77
+   78 # Is created the first hidden layer (Activation function = linear rectified, Nodes = 23) 
+   79 RNA.add(Dense(HL_1_Nodes, activation = 'relu', input_shape = (X_Train.shape[1],))) 
+   80 RNA.add(Dropout(0.05)) # Function that prevent the over training.
+   81
+   82 # Is created the second hidden layer (Activation function = linear rectified, Nodes = 17)
+   83 RNA.add(Dense(HL_2_Nodes, activation = 'relu')) 
+   84
+   85 # Is created the output layer (Activation function = Sigmoidal, Nodes = 6)
+   86 RNA.add(Dense(6, activation = 'sigmoid')) 
+   87
+   88 # Is defined the train parameters of the neural network.
+   89 sgd = SGD(lr = 0.025, decay = 1e-5, momentum = 0.15, nesterov = False)
+   90 RNA.compile(loss = 'categorical_crossentropy', # Optimization function.
+   91             optimizer = sgd,                   # Optimization type: Stochastic downward gradient
+   92             metrics = ['accuracy'])
+```
 The next image is a representation of the neural network designed.
 ![Ann classification problem](https://user-images.githubusercontent.com/31509775/32282186-e80f7e7a-beee-11e7-85a2-af58946356f5.PNG)
+
+
 
 
 

@@ -99,7 +99,37 @@ After that the Data has been loaded and schuffled in training and testing sets; 
 The next image is a representation of the neural network designed.
 ![Ann classification problem](https://user-images.githubusercontent.com/31509775/32282186-e80f7e7a-beee-11e7-85a2-af58946356f5.PNG)
 
-
+After that the neural network has been created, is trained and then is tested; the accuracy of the neural network designed by the autor is the almost the 94%; to check the performance of the neural network; has been written a function that compute and show the cunfusion matrix; this function can show the matrix in two modes, porcentage or total data, just changing a bolean value ('Normalize') when it is called. 
+```[PYTHON]
+   29 def Plot_Confusion_Matrix(Matrix, Title, Cmap, Normalize = 'True'):
+   30     '''
+   31     Function that allow plot the confusion matrix, in two formats, 
+   32     percentage or total data.
+   33     '''
+   34     if Normalize:
+   35         Confusion_Matrix = Matrix.astype('float') / Matrix.sum(axis=1)[:, np.newaxis]
+   36     else:
+   37         Confusion_Matrix = Matrix
+   38
+   39     plt.imshow(Confusion_Matrix, interpolation = 'nearest', cmap = Cmap)
+   40     plt.title(Title)
+   41     plt.colorbar()
+   42     tick_marks = np.arange(len(Class_Name))
+   43     plt.xticks(tick_marks, Class_Name, rotation = 45)
+   44     plt.yticks(tick_marks, Class_Name)
+   45
+   46     fmt = '.2f' if Normalize else 'd' 
+   47     thresh = Confusion_Matrix.max() / 2.
+   48
+   49     for i, j in itertools.product(range(Confusion_Matrix.shape[0]), range(Confusion_Matrix.shape[1])):
+   50         plt.text(j, i, format(Confusion_Matrix[i, j], fmt), horizontalalignment = "center", color = "white" if Confusion_Matrix[i,j]> thresh else "black")
+   51
+   52     plt.tight_layout()
+   53     plt.ylabel('Desired Output')
+   54     plt.xlabel('Estimated Output')
+   55
+   56     plt.show()
+```
 
 
 

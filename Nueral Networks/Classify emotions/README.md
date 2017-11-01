@@ -99,7 +99,7 @@ After that the Data has been loaded and schuffled in training and testing sets; 
 The next image is a representation of the neural network designed.
 ![Ann classification problem](https://user-images.githubusercontent.com/31509775/32282186-e80f7e7a-beee-11e7-85a2-af58946356f5.PNG)
 
-After that the neural network has been created, is trained and then is tested; the accuracy of the neural network designed by the autor is the almost the 94%; to check the performance of the neural network; has been written a function that compute and show the cunfusion matrix; this function can show the matrix in two modes, porcentage or total data, just changing a bolean value ('Normalize') when it is called. 
+After that the neural network has been created, is trained and then is tested; the accuracy of the neural network designed by the autor is the almost the 94%; to check the performance of the neural network; has been written a function that organize and show the cunfusion matrix; this function can show the matrix in two modes, porcentage or total data, just changing a bolean value ('Normalize') when it is called. 
 ```[PYTHON]
    29 def Plot_Confusion_Matrix(Matrix, Title, Cmap, Normalize = 'True'):
    30     '''
@@ -122,7 +122,7 @@ After that the neural network has been created, is trained and then is tested; t
    47     thresh = Confusion_Matrix.max() / 2.
    48
    49     for i, j in itertools.product(range(Confusion_Matrix.shape[0]), range(Confusion_Matrix.shape[1])):
-   50         plt.text(j, i, format(Confusion_Matrix[i, j], fmt), horizontalalignment = "center", color = "white" if Confusion_Matrix[i,j]> thresh else "black")
+   50         plt.text(j, i, format(Confusion_Matrix[i, j], fmt), horizontalalignment = "center", color = "white" if Confusion_Matrix[i,j] > thresh else "black")
    51
    52     plt.tight_layout()
    53     plt.ylabel('Desired Output')
@@ -130,6 +130,20 @@ After that the neural network has been created, is trained and then is tested; t
    55
    56     plt.show()
 ```
+**WARNING**
+* To plot the confusion matrix, it's compute using the index of the ouput node that has more activation, and no directly the neural network output. in the lines 60 and 70 are created two vectors to save the index of the one hot value in the codification of each emotion category of the ouput testing set and the output of the neural network; the lines 104-106 determine the index descrived. The line 109 compute the confusion matrix.
+```[PYTHON]
+   60 Index_Y_Test = np.empty([len(Y_Test),1], dtype = np.float64)
+   70 Index_Y_Pred = np.empty([len(Y_Test),1], dtype = np.float64)
+  ...
+  104 for i in range(len(Y_Test)):
+  105     Index_Y_Pred[i] = np.argmax(Y_Pred[i,:])     
+  106     Index_Y_Pred[i] = np.argmax(Y_Pred[i,:])
+  ...
+  109 Confusion_Matrix = confusion_matrix(Index_Y_Test,Index_Y_Pred)
+```
+The next image show the confusion matrix that represent the performance of the neural network designed by the autor.
+![confusion matrix](https://user-images.githubusercontent.com/31509775/32284284-bf32ebda-bef4-11e7-820e-b14aba8524b3.png)
 
 
 

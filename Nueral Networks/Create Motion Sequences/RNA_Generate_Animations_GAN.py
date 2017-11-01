@@ -80,7 +80,6 @@ class DCGAN(object):
                 
                 FileName = str("...\Motion_Sequences\ Emotion " + str(i) + ".csv")
                 Data = pd.read_csv(FileName, header = 0, index_col = 0)
-                Data['Head Yaw'] = 0
 
                 self.DataSet[plus + i - 1, 0, :] = np.array(Data.ix[0,:])
                 self.DataSet[plus + i - 1, 1:, :] = np.array(Data.ix[:,:])
@@ -100,7 +99,6 @@ class DCGAN(object):
                  
                 FileName = str("...\Motion_Sequences\ Animation " + str(i) + ".csv")
                 Data = pd.read_csv(FileName, header = 0, index_col = 0)
-                Data['Head Yaw'] = 0
 
                 self.DataSet[plus + 9 + i, 0, :] = np.array(Data.ix[0,:])
                 self.DataSet[plus + 9 + i, 1:, :] = np.array(Data.ix[:,:])

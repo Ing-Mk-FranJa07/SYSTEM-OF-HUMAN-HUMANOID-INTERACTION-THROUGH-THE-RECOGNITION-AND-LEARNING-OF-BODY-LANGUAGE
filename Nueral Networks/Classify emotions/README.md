@@ -56,9 +56,9 @@ Also, this script add the codification to each category, in the both files, used
  ``` 
  * Note that in the lines 117-119 are being changed information into the .csv files; if you're working with the [.csv files created by the author](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Emotions%20Data%20Base%20Creator/Emotions%20DataBase), don't change or delet this lines. If you're working with new data created using the tool: [DataBaseCreatorHumanPosture.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Emotions%20Data%20Base%20Creator), these lines are not necessaries.
  ```python
-     117    Data = Data_Train.replace("Opened", 1)
-     118    Data = Data_Train.replace("Closed", 2)
-     119    Data = Data_Train.replace("Unknow", 3)
+   117    Data = Data_Train.replace("Opened", 1)
+   118    Data = Data_Train.replace("Closed", 2)
+   119    Data = Data_Train.replace("Unknow", 3)
  ```
 ### Third step: Neural Network structure.
 

@@ -109,7 +109,7 @@ class DCGAN(object):
 #                  
 #                 plus += Repetition
         
-        plus += 31
+#            plus += 31
             
         # Set up the input data.
         self.DataSet = self.DataSet.reshape(self.DataSet.shape[0], self.DataSet.shape[1], self.DataSet.shape[2], 1)

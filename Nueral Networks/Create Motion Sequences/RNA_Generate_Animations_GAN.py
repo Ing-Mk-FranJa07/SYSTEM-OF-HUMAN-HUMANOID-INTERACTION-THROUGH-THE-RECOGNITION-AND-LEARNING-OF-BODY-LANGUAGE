@@ -219,11 +219,6 @@ class DCGAN(object):
         Gen.add(Conv2DTranspose(int(self.Depth/8), self.Kernel, border_mode = 'same'))
         Gen.add(BatchNormalization(momentum = self.Momentum))
         Gen.add(Activation('tanh'))
-
-        # Fifth layer of the network.
-        Gen.add(Conv2DTranspose(int(self.Depth/16), self.Kernel, border_mode = 'same'))
-        Gen.add(BatchNormalization(momentum = self.Momentum))
-        Gen.add(Activation('tanh'))
          
         # Output layer.
         Gen.add(Conv2DTranspose(1, self.Kernel, border_mode = 'same'))

@@ -25,7 +25,7 @@ To use correctly this script, please consider the follow steps.
 
 ### First step: Create Data Base.
 
-It's necessary to have a data base, and it's possible create it with the tool: [AnimationDataBaseCreator.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Motion%20Sequences%20Data%20Base%20Creator), this tool generate a .csv file in which is saved a matrix that containing 40 rows and 17 columns (The first row has the header and the first column has the name of the motion sequence), there are 16 columns that have the information about a specific joint of the Robot Pepper; and there are 39 angles values of each joint. The [Animation 1.csv](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Motion%20Sequences%20Data%20Base%20Creator/Motion%20Sequences/Animation%201.csv) is an example of a motion sequence developed by the author with the tool.
+It's necessary to have a data base, and it's possible create it with the tool: [AnimationDataBaseCreator.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Motion%20Sequences%20Data%20Base%20Creator), this tool generate a .csv file in which is saved a matrix that containing 40 rows and 17 columns (The first row has the header and the first column has the name of the motion sequence), there are 16 columns that have the information about a specific joint of the Robot Pepper; and there are 39 angles values (rads) of each joint. The [Animation 1.csv](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Motion%20Sequences%20Data%20Base%20Creator/Motion%20Sequences/Animation%201.csv) is an example of a motion sequence developed by the author with the tool.
 
 For the implementation of the system developed [Recognition_And_Learning_BodyLenguage_System.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Complet%20Project) were created 10 motion sequences used to the Robot Pepper interactue with the humans being coherent with their mood, and 22 motion sequences used to the Robot Pepper interactue with the humans being coherente with the conversation.
 
@@ -33,8 +33,18 @@ For the implementation of the system developed [Recognition_And_Learning_BodyLen
 
 The script [Generate_Animations_GAN.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Nueral%20Networks/Create%20Motion%20Sequences/RNA_Generate_Animations_GAN.py) has two classes, the first class "TakeTime" is used to calculate the time spent to train the GAN model. The second class "DCGAN" is used to build and train the GAN model, also save the models and the motion sequences created by the GAN model; the init function allow load the data and organize it in the structure used by the model.
 
-The data structure used by the model is an array that contain the data in a matrix that has: (40 rows, 16 columns, 1 channel), like a gray image = 1 channel, to generate this, the whole data, that is to say, all movement sequences are grouped, and to each sequences is added one raw copying the first raw. This is done, because the structure of the Generative model goes increasing the kernel in a multiple of 2.
-
+The data structure used by the model is an array that contain the data in a matrix that has: (40 rows, 16 columns, 1 channel), like a gray image = 1 channel, to generate this, the whole data, that is to say, all movement sequences are grouped, and to each sequences is added one raw copying the first raw. This is done, because the structure of the Generative model goes increasing the kernel in a multiple of 2. Also the data is normalize, dividing the whole data by the maximmun value, to put the all values in the interval -1.0 to 1.0.
+```python
+   114        # Set up the input data.
+   115        self.DataSet = self.DataSet.reshape(self.DataSet.shape[0], self.DataSet.shape[1], self.DataSet.shape[2], 1)
+   116        self.DataSet = self.DataSet.astype('float32')
+   117
+   118        # Is calculated the maximum value of the input data.
+   119        self.DataMax = np.max(self.DataSet)
+   120        
+   121        # Normalize the input data; -1.0 <= input data <= 1.0.
+   122        self.DataSet = self.DataSet / self.DataMax
+```
 **WARNINGS**
 * Please make sure of the path that has the address of the .csv files be correct in the lines 80 and 97 (don't change or delete the files names that are written after the last slash):
 * The code has a few commented lines (87-95, 106-112), that you can use or change to add copies of the 32 motion sequences created, this is because the author was traying to generete better motion sequences and the data set is pretty short, but the advice is try to create more and more motion sequences, or generete a random noise to the motion sequences created trying to have more data; also, you can load the same data several times to increase the data set.
@@ -84,4 +94,48 @@ The data structure used by the model is an array that contain the data in a matr
    73        plus = 0                                                                # Variable used to increase the original animation in the input data.
    74        self.DataSet = np.empty([Repetition*32,40,16])                          # Input Data.
 ```
+The class "DCGAN" has a function named "CreateGen" which build the Generative network model, this network synthesizes the "fake" motion sequences. The fake motion sequence is generated from a 100-dimensional noise, that has a uniform distribution between -1.0 to 1.0) using the inverse of convolution, transposed convolution. In between the layers, batch normalization is used to stabilizes learning, is used the upsampling between the first three layers because it synthesizes better the data. The activation function after each layer is the Hiperbolic tangent "tanh", because its output take a real value between -1.0 to 1.0 (same interval that the originals motion sequences); the droput is used in the first layer to prevents overfitting. 
+```python
+   191    def CreateGen(self):
+   192        '''
+   193        Function that create the model of the Generator network.
+   194        '''
+   195        # Is created the Generator network model.
+   196        Gen = Sequential()
+   197        
+   198        # First layer of the network.
+   199        Gen.add(Dense(self.Width* self.Length* self.Depth, input_dim = self.Input_Gen))
+   200        Gen.add(BatchNormalization(momentum = self.Momentum))
+   201        Gen.add(Activation('tanh'))
+   202        Gen.add(Reshape((self.Width, self.Length, self.Depth))) 
+   203        Gen.add(Dropout(self.Dropout_rate))
+   204        
+   205        # Second layer of the network.
+   206        Gen.add(UpSampling2D(size = (2, 2)))
+   207        Gen.add(Conv2DTranspose(int(self.Depth/2), self.Kernel, border_mode = 'same'))
+   208        Gen.add(BatchNormalization(momentum = self.Momentum))
+   209        Gen.add(Activation('tanh'))
+   210        
+   211        # Third layer of the network.
+   212        Gen.add(UpSampling2D(size = (2, 2)))
+   213        Gen.add(Conv2DTranspose(int(self.Depth/4), self.Kernel, border_mode = 'same'))
+   214        Gen.add(BatchNormalization(momentum = self.Momentum))
+   215        Gen.add(Activation('tanh'))
+   216        
+   217       # Fourth layer of the network.
+   218        Gen.add(UpSampling2D(size = (2, 2)))
+   219        Gen.add(Conv2DTranspose(int(self.Depth/8), self.Kernel, border_mode = 'same'))
+   220        Gen.add(BatchNormalization(momentum = self.Momentum))
+   221        Gen.add(Activation('tanh'))
+   222       
+   223       # Output layer.
+   224       Gen.add(Conv2DTranspose(1, self.Kernel, border_mode = 'same'))
+   235       Gen.add(Activation('tanh'))
+   226        
+   227      return Gen
+```
+The image represent the structure of the Generative network.
+
+![generative model7](https://user-images.githubusercontent.com/31509775/32303654-e7969c1e-bf37-11e7-83f8-d0871afc6ae4.PNG)
+
 

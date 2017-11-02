@@ -10,9 +10,9 @@ to increase the animation's data base used to be played by Robot Pepper.
 
 It has 32 motion sequences created previously, the idea is generated new animations 
 similar to the originals, in that way the Generative network goes to create new
-data from random numbers, and the Discriminator network goes to decide if the data
-presented is real or created for the Generator network, first is trained the 
-Discriminator network, and then the both networks are trained to increase the 
+data from random numbers, and the Discriminative network goes to decide if the data
+presented is real or created for the Generative network, first is trained the 
+Discriminative network, and then the both networks are trained to increase the 
 perform of the Generative network. 
 
 The train parameters of the networks can be modified from the main of the script
@@ -126,13 +126,13 @@ class DCGAN(object):
 
         # Are defined the neural network parameters.
             # Neural Networks input.
-        self.Input_Gen = 100                                                    # Shape of the Generator input
-        self.Input_Dis = (self.DataSet.shape[1:])                               # Shape of the Discriminator input = [Rows, Cols, Chan].
+        self.Input_Gen = 100                                                    # Shape of the Generative network input
+        self.Input_Dis = (self.DataSet.shape[1:])                               # Shape of the Discriminative netwokr input = [Rows, Cols, Chan].
             # Hidden layers outputs.
-        self.Depth_Dis = 64                                                     # Initial depth of the Discriminator layers.                      
-        self.Depth = 256                                                        # Initial depth of the Generator layers.
-        self.Width = 5                                                          # Initial width of the Generator network.
-        self.Length = 2                                                         # Initial length of the Generator network.
+        self.Depth_Dis = 64                                                     # Initial depth of the Discriminative layers.                      
+        self.Depth = 256                                                        # Initial depth of the Generative layers.
+        self.Width = 5                                                          # Initial width of the Generative network.
+        self.Length = 2                                                         # Initial length of the Generative network.
             # Convolutionals layers parameters.
         self.Kernel = 4
         self.strides = 2
@@ -141,8 +141,8 @@ class DCGAN(object):
         self.Momentum = 0.2                                                         
         self.Momentum_D = 0.2
         self.Momentum_A = 0.05
-        LearningRate_D = 2e-2                                                   # Discriminator network learning rate.   
-        Decrement_D = 1e-5                                                      # Discriminator network decay.
+        LearningRate_D = 2e-2                                                   # Discriminative network learning rate.   
+        Decrement_D = 1e-5                                                      # Discriminative network decay.
         LearningRate_A = 25e-2                                                  # Adversarial network learning rate.
         Decrement_A = 1e-5                                                      # Adversarial network decay.
             # Neural networks optimizers .
@@ -150,7 +150,7 @@ class DCGAN(object):
         self.Adam_A = Adam(lr = 1e-4) 
         self.RMS_A = RMSprop(lr = LearningRate_A, decay = Decrement_A)
         self.SGD_A = SGD(lr = LearningRate_A, decay = Decrement_A, momentum = self.Momentum_A, nesterov = False)
-                # Discriminator network.
+                # Discriminative network.
         self.Adam_D = Adam(lr = 1e-4) 
         self.RMS_D = RMSprop(lr = LearningRate_D, decay = Decrement_D)
         self.SGD_D = SGD(lr = LearningRate_D, decay = Decrement_D, momentum = self.Momentum_D, nesterov = False)
@@ -190,7 +190,7 @@ class DCGAN(object):
         
     def CreateGen(self):
         '''
-        Function that create the model of the Generator network.
+        Function that create the model of the Generative network.
         '''
         # Is created the Generator network model.
         Gen = Sequential()
@@ -228,9 +228,9 @@ class DCGAN(object):
 
     def CreateDis(self):
         '''
-        Function that create the model of the Discriminator network.
+        Function that create the model of the Discriminative network.
         '''
-        # Is created the Discriminator network model.
+        # Is created the Discriminative network model.
         Dis = Sequential()
         
         # First layer of the network.
@@ -267,12 +267,12 @@ class DCGAN(object):
     
     def DiscriminatorModel(self, OptimizerType = 0):
         '''
-        Function that implement the Discriminator model.
+        Function that implement the Discriminative model.
         '''
-        # Model used to saved the Discriminator network.
+        # Model used to saved the Discriminative network.
         D = Sequential()
         
-        # Is added the Discriminator network.
+        # Is added the Discriminative network.
         D.add(self.CreateDis())
 
         # Is definite the network training.
@@ -292,10 +292,10 @@ class DCGAN(object):
         # Is created a model to saved the both netwroks.
         A = Sequential()
         
-        # Is added the Generator network. 
+        # Is added the Generative network. 
         A.add(self.CreateGen())
         
-        # Is added the Discriminator network.
+        # Is added the Discriminative network.
         A.add(self.CreateDis())
         
         # Is definet the network training.
@@ -308,14 +308,13 @@ class DCGAN(object):
         
         return A
 
-    # Se crea una funcion que permite entrenar el modelo de la red GAN.
     def Train(self, Iterations = 10, Batch_Size = 32, Version = str('1'), shuffle = False, OptimizerType = 0, Plot_Freq = 300):
         '''
         Function that train the GAN model.
-        First is trained the Discriminator network, using the original motions 
-        sequences and motion sequences created by the Generator network without 
+        First is trained the Discriminator model, using the original motions 
+        sequences and motion sequences created by the Generative network without 
         be trained; then is trained the Adversarial network (Gen + Dis) to 
-        increase the performer of the Generator network.
+        increase the performer of the Generative network.
         '''
         X_Train, X_Test = self.ShuffleDataSet(shuffle)
         
@@ -342,18 +341,18 @@ class DCGAN(object):
             # Are created new motion sequences.
             FakeAnimations = Generator.predict(Noise)
             
-            # Is created the training set to the Discriminator network.
+            # Is created the training set to the Discriminator model.
             X = np.concatenate((Animations, FakeAnimations))
             Y = np.ones([2*Batch_Size, 1]); Y[Batch_Size:, :] = 0
             
-            # The Discriminator network is trained 
+            # The Discriminator model is trained 
             Dis_loss = Discriminator.train_on_batch(X, Y)
             
-            # Is created the training set to the Adversarial network.
+            # Is created the training set to the Adversarial model.
             Adv_Noise = np.random.uniform(-1.0, 1.0, size = [Batch_Size, self.Input_Gen])
             Adv_Y = np.ones([Batch_Size, 1])
             
-            # The Adversarial network is trained.
+            # The Adversarial model is trained.
             Adv_loss = Adversarial.train_on_batch(Adv_Noise, Adv_Y)
             
             # Is showed the evolution of the training.
@@ -361,11 +360,11 @@ class DCGAN(object):
             log_mesg = "%s  [A loss: %f, acc: %f]" % (log_mesg, Adv_loss[0], Adv_loss[1])
             print(log_mesg)
          
-            # Is saved the discriminative and the adversarial losses to be plotted.
+            # Is saved the discriminator and the adversarial models losses to be plotted.
             Losses['D'].append(Dis_loss[0])
             Losses['A'].append(Adv_loss[0])
             
-            # Is saved the discriminative and the adversarial accuracies to be plotted.
+            # Is saved the discriminator and the adversarial models accuracies to be plotted.
             Accs['D'].append(Dis_loss[1])
             Accs['A'].append(Adv_loss[1])
             

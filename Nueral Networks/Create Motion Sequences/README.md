@@ -163,7 +163,7 @@ The function named "CreateDis" build the **Discriminative network model** wchic 
    249        Dis.add(Dropout(self.Dropout_rate))
    250         
    251        # Fourth layer of the network.
-   252        Dis.add(Conv2D(self.Depth_Dis*8, self.Kernel, strides = int(self.strides/self.strides), padding = 'same'))
+   252        Dis.add(Conv2D(self.Depth_Dis*8, self.Kernel, strides = self.strides, padding = 'same'))
    253        Dis.add(LeakyReLU(alpha = 0.2))
    254        Dis.add(Dropout(self.Dropout_rate))
    255
@@ -181,6 +181,49 @@ The function named "CreateDis" build the **Discriminative network model** wchic 
 ```
 The image represent the structure of the Discriminative network.
 
-![discriminative model](https://user-images.githubusercontent.com/31509775/32344925-73f9ed48-bfd6-11e7-9dc1-ec6cc08e09fe.PNG)
+![discriminative model](https://user-images.githubusercontent.com/31509775/32345300-c775c43c-bfd7-11e7-824c-e1d53ca4f967.PNG)
 
+Before the start with the training of the neural networks, is necessary create the GAN model, and for this is necesary two models the first one is the **Disciminator model** that is the discriminative network with the loss function definied, the second model is the **Adversarial neural model** that is the generative and the discriminative networks stacked together; the generative part is trying to foll the discriminative and learning from its feedback at the same time. The models uses the binary cross entropy like optimization function.
 
+**WARNINGS**
+* The optimizer algorithm can be choosen between the Adam, RMSProp and SGD for the both models changin the value (0, 1, 2) of the flag "OptimizerType" in the line 400 where is called the main loop of the script. 
+* The model's parameters can be configurated in the init function in the lines 127-156.
+
+Finaly, the GAN model is trained. **The GAN model training** is developed following two steps in each epoch. First, is necessary train the discriminator, showing it some examples of the real data and somo examples of the fake data created by the generative network using just noise; the second step is train the generative network via the chained models, that is to say, train the adversarial model generating sample data and try to push the chained generative network and the discriminative network to tell if the data is real or not; however is necessary don't alter the weights of the discriminative network during this step, so that's whay the training of the discriminative network is freeze. 
+```python
+   332        # The networks are trained.
+   333        for I in range(Iterations):
+   334            Index = np.random.randint(X_Train.shape[0], size = Batch_Size)      # List used to saved the index of the motion sequence selected.
+            
+   335            # Are loaded the animations in a random order.
+   336            Animations = X_Train[Index, :, :, :]
+   337
+   338            # Is created the input of the Generator model.
+   339            Noise = np.random.uniform(-1.0, 1.0, size = [Batch_Size, self.Input_Gen])
+   340          
+   341            # Are created new motion sequences.
+   342            FakeAnimations = Generator.predict(Noise)
+   343           
+   344            # Is created the training set to the Discriminator network.
+   345            X = np.concatenate((Animations, FakeAnimations))
+   346            Y = np.ones([2*Batch_Size, 1]); Y[Batch_Size:, :] = 0
+   347           
+   348            # The Discriminator network is trained 
+   349            Dis_loss = Discriminator.train_on_batch(X, Y)
+   350           
+   351            # Is created the training set to the Adversarial network.
+   352            Adv_Noise = np.random.uniform(-1.0, 1.0, size = [Batch_Size, self.Input_Gen])
+   353            Adv_Y = np.ones([Batch_Size, 1])
+   354          
+   355            # The Adversarial network is trained.
+   356            Adv_loss = Adversarial.train_on_batch(Adv_Noise, Adv_Y)
+   357        
+   358            # Is showed the evolution of the training.
+   359            log_mesg = "%d: [D loss: %f, acc: %f]" % (I, Dis_loss[0], Dis_loss[1])
+   360            log_mesg = "%s  [A loss: %f, acc: %f]" % (log_mesg, Adv_loss[0], Adv_loss[1])
+   361            print(log_mesg)
+```
+
+The image represente the train loop of the GAN model.
+
+![gan training loop](https://user-images.githubusercontent.com/31509775/32347817-e3cae3b2-bfdf-11e7-9786-eae586f0dbf8.PNG)

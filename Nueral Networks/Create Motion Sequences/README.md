@@ -122,15 +122,15 @@ The class "DCGAN" has a function named "CreateGen" which build the Generative ne
    214        Gen.add(BatchNormalization(momentum = self.Momentum))
    215        Gen.add(Activation('tanh'))
    216        
-   217       # Fourth layer of the network.
+   217        # Fourth layer of the network.
    218        Gen.add(UpSampling2D(size = (2, 2)))
    219        Gen.add(Conv2DTranspose(int(self.Depth/8), self.Kernel, border_mode = 'same'))
    220        Gen.add(BatchNormalization(momentum = self.Momentum))
    221        Gen.add(Activation('tanh'))
    222       
-   223       # Output layer.
-   224       Gen.add(Conv2DTranspose(1, self.Kernel, border_mode = 'same'))
-   235       Gen.add(Activation('tanh'))
+   223        # Output layer.
+   224        Gen.add(Conv2DTranspose(1, self.Kernel, border_mode = 'same'))
+   235        Gen.add(Activation('tanh'))
    226        
    227      return Gen
 ```

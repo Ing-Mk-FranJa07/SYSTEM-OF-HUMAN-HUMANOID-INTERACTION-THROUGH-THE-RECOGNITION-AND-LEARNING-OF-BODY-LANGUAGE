@@ -253,7 +253,7 @@ After the GAN model has been trained, the models of the networks: Generative, Di
    394                DataFrame.to_csv("...\DataBaseGeneratedByRNA\ NewAnimation " + str(L+1) + "-" + str(A+1) + ".csv", sep = ",", header = False, index = False, index_label = 'Node')
 ```
 
-The GAN model presented here, can develop motion sequences, but this sequences are not similars to the [original motion sequences](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Motion%20Sequences%20Data%20Base%20Creator/Motion%20Sequences), you can change all the parameters used to buid and train the networks and also the optimizer algorithms, and try to get a better performance of this model.
+The GAN model presented here, can develop [motion sequences](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Nueral%20Networks/Create%20Motion%20Sequences/DataBaseGeneratedByRNA), but this sequences are not similars to the [original motion sequences](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Motion%20Sequences%20Data%20Base%20Creator/Motion%20Sequences), you can change all the parameters used to buid and train the networks and also the optimizer algorithms, and try to get a better performance of this model.
 
 ```python
    395 if __name__ == '__main__':

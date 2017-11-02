@@ -249,7 +249,7 @@ class DCGAN(object):
         Dis.add(Dropout(self.Dropout_rate))
          
         # Fourth layer of the network.
-        Dis.add(Conv2D(self.Depth_Dis*8, self.Kernel, strides = int(self.strides/self.strides), padding = 'same'))
+        Dis.add(Conv2D(self.Depth_Dis*8, self.Kernel, strides = self.strides, padding = 'same'))
         Dis.add(LeakyReLU(alpha = 0.2))
         Dis.add(Dropout(self.Dropout_rate))
 

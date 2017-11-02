@@ -143,14 +143,14 @@ class DCGAN(object):
         self.Momentum_A = 0.05
         LearningRate_D = 2e-2                                                   # Discriminative network learning rate.   
         Decrement_D = 1e-5                                                      # Discriminative network decay.
-        LearningRate_A = 25e-2                                                  # Adversarial network learning rate.
-        Decrement_A = 1e-5                                                      # Adversarial network decay.
+        LearningRate_A = 25e-2                                                  # Adversarial model learning rate.
+        Decrement_A = 1e-5                                                      # Adversarial model decay.
             # Neural networks optimizers .
-                # Adversarial network.
+                # Adversarial model.
         self.Adam_A = Adam(lr = 1e-4) 
         self.RMS_A = RMSprop(lr = LearningRate_A, decay = Decrement_A)
         self.SGD_A = SGD(lr = LearningRate_A, decay = Decrement_A, momentum = self.Momentum_A, nesterov = False)
-                # Discriminative network.
+                # Discriminative model.
         self.Adam_D = Adam(lr = 1e-4) 
         self.RMS_D = RMSprop(lr = LearningRate_D, decay = Decrement_D)
         self.SGD_D = SGD(lr = LearningRate_D, decay = Decrement_D, momentum = self.Momentum_D, nesterov = False)
@@ -170,7 +170,7 @@ class DCGAN(object):
   
     def Plot_Loss(self, Losses):
         '''
-        Function that plot the Adversarial and Discriminative Losses.
+        Function that plot the Adversarial and Discriminator models Losses.
         '''
         plt.figure(figsize=(10,8))
         plt.plot(Losses['D'], label = 'Discriminative loss')
@@ -180,7 +180,7 @@ class DCGAN(object):
 
     def Plot_Acc(self, Acc):
         '''
-        Function that plot the Adversarial and Discriminative accuracies.
+        Function that plot the Adversarial and Discriminator models accuracies.
         '''
         plt.figure(figsize=(10,8))
         plt.plot(Acc['D'], label = 'Discriminative accuracy')
@@ -192,7 +192,7 @@ class DCGAN(object):
         '''
         Function that create the model of the Generative network.
         '''
-        # Is created the Generator network model.
+        # Is created the Generator network.
         Gen = Sequential()
         
         # First layer of the network.
@@ -230,7 +230,7 @@ class DCGAN(object):
         '''
         Function that create the model of the Discriminative network.
         '''
-        # Is created the Discriminative network model.
+        # Is created the Discriminative network.
         Dis = Sequential()
         
         # First layer of the network.
@@ -267,7 +267,7 @@ class DCGAN(object):
     
     def DiscriminatorModel(self, OptimizerType = 0):
         '''
-        Function that implement the Discriminative model.
+        Function that implement the Discriminator model.
         '''
         # Model used to saved the Discriminative network.
         D = Sequential()
@@ -287,7 +287,7 @@ class DCGAN(object):
     
     def AdversarialModel(self, OptimizerType = 0):
         '''
-        Function that implement the Adversarial network (Generator + Discriminator)
+        Function that implement the Adversarial model (Generator + Discriminator)
         '''
         # Is created a model to saved the both netwroks.
         A = Sequential()
@@ -325,8 +325,8 @@ class DCGAN(object):
         
         ListAnimations = np.empty([Iterations, Batch_Size, 39, 16])             # List used to save the new motion sequences.
     
-        Losses = {'D':[], 'A':[]}                                               # List used to save the discriminative and the adversarial losses.
-        Accs = {'D':[], 'A':[]}                                                 # List used to save the discriminative and the adversarial accuracies.
+        Losses = {'D':[], 'A':[]}                                               # List used to save the discriminator and the adversarial models losses.
+        Accs = {'D':[], 'A':[]}                                                 # List used to save the discriminator and the adversarial models accuracies.
         
         # The networks are trained.
         for I in range(Iterations):

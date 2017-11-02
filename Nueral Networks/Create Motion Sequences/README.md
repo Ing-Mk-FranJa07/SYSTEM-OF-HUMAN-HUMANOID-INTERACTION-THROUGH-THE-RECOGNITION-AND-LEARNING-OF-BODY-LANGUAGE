@@ -33,7 +33,7 @@ For the implementation of the system developed [Recognition_And_Learning_BodyLen
 
 The script [Generate_Animations_GAN.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Nueral%20Networks/Create%20Motion%20Sequences/RNA_Generate_Animations_GAN.py) has two classes, the first class "TakeTime" is used to calculate the time spent to train the GAN model. The second class "DCGAN" is used to build and train the GAN model, also save the models and the motion sequences created by the GAN model; the init function allow load the data and organize it in the structure used by the model.
 
-The data structure used by the model is an array that contain the data in a matrix that has: (40 rows, 16 columns, 1 channel), like a gray image = 1 channel, to generate this, the whole data, that is to say, all movement sequences are grouped, and to each sequences is added one raw copying the first raw. This is done, because the structure of the Generative model goes increasing the kernel in a multiple of 2. Also the data is normalize, dividing the whole data by the maximmun value, to put the all values in the interval -1.0 to 1.0.
+**The data structure** used by the model is an array that contain the data in a matrix that has: (40 rows, 16 columns, 1 channel), like a gray image = 1 channel, to generate this, the whole data, that is to say, all movement sequences are grouped, and to each sequences is added one raw copying the first raw. This is done, because the structure of the Generative model goes increasing the kernel in a multiple of 2. Also the data is normalize, dividing the whole data by the maximmun value, to put the all values in the interval -1.0 to 1.0.
 ```python
    114        # Set up the input data.
    115        self.DataSet = self.DataSet.reshape(self.DataSet.shape[0], self.DataSet.shape[1], self.DataSet.shape[2], 1)
@@ -94,7 +94,7 @@ The data structure used by the model is an array that contain the data in a matr
    73        plus = 0                                                                # Variable used to increase the original animation in the input data.
    74        self.DataSet = np.empty([Repetition*32,40,16])                          # Input Data.
 ```
-The class "DCGAN" has a function named "CreateGen" which build the Generative network model, this network synthesizes the "fake" motion sequences. The fake motion sequence is generated from a 100-dimensional noise, that has a uniform distribution between -1.0 to 1.0) using the inverse of convolution, transposed convolution. In between the layers, batch normalization is used to stabilizes learning, is used the upsampling between the first three layers because it synthesizes better the data. The activation function after each layer is the Hiperbolic tangent "tanh", because its output take a real value between -1.0 to 1.0 (same interval that the originals motion sequences); the droput is used in the first layer to prevents overfitting. 
+The class "DCGAN" has a function named "CreateGen" which build the **Generative network model**, this network synthesizes the "fake" motion sequences. The fake motion sequence is generated from a 100-dimensional noise, that has a uniform distribution between -1.0 to 1.0) using the inverse of convolution, transposed convolution. In between the layers, batch normalization is used to stabilizes learning, is used the upsampling between the first three layers because it synthesizes better the data. The activation function after each layer is the Hiperbolic tangent "tanh", because its output take a real value between -1.0 to 1.0 (same interval that the originals motion sequences); the droput is used in the first layer to prevents over fitting. 
 ```python
    191    def CreateGen(self):
    192        '''
@@ -137,5 +137,50 @@ The class "DCGAN" has a function named "CreateGen" which build the Generative ne
 The image represent the structure of the Generative network.
 
 ![generative model7](https://user-images.githubusercontent.com/31509775/32303654-e7969c1e-bf37-11e7-83f8-d0871afc6ae4.PNG)
+
+The function named "CreateDis" build the **Discriminative network model** wchic decide if the data is real (original motion sequences) or fake (motion sequences created by the generative network) and is a deep convolutional neural netwrok. The input is a matrix that has the follow structure (40 rows x 16 columns x 1 channel), the output of this model is optained with the sigmoid function that determine the probability of how real is the data; (0.0 = complety fake, 1.0 = complety real); this model is different to a typical convolutional network is the absence of max-pooling in bweteen layers, instead is used a strided convolution for downsampling. The activation function used in each convolutional layer is leaky Relu, and the dropout between layers prevent over fitting and memorization.
+```python
+   229    def CreateDis(self):
+   230        '''
+   231        Function that create the model of the Discriminator network.
+   232        '''
+   233        # Is created the Discriminator network model.
+   234        Dis = Sequential()
+   235        
+   236        # First layer of the network.
+   237        Dis.add(Conv2D(self.Depth_Dis, self.Kernel, strides = self.strides, input_shape = self.Input_Dis, padding = 'same'))
+   238        Dis.add(LeakyReLU(alpha = 0.2))
+   239        Dis.add(Dropout(self.Dropout_rate))
+   240        
+   241        # Second layer of the network.
+   242        Dis.add(Conv2D(self.Depth_Dis*2, self.Kernel, strides = self.strides, padding = 'same'))   
+   243        Dis.add(LeakyReLU(alpha = 0.2))
+   244        Dis.add(Dropout(self.Dropout_rate))
+   245        
+   246        # Third layer of the network.
+   247        Dis.add(Conv2D(self.Depth_Dis*4, self.Kernel, strides = self.strides, padding = 'same'))
+   248        Dis.add(LeakyReLU(alpha = 0.2))
+   249        Dis.add(Dropout(self.Dropout_rate))
+   250         
+   251        # Fourth layer of the network.
+   252        Dis.add(Conv2D(self.Depth_Dis*8, self.Kernel, strides = int(self.strides/self.strides), padding = 'same'))
+   253        Dis.add(LeakyReLU(alpha = 0.2))
+   254        Dis.add(Dropout(self.Dropout_rate))
+   255
+   256        # Fifth layer of the network.
+   257        Dis.add(Conv2D(self.Depth_Dis*16, self.Kernel, strides = int(self.strides/self.strides), padding = 'same'))
+   258        Dis.add(LeakyReLU(alpha = 0.2))
+   259        Dis.add(Dropout(self.Dropout_rate))
+   260
+   261        # Output layer.
+   262        Dis.add(Flatten())
+   263        Dis.add(Dense(1))
+   264        Dis.add(Activation('sigmoid'))
+   265    
+   266        return Dis
+```
+The image represent the structure of the Discriminative network.
+
+![discriminative model](https://user-images.githubusercontent.com/31509775/32344925-73f9ed48-bfd6-11e7-9dc1-ec6cc08e09fe.PNG)
 
 

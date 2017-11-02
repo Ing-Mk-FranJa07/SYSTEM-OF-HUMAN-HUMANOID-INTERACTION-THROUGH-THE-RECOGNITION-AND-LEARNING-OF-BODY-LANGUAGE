@@ -77,7 +77,7 @@ The two first columns (angles: Head Roll and Head Pitch) are not used in the inp
    66 X_Test = np.array(Data_Test.ix[:,2:25])
    67 Y_Test = np.array(Data_Test.ix[:,25:33])
 ```
-After that the Data has been loaded and schuffled in training and testing sets; is created the model of the neural network (lines 73-92) The neural network has 23 inputs and two hidden layers, the first of them has the same numbers of nodes that the inputs, and the second hidden layer has 17 nodes; the both layers have a Relu activation function. The ouput layer has 6 nodes and its activation function is sigmoidal because each node just can take two values: (0, 1) The total output is an "one hot" vector that contains six values; the neural network has like optimization function the categorical cross entropy loss, and it used the Stochastic downward gradient like the optimization type. 
+After that the Data has been loaded and schuffled in training and testing sets; is created the model of the neural network (lines 73-92) The neural network has 23 inputs and two hidden layers, the first of them has the same numbers of nodes that the inputs, and the second hidden layer has 17 nodes; the both layers have a Relu activation function. The ouput layer has 6 nodes and its activation function is sigmoid because each node just can take two values: (0, 1) The total output is an "one hot" vector that contains six values; the neural network has like optimization function the categorical cross entropy loss, and it used the Stochastic downward gradient like the optimization type. 
 ```python
    73 # Are defined the parameters of the neural network and the model.
    74 HL_1_Nodes = 23

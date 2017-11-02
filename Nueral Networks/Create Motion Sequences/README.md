@@ -27,7 +27,7 @@ To use correctly this script, please consider the follow steps.
 
 It's necessary to have a data base, and it's possible create it with the tool: [AnimationDataBaseCreator.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Motion%20Sequences%20Data%20Base%20Creator), this tool generate a .csv file in which is saved a matrix that containing 40 rows and 17 columns (The first row has the header and the first column has the name of the motion sequence), there are 16 columns that have the information about a specific joint of the Robot Pepper; and there are 39 angles values (rads) of each joint. The [Animation 1.csv](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Motion%20Sequences%20Data%20Base%20Creator/Motion%20Sequences/Animation%201.csv) is an example of a motion sequence developed by the author with the tool.
 
-For the implementation of the system developed [Recognition_And_Learning_BodyLenguage_System.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Complet%20Project) were created 10 motion sequences used to the Robot Pepper interactue with the humans being coherent with their mood, and 22 motion sequences used to the Robot Pepper interactue with the humans being coherente with the conversation.
+For the implementation of the system developed [Recognition_And_Learning_BodyLenguage_System.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Complet%20Project) were created 10 [motion sequences](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Motion%20Sequences%20Data%20Base%20Creator/Motion%20Sequences) used to the Robot Pepper interactue with the humans being coherent with their mood, and 22 [motion sequences](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Motion%20Sequences%20Data%20Base%20Creator/Motion%20Sequences) used to the Robot Pepper interactue with the humans being coherente with the conversation.
 
 ### Second step: Neural Network Structure.
 
@@ -98,9 +98,9 @@ The class "DCGAN" has a function named "CreateGen" which build the **Generative 
 ```python
    191    def CreateGen(self):
    192        '''
-   193        Function that create the model of the Generator network.
+   193        Function that create the model of the Generative network.
    194        '''
-   195        # Is created the Generator network model.
+   195        # Is created the Generative network.
    196        Gen = Sequential()
    197        
    198        # First layer of the network.
@@ -142,9 +142,9 @@ The function named "CreateDis" build the **Discriminative network model** wchic 
 ```python
    229    def CreateDis(self):
    230        '''
-   231        Function that create the model of the Discriminator network.
+   231        Function that create the model of the Discriminative network.
    232        '''
-   233        # Is created the Discriminator network model.
+   233        # Is created the Discriminative network.
    234        Dis = Sequential()
    235        
    236        # First layer of the network.
@@ -183,11 +183,11 @@ The image represent the structure of the Discriminative network.
 
 ![discriminative model](https://user-images.githubusercontent.com/31509775/32345300-c775c43c-bfd7-11e7-824c-e1d53ca4f967.PNG)
 
-Before the start with the training of the neural networks, is necessary create the GAN model, and for this is necesary two models the first one is the **Disciminator model** that is the discriminative network with the loss function definied, the second model is the **Adversarial neural model** that is the generative and the discriminative networks stacked together; the generative part is trying to foll the discriminative and learning from its feedback at the same time. The models uses the binary cross entropy like optimization function.
+Before the start with the training of the neural networks, is necessary create the GAN model, and for this is necesary two models the first one is the **Disciminator model** (DiscriminatorModel function) that is the discriminative network with the loss function definied, the second model is the **Adversarial model** (AdversarialModel function) that is the generative and the discriminative networks stacked together; the generative part is trying to foll the discriminative and learning from its feedback at the same time. The models uses the binary cross entropy like optimization function.
 
 **WARNINGS**
-* The optimizer algorithm can be choosen between the Adam, RMSProp and SGD for the both models changin the value (0, 1, 2) of the flag "OptimizerType" in the line 400 where is called the main loop of the script. 
-* The model's parameters can be configurated in the init function in the lines 127-156.
+* The optimizer algorithm can be choosen between the Adam, RMSProp and SGD for the both models changin the value (0, 1, 2) of the flag "OptimizerType" in the **line 399** where is called the main loop of the script. 
+* The model's parameters can be configurated in the init function in the **lines 127-156**.
 
 Finaly, the GAN model is trained. **The GAN model training** is developed following two steps in each epoch. First, is necessary train the discriminator, showing it some examples of the real data and somo examples of the fake data created by the generative network using just noise; the second step is train the generative network via the chained models, that is to say, train the adversarial model generating sample data and try to push the chained generative network and the discriminative network to tell if the data is real or not; however is necessary don't alter the weights of the discriminative network during this step, so that's whay the training of the discriminative network is freeze. 
 ```python
@@ -204,18 +204,18 @@ Finaly, the GAN model is trained. **The GAN model training** is developed follow
    341            # Are created new motion sequences.
    342            FakeAnimations = Generator.predict(Noise)
    343           
-   344            # Is created the training set to the Discriminator network.
+   344            # Is created the training set to the Discriminator model.
    345            X = np.concatenate((Animations, FakeAnimations))
    346            Y = np.ones([2*Batch_Size, 1]); Y[Batch_Size:, :] = 0
    347           
-   348            # The Discriminator network is trained 
+   348            # The Discriminator model is trained 
    349            Dis_loss = Discriminator.train_on_batch(X, Y)
    350           
-   351            # Is created the training set to the Adversarial network.
+   351            # Is created the training set to the Adversarial model.
    352            Adv_Noise = np.random.uniform(-1.0, 1.0, size = [Batch_Size, self.Input_Gen])
    353            Adv_Y = np.ones([Batch_Size, 1])
    354          
-   355            # The Adversarial network is trained.
+   355            # The Adversarial model is trained.
    356            Adv_loss = Adversarial.train_on_batch(Adv_Noise, Adv_Y)
    357        
    358            # Is showed the evolution of the training.
@@ -223,7 +223,43 @@ Finaly, the GAN model is trained. **The GAN model training** is developed follow
    360            log_mesg = "%s  [A loss: %f, acc: %f]" % (log_mesg, Adv_loss[0], Adv_loss[1])
    361            print(log_mesg)
 ```
-
 The image represente the train loop of the GAN model.
 
 ![gan training loop](https://user-images.githubusercontent.com/31509775/32347817-e3cae3b2-bfdf-11e7-9786-eae586f0dbf8.PNG)
+
+The next image show the loss and accuracy of the Adversarial and Generator models built and trained by the author after 300 epochs.
+
+![acc and loss gan](https://user-images.githubusercontent.com/31509775/32348907-614a960e-bfe3-11e7-9fc7-21a152a0fba0.PNG)
+
+After the GAN model has been trained, the models of the networks: Generative, Discriminative and Adversarial, are saved. Also, the motion sequences created in the training process are saved to, after they have been reshaped and denormalize to have the structure of the original data. 
+```python
+   371           # Is denormalize the new motion sequences.
+   372            FakeAnimations = FakeAnimations.reshape(FakeAnimations.shape[0], FakeAnimations.shape[1], FakeAnimations.shape[2])
+   373            FakeAnimations = FakeAnimations[:, 1: ,:]
+   374            FakeAnimations = FakeAnimations * self.DataMax
+```
+**WARNING**
+* Please make sure of the path that has the address of the models and the .csv files be correct in the follow lines (don't change or delete the files names that are written after the last slash):
+```python
+   385        # Are saved the nueral networks models.
+   386        Adversarial.save('...\Adversarial Model ' + Version)
+   387        Discriminator.save('...\Discriminator Model ' + Version)
+   388        Generator.save('...\Generator Model ' + Version)
+   389
+   390        # Are saved the new motion sequences in .cvs files.
+   391        for L in range(len(ListAnimations)):
+   392           for A in range(len(FakeAnimations)) :
+   393                DataFrame = pd.DataFrame(ListAnimations[L, A, :, :])
+   394                DataFrame.to_csv("...\DataBaseGeneratedByRNA\ NewAnimation " + str(L+1) + "-" + str(A+1) + ".csv", sep = ",", header = False, index = False, index_label = 'Node')
+```
+
+The GAN model presented here, can develop motion sequences, but this sequences are not similars to the [original motion sequences](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Motion%20Sequences%20Data%20Base%20Creator/Motion%20Sequences), you can change all the parameters used to buid and train the networks and also the optimizer algorithms, and try to get a better performance of this model.
+
+```python
+   395 if __name__ == '__main__':
+   396     
+   397     GAN = DCGAN()
+   398     Timer = TakeTime()
+   399     GAN.Train(Iterations = 300, Batch_Size = 32, Version = str('1'), shuffle = False, OptimizerType = 2, Plot_Freq = 300)
+   400     Timer.Time()
+```

@@ -12,7 +12,7 @@ In this case, the script [RNA_Generate_Animations_GAN.py](https://github.com/Ing
 
 The image show a representation of the GAN model created.
 
-![gan model](https://user-images.githubusercontent.com/31509775/32291493-3500cbd2-bf0b-11e7-8102-68e7da40dbc6.PNG)
+![gan model](https://user-images.githubusercontent.com/31509775/32303734-6251d8c4-bf38-11e7-8555-b827076c2108.PNG)
 
 This script was developed using **PYHTON 3.6 (64 bits) in WINDOWS 10** and the following wrappers.
 * Keras version 2.0.6

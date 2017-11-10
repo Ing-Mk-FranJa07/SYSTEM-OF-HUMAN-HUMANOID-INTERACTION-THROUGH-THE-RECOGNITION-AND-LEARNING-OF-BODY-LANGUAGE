@@ -16,4 +16,4 @@ The image illustrate the repeating module of a normal RNN and the LSTM network.
 
 To go furthere and get more knowledge of RNN and LSTM follow the links presented previously. 
 
-The LSTM model used to introduce the conversation option was inspired in the [Neural conversation model](https://arxiv.org/pdf/1506.05869v3.pdf) which is caracterize by use one sequence to get another sequence, seq2seq, 
+The LSTM model used to introduce the conversation option was inspired in the [Neural conversation model](https://arxiv.org/pdf/1506.05869v3.pdf) which is caracterize by use one sequence to get another sequence, seq2seq,  

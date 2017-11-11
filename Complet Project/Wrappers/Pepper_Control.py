@@ -139,43 +139,45 @@ class Pepper_Control(object):
         '''
         Function that send Pepper's each joint each.
         '''        
-        if None in Sequence:                                                    # Verify allow data.
-            return
+        if not None in Sequence:                                                    # Verify allow data.
              
-        # Send Hip angles.
-        self.VerifyHipAngles('HipPitch', Sequence[0][14])
-        self.VerifyHipAngles('HipRoll', Sequence[0][13])
+          # Send Hip angles.
+          self.VerifyHipAngles('HipPitch', Sequence[0][14])
+          self.VerifyHipAngles('HipRoll', Sequence[0][13])
+
+          # Send Head angle.
+          self.VerifyHeadPitchAngles(Sequence[0][0], 0)
+
+          # Send Right Shoulder angles.
+          self.VerifyShouldersAndWristsAngles('RShoulderPitch', Sequence[0][2])
+          self.VerifyShouldersAndWristsAngles('RShoulderRoll', Sequence[0][1])
+
+          # Send Right Elbow angles.
+          self.VerifyRElbowYawAngles(Sequence[0][3])
+          self.VerifyRElbowRollAngles(Sequence[0][4], Sequence[0][3])
+
+          # Send Right Wrist angle.
+          self.VerifyShouldersAndWristsAngles('RWristYaw', Sequence[0][5])
+
+          # Send Right Hand state.
+          self.SendToPepperHands('RHand', Sequence[0][6])
+
+          # Send Left Shoulder angles.
+          self.VerifyShouldersAndWristsAngles('LShoulderPitch', Sequence[0][8])
+          self.VerifyShouldersAndWristsAngles('LShoulderRoll', Sequence[0][7])
+
+          # Send Left Elbow angles.
+          self.VerifyLElbowYawAngles(Sequence[0][9])
+          self.VerifyLElbowRollAngles(Sequence[0][10], Sequence[0][9])
+
+          # Send Left Wrist angle.
+          self.VerifyShouldersAndWristsAngles('LWristYaw', Sequence[0][11])
+
+          # Send Left Hand state.
+          self.SendToPepperHands('RHand', Sequence[0][12])
         
-        # Send Head angle.
-        self.VerifyHeadPitchAngles(Sequence[0][0], 0)
-
-        # Send Right Shoulder angles.
-        self.VerifyShouldersAndWristsAngles('RShoulderPitch', Sequence[0][2])
-        self.VerifyShouldersAndWristsAngles('RShoulderRoll', Sequence[0][1])
-
-        # Send Right Elbow angles.
-        self.VerifyRElbowYawAngles(Sequence[0][3])
-        self.VerifyRElbowRollAngles(Sequence[0][4], Sequence[0][3])
-
-        # Send Right Wrist angle.
-        self.VerifyShouldersAndWristsAngles('RWristYaw', -Sequence[0][5])
-
-        # Send Right Hand state.
-        self.SendToPepperHands('RHand', Sequence[0][6])
-        
-        # Send Left Shoulder angles.
-        self.VerifyShouldersAndWristsAngles('LShoulderPitch', Sequence[0][8])
-        self.VerifyShouldersAndWristsAngles('LShoulderRoll', Sequence[0][7])
-
-        # Send Left Elbow angles.
-        self.VerifyLElbowYawAngles(Sequence[0][9])
-        self.VerifyLElbowRollAngles(Sequence[0][10], Sequence[0][9])
-
-        # Send Left Wrist angle.
-        self.VerifyShouldersAndWristsAngles('LWristYaw', -Sequence[0][11])
-    
-        # Send Left Hand state.
-        self.SendToPepperHands('RHand', Sequence[0][12])
+        else:
+          return
         
     '''
     The current functions verify and limit the range of motion of each joint 

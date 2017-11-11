@@ -158,7 +158,7 @@ class Pepper_Control(object):
         self.VerifyRElbowRollAngles(Sequence[0][4], Sequence[0][3])
 
         # Send Right Wrist angle.
-        self.VerifyShouldersAndWristsAngles('RWristYaw', Sequence[0][5])
+        self.VerifyShouldersAndWristsAngles('RWristYaw', -Sequence[0][5])
 
         # Send Right Hand state.
         self.SendToPepperHands('RHand', Sequence[0][6])
@@ -172,7 +172,7 @@ class Pepper_Control(object):
         self.VerifyLElbowRollAngles(Sequence[0][10], Sequence[0][9])
 
         # Send Left Wrist angle.
-        self.VerifyShouldersAndWristsAngles('LWristYaw', Sequence[0][11])
+        self.VerifyShouldersAndWristsAngles('LWristYaw', -Sequence[0][11])
     
         # Send Left Hand state.
         self.SendToPepperHands('RHand', Sequence[0][12])
@@ -181,7 +181,7 @@ class Pepper_Control(object):
     The current functions verify and limit the range of motion of each joint 
     to the range allowed by Pepper.
     ------------------------------------------------------------------------
-    The options with "LSup" and "LInf", have been calcualted through linear 
+    The options with "LSup" and "LInf", have been calculated through linear 
     interpolation.
     ------------------------------------------------------------------------
     Go further: see technical information of Pepper.

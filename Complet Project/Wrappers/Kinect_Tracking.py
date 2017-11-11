@@ -290,10 +290,12 @@ class Kinect_Tracking(object):
                         WristQuat = self.Quaternion(Orientations, PyKinectV2.JointType_WristRight)
                         WristAngles = tf.euler_from_quaternion(WristQuat, 'syzx')
                         
-                        RWristYaw = WristAngles[0]
+                        RWristYawE = WristAngles[0]
+                        RWristYawP = -Add_Angles(np.pi/2, -ElbowRAngles[0])
                     
                     else:
-                        RWristYaw = None
+                        RWristYawE = None
+                        RWristYawP = None
                   
                     # Right Hand state.
                     if (Joints[PyKinectV2.JointType_HandTipRight].TrackingState == 2) and (Joints[PyKinectV2.JointType_ThumbRight].TrackingState == 2):
@@ -311,7 +313,8 @@ class Kinect_Tracking(object):
                     RElbowYaw = None
                     RElbowRoll = None
 
-                    RWristYaw = None
+                    RWristYawE = None
+                    RWristYawP = None
                     
                     HandR = None
             
@@ -322,7 +325,8 @@ class Kinect_Tracking(object):
                 RElbowYaw = None
                 RElbowRoll = None
 
-                RWristYaw = None
+                RWristYawE = None
+                RWristYawP = None
                                     
                 HandR = None
 
@@ -347,10 +351,12 @@ class Kinect_Tracking(object):
                         WristQuat = self.Quaternion(Orientations, PyKinectV2.JointType_WristLeft)
                         WristAngles = tf.euler_from_quaternion(WristQuat, 'syzx')
                         
-                        LWristYaw = WristAngles[0]
+                        LWristYawE = WristAngles[0]
+                        LWristYawP = -Add_Angles(np.pi/2, -ElbowLAngles[0])
                     
                     else:
-                        LWristYaw = None
+                        LWristYawE = None
+                        LWristYawP = None
 
                     # Left Hand state.
                     if (Joints[PyKinectV2.JointType_HandTipLeft].TrackingState == 2) and (Joints[PyKinectV2.JointType_ThumbLeft].TrackingState == 2):
@@ -367,8 +373,9 @@ class Kinect_Tracking(object):
                 else:
                     LElbowYaw = None
                     LElbowRoll = None
-                                            
-                    LWristYaw = None
+                    
+                    LWristYawE = None
+                    LWristYawP = None
                                                 
                     HandL = None
                                     
@@ -379,8 +386,9 @@ class Kinect_Tracking(object):
                 LElbowYaw = None
                 LElbowRoll = None
                 
-                LWristYaw = None
-
+                LWristYawE = None
+                LWristYawP = None
+                
                 HandL = None
                 
             if Type == 'Emotion':

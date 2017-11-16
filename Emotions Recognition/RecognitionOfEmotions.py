@@ -254,8 +254,7 @@ class EmotionsRecognition(QtGui.QWidget):
         self.DrawBodyBones(Joints, JointsPoints, Color, PyKinectV2.JointType_ShoulderRight, PyKinectV2.JointType_ElbowRight)
         self.DrawBodyBones(Joints, JointsPoints, Color, PyKinectV2.JointType_ElbowRight, PyKinectV2.JointType_WristRight)
         self.DrawBodyBones(Joints, JointsPoints, Color, PyKinectV2.JointType_WristRight, PyKinectV2.JointType_HandRight)
-        self.DrawBodyBones(Joints, JointsPoints, Color, PyKinectV2.JointType_HandRight, PyKinectV2.JointType_HandTipRight)
-        self.DrawBodyBones(Joints, JointsPoints, Color, PyKinectV2.JointType_WristRight, PyKinectV2.JointType_ThumbRight)
+        self.DrawBodyBones(Joints, JointsPoints, Color, PyKinectV2.JointType_HandRight, PyKinectV2.JointType_HandTipRight)        self.DrawBodyBones(Joints, JointsPoints, Color, PyKinectV2.JointType_WristRight, PyKinectV2.JointType_ThumbRight)
 
         # Left Arm
         self.DrawBodyBones(Joints, JointsPoints, Color, PyKinectV2.JointType_ShoulderLeft, PyKinectV2.JointType_ElbowLeft)
@@ -280,7 +279,7 @@ class EmotionsRecognition(QtGui.QWidget):
         Kinect Sensor, getting the quaternion matrix and then calculating the
         eulerian angles.
         
-        If the skeleton tracking is not correct, complete or parcial, the 
+        If the skeleton tracking is not correct, complete or partial, the 
         corresponding angles are define like "None".
         '''     
         # Hip angles.

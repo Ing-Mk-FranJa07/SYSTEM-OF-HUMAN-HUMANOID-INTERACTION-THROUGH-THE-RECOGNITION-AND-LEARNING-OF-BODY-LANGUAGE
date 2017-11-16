@@ -265,14 +265,14 @@ class EmotionsRecognition(QtGui.QWidget):
         self.DrawBodyBones(Joints, JointsPoints, Color, PyKinectV2.JointType_WristLeft, PyKinectV2.JointType_ThumbLeft)
 
         # Right Leg
-        self.DrawBodyBones(Joints, JointsPoints, Color, PyKinectV2.JointType_HipRight, PyKinectV2.JointType_KneeRight);
-        self.DrawBodyBones(Joints, JointsPoints, Color, PyKinectV2.JointType_KneeRight, PyKinectV2.JointType_AnkleRight);
-        self.DrawBodyBones(Joints, JointsPoints, Color, PyKinectV2.JointType_AnkleRight, PyKinectV2.JointType_FootRight);
+        self.DrawBodyBones(Joints, JointsPoints, Color, PyKinectV2.JointType_HipRight, PyKinectV2.JointType_KneeRight)
+        self.DrawBodyBones(Joints, JointsPoints, Color, PyKinectV2.JointType_KneeRight, PyKinectV2.JointType_AnkleRight)
+        self.DrawBodyBones(Joints, JointsPoints, Color, PyKinectV2.JointType_AnkleRight, PyKinectV2.JointType_FootRight)
 
         # Left Leg
-        self.DrawBodyBones(Joints, JointsPoints, Color, PyKinectV2.JointType_HipLeft, PyKinectV2.JointType_KneeLeft);
-        self.DrawBodyBones(Joints, JointsPoints, Color, PyKinectV2.JointType_KneeLeft, PyKinectV2.JointType_AnkleLeft);
-        self.DrawBodyBones(Joints, JointsPoints, Color, PyKinectV2.JointType_AnkleLeft, PyKinectV2.JointType_FootLeft);
+        self.DrawBodyBones(Joints, JointsPoints, Color, PyKinectV2.JointType_HipLeft, PyKinectV2.JointType_KneeLeft)
+        self.DrawBodyBones(Joints, JointsPoints, Color, PyKinectV2.JointType_KneeLeft, PyKinectV2.JointType_AnkleLeft)
+        self.DrawBodyBones(Joints, JointsPoints, Color, PyKinectV2.JointType_AnkleLeft, PyKinectV2.JointType_FootLeft)
 
     def Angles(self, Joints, Orientations, Body):
         '''

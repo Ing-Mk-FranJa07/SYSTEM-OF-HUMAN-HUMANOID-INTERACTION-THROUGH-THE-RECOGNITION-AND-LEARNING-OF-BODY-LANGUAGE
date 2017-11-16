@@ -596,13 +596,21 @@ class EmotionsRecognition(QtGui.QWidget):
             # The skeleton tracking is terminated. 
             self.StartEnd = 0
             self.InitKinect()
-            self.Btn_ConectKinect.setEnabled(False)
-                        
-            self.Timer1.start(5)                                                # Activate the interruption that get the speech.
+            self.Btn_ConectKinect.setEnabled(False)                                 
+            
+            # Calibrate the microphone to filter environmental noise.
+            with sr.Microphone() as source:
+                self.Lbl_Listening.setText("Please wait. Calibrating microphone...")
+                print("Please wait. Calibrating microphone...")
+                Rec.adjust_for_ambient_noise(source, duration = 3)              
+
+            self.Timer1.start(100)                                              # Activate the interruption that get the speech.
         
         else:
-            self.CheckBox_Speech.setText("Speech Recognition deactivated")      # Inform that the specch recognition is deactivated.
-
+            self.Lbl_Listening.setText(" ")                                     # Clear the text box.
+            self.Lbl_PrintAnswer.setText(" ")                                   # Clear the text box.
+            self.CheckBox_Speech.setText("Speech Recognition deactivated")      # Inform that the speech recognition is deactivated.
+            
             self.Timer1.stop()                                                  # Deactivate the interruption that get the speech.
         
             self.Btn_ConectKinect.setEnabled(True)                              # The option that activate the tracking is enabled.
@@ -612,29 +620,36 @@ class EmotionsRecognition(QtGui.QWidget):
         Function that allow do the speech recognition getting the audio through 
         the pc's microphone and transforming it into a text, to send it at the LSTM 
         model use to predict the "answer". 
-        '''  
-        self.Lbl_Listening.setText(" ")
-        self.Lbl_PrintAnswer.setText(" ")
-        
+        '''
+        self.Lbl_PrintAnswer.setText(" ")                                       # Clear the text box.
+
         # Activate the microphone.
         with sr.Microphone() as source:
-            Rec.adjust_for_ambient_noise(source, duration = 3)                  # Calibrate the microphone to filter environmental noise.
+            self.Lbl_Listening.setText("Listening ..."); print("Listening ...") # Show in the GUI a informative message.
+            pass
             Audio = Rec.listen(source)                                          # Capture the audio data.
-        
+            pass      
+
         # If the audio data was catch, is generate an "answer".
         try:
+            self.Lbl_Listening.setText("Listened !"); print("Listened !")       # Show in the GUI a informative message.
+            
             Question = Rec.recognize_google(Audio)                              # Transform the audio data to text.
-
             Answer = PepperSay.get_response(Question)                           # Get the "answer", and the motion animation consistently with the Pepper's answer.
             
             self.Lbl_Listening.setText(Question)                                # Show in the GUI the speech recognized.
             self.Lbl_PrintAnswer.setText(str(Answer))                           # Show in the GUI the "answer".
             
+            print("    Your speech: " + Question)
+            print("    Pepper's answer: " + str(Answer))
+            
         # If the audio data was not catch correctly, the user is informed.
         except sr.UnknownValueError:
-            self.Lbl_Listening.setText("No Listened !")
+            self.Lbl_Listening.setText("No Listened !"); print("No Listened !")             
+            self.Lbl_PrintAnswer.setText(" ")            
         except sr.RequestError as e:
-            self.Lbl_Listening.setText('Audio error; {0}'.format(e))
+            self.Lbl_Listening.setText('Audio error; {0}'.format(e)); print('Audio error; {0}'.format(e))
+            self.Lbl_PrintAnswer.setText(" ")
     
     def ShowEmojies(self):
         '''

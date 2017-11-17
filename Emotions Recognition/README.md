@@ -20,12 +20,12 @@ This system also has an option that allow have a conversation with a chatbox, th
 
 The LSTM were introduced by [Hochreiter & Schmidhuber (1997)](https://www.researchgate.net/publication/13853244_Long_Short-term_Memory), the LSTM, like all RNN, have the form of a chain of repeating modules of a neural network; but the difference with the regulars RNN is that this newtworks have reapeting modules with a very simple structure (a single tanh layer); and the LSTM has a reapting module with a different structure, in fact there are four neural network layers interacting in a very special way.
 
-* The image illustrate the repeating module of a normal RNN and the LSTM network.
+* The image illustrates the repeating module of a normal RNN and the LSTM network.
 ![lstm repeating module](https://user-images.githubusercontent.com/31509775/32632538-ffd338f6-c571-11e7-91e5-ac63bf978448.png)
 
 The LSTM model used to introduce the conversation option was inspired in the [Neural conversation model](https://arxiv.org/pdf/1506.05869v3.pdf) which is caracterize by use one sequence to get another sequence, seq2seq, this model was built using the [Chatterbot wrapper](http://chatterbot.readthedocs.io/en/stable/index.html), disponible to python, which is a library that makes easier generate automates responses to string inputs using a selectrion of machine learning algorithms, including RNN and LSTM models, to produce different types of responses. 
 
-* The image represent the LSTM model implemented with the Chatterbot tool.
+* The image represents the LSTM model implemented with the Chatterbot tool.
 ![lstm](https://user-images.githubusercontent.com/31509775/32928662-1654f376-cb21-11e7-9464-0a1ebd1df5c9.png)
 
 ### Hardware and software requirements:
@@ -93,23 +93,41 @@ The perform of the system is based in two big function that are integrated in th
 
 The skeleton tracking process allow get back the image gotten by the Kinect, and also, the body information about the joints tracked from the nearest body to the Kinect detected, the spatial ubication of each joint and their orientation. In this process the image es showed to the user and is drawn the skeleton representation on the user body in the image. The final objective of this process is to save the eulerian angles orientation of each joint. 
 
-* The image show the general flowchart of the skeleton tracking process.
+* The image shows the general flowchart of the skeleton tracking process.
 ![flowchart skeleton tracking general process](https://user-images.githubusercontent.com/31509775/32955038-c7d643b4-cb82-11e7-91e7-4baee5968b90.PNG)
 
 To show the image gotten by the Kinect to the user using the GUI, is necessary create a surface to "paste" the image in it, and then create a RGB image from the surface. Is necessary modify the structure of the matrix resulting to generate a 3-D matrix with the RGB format and the size of the GUI frame. Finally must be created a pixel map from the RGB image to be "printed" in the GUI frame.
 
-* The image show the flowchart of the process to show the image gotten by the Kinect in the GUI.
+* The image shows the flowchart of the process to show the image gotten by the Kinect in the GUI.
 ![flowchart show image](https://user-images.githubusercontent.com/31509775/32955478-1797234a-cb84-11e7-83d5-d6482d78427c.PNG)
 
 To draw the skeleton representation on the user's body in the image, is necessary use the spatial coordinates of two adjacent joints, for example, to draw the head is necesary use the head and the neck spatial coordinates, to draw the right arm is necessary use the right shoulder and right elbow spatial coordinates. 
 
-* The image show the logical process to draw the skeleton tracking.
+* The image shows the logical process to draw the skeleton tracking.
 ![flowchart draw body](https://user-images.githubusercontent.com/31509775/32955651-9d23ae84-cb84-11e7-91b7-1035102d79a4.PNG)
 
 Draw each "bone" of the body is a simple process that verify if each joint have been tracked correctly or not, and use the spatial coordinates (x, y) from the first joint to start the bone and the coordiantes of the second joint to end the bone. Is the both joints were tracked correctly the bone will be drawn with a green color, if one of them was not tracked correctly the bone will be red.
 
-* The image show the flowchart to the process to draw the bones.
+* The image shows the flowchart to the process to draw the bones.
 ![flowchart draw bones](https://user-images.githubusercontent.com/31509775/32955857-29cdbd5c-cb85-11e7-830a-82ebf09194be.PNG)
+
+To get the eulerian angles (Yaw, Roll, Pitch) is necessary verify if the respective joint have been tracked correctly, if this the case, is get back the quaternion that contain the joint orientation and then is calculate the eulerian angles from it; is the joint was not tracked correctly its eulerian angles are saved with the "none" value. At the end is conformed an array that contains 23 angles. The process begin with the computing of the waist angles to guarantee tha have been done the skeleton tracking, and then are computed all the necessaries angles of each joint follow a logic process.
+
+* The image shows the flowchart to the computing eulerian angles process.
+![flowchart computing body joints orientation to recognize emotions](https://user-images.githubusercontent.com/31509775/32956595-2d7c5272-cb87-11e7-90db-745f5508ce87.PNG)
+
+Finally, the emotion is recognize using the neural network model built and load previously which input is a 23 position array and output is a binary array of 6 positions, to generate a one hot codification to each emotion class. Depending of the codification is showed an emojie to represent the emotion in th GUI.
+
+* The image shows the flowchart of the process that allow recognize the emotion.
+![flowchart recognition of emotion process](https://user-images.githubusercontent.com/31509775/32956897-35c8bd66-cb88-11e7-9e10-b120116f2f9d.PNG)
+
+The second function of the system allow generate an answer using a LSTM neural model built with the chatterbot library, from the speech of the user that is gotten with the microphone of the pc (you can use a external microphone to) and then is tranformated into a text string that will be the input to the LSTM neural model. The text string and the answer generated are showed in the GUI.
+
+* The image shows the flowchart of the process that allow the speech recognition and the answers generation.
+![flowchart speech recognition](https://user-images.githubusercontent.com/31509775/32957089-b7585e90-cb88-11e7-993f-f67ec2a8f961.PNG)
+
+### System user guide.
+
 
 
 

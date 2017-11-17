@@ -1,6 +1,6 @@
 # Recognition of emotions and conversation tool.
 
-### Description.
+### Description:
 
 The script [RecognitionOfEmotions.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Emotions%20Recognition/RecognitionOfEmotions.py) use the GUI **RecognitionOfEmotionsGUI.ui** developed to show the perform of the [Neural network model](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Nueral%20Networks/Classify%20emotions) built to recognize the mood of one person and classify it using six categories: Happy, Sad, Angry, Surprised, Reflexive and Normal. 
 
@@ -12,7 +12,7 @@ The image is a graphical representation of the system described.
 
 ![recognition of emotions graphic](https://user-images.githubusercontent.com/31509775/32928110-61e7ab6a-cb1e-11e7-990b-3b2147f6dc75.PNG)
 
-### RNA models used.
+### RNA models used:
 
 [The ANN built to perform the recognition of the emotions](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Nueral%20Networks/Classify%20emotions) using the body posture data, is a two hidden layers network that has 23 inputs and 6 ouputs that generate a codification to each emotion class designated.
 
@@ -30,4 +30,17 @@ The image represent the LSTM model implemented with the Chaterbot tool.
 
 ![lstm](https://user-images.githubusercontent.com/31509775/32928662-1654f376-cb21-11e7-9464-0a1ebd1df5c9.png)
 
-### Hardware and software requirements.
+### Hardware and software requirements:
+
+* Microsoft Kinect V2 sensor.
+![kinect](https://user-images.githubusercontent.com/31509775/32930198-222ed504-cb2b-11e7-8455-ba7d30df2631.jpg)
+* Microsoft Kinect V2 adapter. 
+![kinect adapter](https://user-images.githubusercontent.com/31509775/32930206-2a22a600-cb2b-11e7-86f9-96ecb8669ddc.jpg)
+* Optional: Nvidia GPU.
+![gpu](https://user-images.githubusercontent.com/31509775/32930230-5831bcfc-cb2b-11e7-8005-4cac20045a18.png)
+
+
+This system was developed using **PYTHON 2.7 (32 bits) in WINDOWS 10** to run correctly this script is necessary first to have installed:
+
+
+

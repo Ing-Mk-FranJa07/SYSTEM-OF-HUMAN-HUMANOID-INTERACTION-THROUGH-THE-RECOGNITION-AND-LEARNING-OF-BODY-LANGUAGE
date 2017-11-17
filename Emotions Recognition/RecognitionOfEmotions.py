@@ -65,7 +65,7 @@ PepperSay.train("chatterbot.corpus.Pepper_Speech")
 SkeletonColors = [pygame.color.THECOLORS["green"],
                   pygame.color.THECOLORS["red"]]
 
-# Is loaded the neural netowrk model.
+# Is loaded the neural network model.
 RNA = load_model('...\Model_RNA_Recognition_Of_Emotions')
 
 # Is activated the tracking of the wrist.

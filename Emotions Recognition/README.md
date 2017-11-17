@@ -148,7 +148,7 @@ In any moment the user can activate the speech recognition function, clicking on
 
 The speech recognition take a time while transform the speech to text. The GUI don´t show the informative messages, so if you can open a console to follow the changes it will do better the perform of the function. Also, is recommended have a good microphone and be in a low noise envairoment. The chatterbot model can generate answer to similar sentences to that were trained, is not necessary that be the same sentences. 
 
-* The image shows a few sentences spoken by the user and the anser generated.
+* The image shows a few sentences spoken by the user and the answer generated.
 ![speech recognition test gif](https://user-images.githubusercontent.com/31509775/32961706-92d650b8-cb97-11e7-9fb2-22ad5ed9a523.gif)
 
 

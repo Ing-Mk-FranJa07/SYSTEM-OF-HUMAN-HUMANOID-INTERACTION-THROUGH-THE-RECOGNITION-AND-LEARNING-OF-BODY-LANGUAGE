@@ -14,6 +14,8 @@ The image show a representation of the GAN model created.
 
 ![gan model](https://user-images.githubusercontent.com/31509775/32303734-6251d8c4-bf38-11e7-8555-b827076c2108.PNG)
 
+### Software requeriments:
+
 This script was developed using **PYHTON 3.6 (64 bits) in WINDOWS 10** and the following wrappers.
 * Keras version 2.0.6
 * Tensorflow version 1.2.1 (keras backend engine)

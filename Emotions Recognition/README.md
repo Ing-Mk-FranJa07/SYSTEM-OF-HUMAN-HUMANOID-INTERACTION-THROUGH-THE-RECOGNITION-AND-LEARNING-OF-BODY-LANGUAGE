@@ -130,10 +130,10 @@ The second function of the system allow generate an answer using a LSTM neural m
 
 When the system is started, the GUI appear. The user can push on the button with the text "Connect Kinect" to start the Kinect camera and use the emotion recognition function. Also, when the button is pushed, the text change to "Disconnect Kinect", pushing again end the recognition of emotions function.
 
-* The image shows the GUI highligthing the button mentioned.
+* The image shows the GUI highlighting the button mentioned.
 ![recognition of emotions connect kinect](https://user-images.githubusercontent.com/31509775/32958701-44911f5a-cb8d-11e7-9e7c-5aeb7a462b50.png)
 
-This function works with the neural model trained by the author, in which the user can be sit or stand up. The advice is that you create your own data base with different person traying to represent the emotions with theirs bodys to re-train the neural model and increase the performance of the system.
+This function works with the neural model trained by the author, in which the user can be sit or stand up. The advice is that you create your own data base with different persons trying to represent the emotions with theirs bodys to re-train the neural model and increase the performance of the system.
 
 * The image shows the recognize of emotions performing a few positions being stand up.
 ![emotions-recognition-stand-up-gif](https://user-images.githubusercontent.com/31509775/32961271-ec671d80-cb95-11e7-81c9-8508b1f0d820.gif)
@@ -141,7 +141,7 @@ This function works with the neural model trained by the author, in which the us
 * The image shows the recognize of emotions performing a few positions being sit.
 ![emotions-recognition-sit-down-gif](https://user-images.githubusercontent.com/31509775/32960893-9c1d4f6c-cb94-11e7-954b-d8808c3bda19.gif)
 
-In any moment the user can activate the speech recognition function, clicking on the checkbox "Speech recognitions deactivated", when this functions is activated the Kinect V2 camera is disconnect, this happen because the actualization of the GUI take more time that the time that need the code to be ran, so the GUI can´t show the new image, the emojies change and the speech and answer generated at the same time. Click again on the checkbox "Speech recognition activated" to deactivate the speech recognition function and enable again the emotion recognition.
+In any moment the user can activate the speech recognition function, clicking on the checkbox "Speech recognitions deactivated", when this functions is activated the Kinect V2 camera is disconnect, this happen because the actualization of the GUI take more time that the time that need the code to be ran, so the GUI can´t show the new image, the change in the emojies and the speech and answer generated at the same time. Click again on the checkbox "Speech recognition activated" to deactivate the speech recognition function and enable again the emotion recognition.
 
 * The image shows the GUI highlighting the checkbox mentioned.
 ![recognition of emotions speech recognition](https://user-images.githubusercontent.com/31509775/32961664-70ac0eb0-cb97-11e7-95ce-b1ff4b253ca6.png)

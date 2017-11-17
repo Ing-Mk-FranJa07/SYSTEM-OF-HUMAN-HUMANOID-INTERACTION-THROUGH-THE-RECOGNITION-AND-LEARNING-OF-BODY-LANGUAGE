@@ -10,7 +10,7 @@ This system also has an option that allow have a conversation with a chatbox, th
 
 * The image is a graphical representation of the system described.
 ![recognition of emotions graphic](https://user-images.githubusercontent.com/31509775/32928110-61e7ab6a-cb1e-11e7-990b-3b2147f6dc75.PNG)
-* 
+* hi
 
 ### RNA models used:
 

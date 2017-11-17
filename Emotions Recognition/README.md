@@ -30,4 +30,4 @@ The image represent the LSTM model implemented with the Chaterbot tool.
 
 ![lstm](https://user-images.githubusercontent.com/31509775/32928662-1654f376-cb21-11e7-9464-0a1ebd1df5c9.png)
 
-### Hardware and software requeriments.
+### Hardware and software requirements.

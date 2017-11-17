@@ -128,6 +128,12 @@ The second function of the system allow generate an answer using a LSTM neural m
 
 ### System user guide.
 
+When the system is started, the GUI appear. The user can push on the button with the text "Connect Kinect" to start the Kinect camera and use the emotion recognition function. Also, when the button is pushed, the text change to "Disconnect Kinect", pushing again end the recognition of emotions function.
+
+* The image shows the GUI enchangin the button mentioned.
+![recognition of emotions connect kinect](https://user-images.githubusercontent.com/31509775/32958701-44911f5a-cb8d-11e7-9e7c-5aeb7a462b50.png)
+
+
 
 
 

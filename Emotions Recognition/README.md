@@ -10,7 +10,6 @@ This system also has an option that allow have a conversation with a chatbox, th
 
 * The image is a graphical representation of the system described.
 ![recognition of emotions graphic](https://user-images.githubusercontent.com/31509775/32928110-61e7ab6a-cb1e-11e7-990b-3b2147f6dc75.PNG)
-* hi
 
 ### RNA models used:
 
@@ -32,8 +31,10 @@ The LSTM model used to introduce the conversation option was inspired in the [Ne
 
 * Microsoft Kinect V2 sensor.
 ![kinect](https://user-images.githubusercontent.com/31509775/32930198-222ed504-cb2b-11e7-8455-ba7d30df2631.jpg)
+
 * Microsoft Kinect V2 adapter. 
 ![kinect adapter](https://user-images.githubusercontent.com/31509775/32930206-2a22a600-cb2b-11e7-86f9-96ecb8669ddc.jpg)
+
 * Optional: Nvidia GPU.
 ![gpu](https://user-images.githubusercontent.com/31509775/32930230-5831bcfc-cb2b-11e7-8005-4cac20045a18.png)
 

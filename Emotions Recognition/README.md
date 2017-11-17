@@ -40,7 +40,7 @@ The LSTM model used to introduce the conversation option was inspired in the [Ne
 
 * Optional: GPU card with CUDA Compute Capability 3.0 or higher [(List of supported GPU cards in NVIDIA Documentation)](https://developer.nvidia.com/cuda-gpus).
 
-    ![gpu](https://user-images.githubusercontent.com/31509775/32930230-5831bcfc-cb2b-11e7-8005-4cac20045a18.png)
+![gpu](https://user-images.githubusercontent.com/31509775/32930230-5831bcfc-cb2b-11e7-8005-4cac20045a18.png)
 
 This system was developed using **PYTHON 2.7 (32 bits) in WINDOWS 10** to run correctly this script is necessary first to have installed:
 
@@ -84,5 +84,5 @@ Optional software:
     68  # Is loaded the neural network model.
     69  RNA = load_model('...\Model_RNA_Recognition_Of_Emotions')
 ```
-
+### Code explanation:
 

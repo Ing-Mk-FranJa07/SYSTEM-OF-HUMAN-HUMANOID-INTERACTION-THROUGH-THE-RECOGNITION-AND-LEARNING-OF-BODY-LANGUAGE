@@ -12,18 +12,22 @@ The image is a graphical representation of the system described.
 
 ![recognition of emotions graphic](https://user-images.githubusercontent.com/31509775/32928110-61e7ab6a-cb1e-11e7-990b-3b2147f6dc75.PNG)
 
-### RNA models used:
+### RNA models used.
 
 [The ANN built to perform the recognition of the emotions](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Nueral%20Networks/Classify%20emotions) using the body posture data, is a two hidden layers network that has 23 inputs and 6 ouputs that generate a codification to each emotion class designated.
 
 ![ann classification problem](https://user-images.githubusercontent.com/31509775/32928269-202f9f10-cb1f-11e7-8cfe-25d3a82e2511.PNG)
 
-The LSTM were introduced by ***[Hochreiter & Schmidhuber (1997)](https://www.researchgate.net/publication/13853244_Long_Short-term_Memory)***, the LSTM, like all RNN, have the form of a chain of repeating modules of a neural network; but the difference with the regulars RNN is that this newtworks have reapeting modules with a very simple structure (a single tanh layer); and the LSTM has a reapting module with a different structure, in fact there are four neural network layers interacting in a very special way.
+The LSTM were introduced by [Hochreiter & Schmidhuber (1997)](https://www.researchgate.net/publication/13853244_Long_Short-term_Memory), the LSTM, like all RNN, have the form of a chain of repeating modules of a neural network; but the difference with the regulars RNN is that this newtworks have reapeting modules with a very simple structure (a single tanh layer); and the LSTM has a reapting module with a different structure, in fact there are four neural network layers interacting in a very special way.
 
 The image illustrate the repeating module of a normal RNN and the LSTM network.
 
 ![lstm repeating module](https://user-images.githubusercontent.com/31509775/32632538-ffd338f6-c571-11e7-91e5-ac63bf978448.png)
 
-To go furthere and get more knowledge of RNN and LSTM follow the links presented previously. 
+The LSTM model used to introduce the conversation option was inspired in the [Neural conversation model](https://arxiv.org/pdf/1506.05869v3.pdf) which is caracterize by use one sequence to get another sequence, seq2seq, this model was built using the [Chaterbot wrapper](http://chatterbot.readthedocs.io/en/stable/index.html), disponible to python, which is a library that makes easier generate automates responses to string inputs using a selectrion of machine learning algorithms, including RNN and LSTM models, to produce different types of responses. 
 
-The LSTM model used to introduce the conversation option was inspired in the [Neural conversation model](https://arxiv.org/pdf/1506.05869v3.pdf) which is caracterize by use one sequence to get another sequence, seq2seq,  
+The image represent the LSTM model implemented with the Chaterbot tool.
+
+![lstm](https://user-images.githubusercontent.com/31509775/32928662-1654f376-cb21-11e7-9464-0a1ebd1df5c9.png)
+
+### Hardware and software requeriments.

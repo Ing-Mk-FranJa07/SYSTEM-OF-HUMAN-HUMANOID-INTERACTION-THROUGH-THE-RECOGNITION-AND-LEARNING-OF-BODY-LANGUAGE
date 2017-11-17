@@ -10,13 +10,20 @@ a vector that containing 23 angles, each angle descrive the orientation of a spe
 
 This script was developed using **PYTHON 3.6 (64 bits) in WINDOWS 10** and the following wrappers.
 
-* keras version 2.0.6
-* Tensorflow version 1.2.1 (keras backend engine)
-* pandas version 0.19.2
+Is recommended install [Anaconda (Python 3.6 (64 bits) version](https://www.anaconda.com/download/#windows) to get easier the packages necessaries. 
+
+* [Keras version 2.0.6](https://keras.io/#installation): keras website link with all installation instructions.
+* [Tensorflow version 1.2.1 (keras backend engine)](https://www.tensorflow.org/install/install_windows): Tensorflow windows installation instructions link.
+* [Pandas version 0.19.2](https://pandas.pydata.org/): pandas website link, the download option to the version 0.19.2 is there.
 * numpy version 1.11.3
 * matplotlib version 2.0.0
 * sklearn version 0.18.2
 * csv version 1.0.0
+
+Optional software:
+* [CUDA® Toolkit 8.0](http://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/): Ensure that you append the relevant Cuda pathnames to the %PATH% environment variable as described in the NVIDIA documentation.
+* The NVIDIA drivers associated with CUDA Toolkit 8.0.
+* [cuDNN v6.1](https://developer.nvidia.com/cudnn): Note that cuDNN is typically installed in a different location from the other CUDA DLLs. Ensure that you add the directory where you installed the cuDNN DLL to your %PATH% environment variable.
 
 To use correctly this script, please consider the follow steps.
 

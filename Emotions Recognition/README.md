@@ -14,11 +14,11 @@ The image is a graphical representation of the system described.
 
 ### RNA models used:
 
-[The RNA built to perform the recognition of the emotions](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Nueral%20Networks/Classify%20emotions) using the body posture data, is a two hidden layers network that has 23 inputs and 6 ouputs that generate a codification to each emotion class designated.
+[The ANN built to perform the recognition of the emotions](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Nueral%20Networks/Classify%20emotions) using the body posture data, is a two hidden layers network that has 23 inputs and 6 ouputs that generate a codification to each emotion class designated.
 
 ![ann classification problem](https://user-images.githubusercontent.com/31509775/32928269-202f9f10-cb1f-11e7-8cfe-25d3a82e2511.PNG)
 
-The LSTM were introduced by [***Hochreiter & Schmidhuber (1997)***](https://www.researchgate.net/publication/13853244_Long_Short-term_Memory), the LSTM, like all RNN, have the form of a chain of repeating modules of a neural network; but the difference with the regulars RNN is that this newtworks have reapeting modules with a very simple structure (a single tanh layer); and the LSTM has a reapting module with a different structure, in fact there are four neural network layers interacting in a very special way.
+The LSTM were introduced by ***[Hochreiter & Schmidhuber (1997)](https://www.researchgate.net/publication/13853244_Long_Short-term_Memory)***, the LSTM, like all RNN, have the form of a chain of repeating modules of a neural network; but the difference with the regulars RNN is that this newtworks have reapeting modules with a very simple structure (a single tanh layer); and the LSTM has a reapting module with a different structure, in fact there are four neural network layers interacting in a very special way.
 
 The image illustrate the repeating module of a normal RNN and the LSTM network.
 

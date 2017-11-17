@@ -17,9 +17,12 @@ The image show a representation of the GAN model created.
 ### Software requirements:
 
 This script was developed using **PYHTON 3.6 (64 bits) in WINDOWS 10** and the following wrappers.
-* Keras version 2.0.6
-* Tensorflow version 1.2.1 (keras backend engine)
-* pandas version 0.19.2
+
+Is recommended install [Anaconda (Python 3.6 (64 bits) version](https://www.anaconda.com/download/#windows) to get easier the packages necessaries. 
+
+* [Keras version 2.0.6](https://keras.io/#installation): keras website link with all installation instructions.
+* [Tensorflow version 1.2.1 (keras backend engine)](https://www.tensorflow.org/install/install_windows): Tensorflow windows installation instructions link.
+* [Pandas version 0.19.2](https://pandas.pydata.org/): pandas website link, the download option to the version 0.19.2 is there.
 * numpy version 1.11.3
 * matplotlib 2.0.0
 

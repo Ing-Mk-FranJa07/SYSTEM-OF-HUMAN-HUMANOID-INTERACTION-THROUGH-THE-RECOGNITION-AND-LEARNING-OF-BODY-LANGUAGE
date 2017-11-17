@@ -44,15 +44,16 @@ The LSTM model used to introduce the conversation option was inspired in the [Ne
 
 This system was developed using **PYTHON 2.7 (32 bits) in WINDOWS 10** to run correctly this script is necessary first to have installed:
 
-* [Kinect for Windows SDK version 2.0](https://www.microsoft.com/en-us/download/details.aspx?id=44561): Microsoft website and download link.
+* [Kinect for Windows SDK version 2.0](https://www.microsoft.com/en-us/download/details.aspx?id=44561): Microsoft website link with the installation instructions.
 * [Pykinect2](https://github.com/Kinect/PyKinect2): GitHub link, this repository has all the instructions to use the Kinect V2 with Python.
 * [PyQT4 GPL version 4.11.4 for Python 2.7 (32 bits)](https://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.11.4/PyQt4-4.11.4-gpl-Py2.7-Qt4.8.7-x32.exe/download): Direct downlad link.
 * [Pygame version 1.9.2](http://www.pygame.org/news): pygame website link, you can found the download option for the pygame version 1.9.2 there.
 * [Keras version 2.0.6](https://keras.io/#installation): keras website link with all installation instructions.
 * [Theano version 0.9.0 (keras backend engine)](http://deeplearning.net/software/theano/install_windows.html) Theano windows installation instructions link.
-* [Speech recognition version 3.7.1](https://pypi.python.org/pypi/SpeechRecognition/) pypi.python website, all the installation instruction are specified there. (Is posible that you must to install pyaudio version 0.2.11).
+* [Speech recognition version 3.7.1](https://pypi.python.org/pypi/SpeechRecognition/) pypi.python website, all the installation instruction are specified there. (possible requirements: pyaudio version 0.2.11).
+* [Chatterbot version 0.7.6](http://chatterbot.readthedocs.io/en/stable/setup.html) Chatterbot website installation instructions link.
 * [cv2 version 3.0.0](https://docs.opencv.org/3.3.1/d5/de5/tutorial_py_setup_in_windows.html) OpenCV website link.
-
 * Numpy version 1.12.1.
+* Ctypes version 1.1.0
 
 

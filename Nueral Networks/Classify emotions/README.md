@@ -6,6 +6,8 @@
 The script [RNA_Emotions_BodyPosture_Keras_Tensorflow.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Nueral%20Networks/Classify%20emotions/RNA_Emotions_BodyPosture_Keras_Tensorflow.py) was developed to create, train and test an artificial neural network which classify the mood of one person using like input 
 a vector that containing 23 angles, each angle descrive the orientation of a specific joint of the body. 
 
+### Software requeriments:
+
 This script was developed using **PYTHON 3.6 (64 bits) in WINDOWS 10** and the following wrappers.
 
 * keras version 2.0.6

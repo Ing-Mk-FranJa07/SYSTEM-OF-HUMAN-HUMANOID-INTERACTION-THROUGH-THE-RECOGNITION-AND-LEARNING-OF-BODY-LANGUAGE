@@ -38,7 +38,7 @@ The LSTM model used to introduce the conversation option was inspired in the [Ne
 
 ![kinect adapter](https://user-images.githubusercontent.com/31509775/32930206-2a22a600-cb2b-11e7-86f9-96ecb8669ddc.jpg)
 
-* Optional Nvidia GPU.
+* Optional: GPU card with CUDA Compute Capability 3.0 or higher [(List of supported GPU cards in NVIDIA Documentation)](https://developer.nvidia.com/cuda-gpus).
 
 ![gpu](https://user-images.githubusercontent.com/31509775/32930230-5831bcfc-cb2b-11e7-8005-4cac20045a18.png)
 
@@ -55,5 +55,10 @@ This system was developed using **PYTHON 2.7 (32 bits) in WINDOWS 10** to run co
 * [cv2 version 3.0.0](https://docs.opencv.org/3.3.1/d5/de5/tutorial_py_setup_in_windows.html) OpenCV website link.
 * Numpy version 1.12.1.
 * Ctypes version 1.1.0
+
+Optional software:
+* [CUDA® Toolkit 8.0](http://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/) Ensure that you append the relevant Cuda pathnames to the %PATH% environment variable as described in the NVIDIA documentation.
+* The NVIDIA drivers associated with CUDA Toolkit 8.0.
+* [cuDNN v6.1](https://developer.nvidia.com/cudnn). Note that cuDNN is typically installed in a different location from the other CUDA DLLs. Ensure that you add the directory where you installed the cuDNN DLL to your %PATH% environment variable.
 
 

@@ -12,9 +12,9 @@ This script was developed using **PYTHON 3.6 (64 bits) in WINDOWS 10** and the f
 
 Is recommended install [Anaconda (Python 3.6 (64 bits) version](https://www.anaconda.com/download/#windows) to get easier the packages necessaries. 
 
-* [Keras version 2.0.6](https://keras.io/#installation): keras website link with all installation instructions.
+* [keras version 2.0.6](https://keras.io/#installation): keras website link with all installation instructions.
 * [Tensorflow version 1.2.1 (keras backend engine)](https://www.tensorflow.org/install/install_windows): Tensorflow windows installation instructions link.
-* [Pandas version 0.19.2](https://pandas.pydata.org/): pandas website link, the download option to the version 0.19.2 is there.
+* [pandas version 0.19.2](https://pandas.pydata.org/): pandas website link, the download option to the version 0.19.2 is there.
 * numpy version 1.11.3
 * matplotlib version 2.0.0
 * sklearn version 0.18.2

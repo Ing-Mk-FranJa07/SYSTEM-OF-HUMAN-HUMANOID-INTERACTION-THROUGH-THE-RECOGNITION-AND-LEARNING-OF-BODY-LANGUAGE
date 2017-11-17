@@ -141,6 +141,15 @@ This function works with the neural model trained by the author, in which the us
 * The image shows the recognize of emotions performing a few positions being sit.
 ![emotions-recognition-sit-down-gif](https://user-images.githubusercontent.com/31509775/32960893-9c1d4f6c-cb94-11e7-954b-d8808c3bda19.gif)
 
+In any moment the user can activate the speech recognition function, clicking on the check box "Speech recognitions deactivated", when this functions is activated the Kinect V2 camera is disconnect, this happen because the actualization of the GUI take more time that the time that need the code to be ran, so the GUI can´t show the new image, the emojies change and the speech and answer generated at the same time. Click again on the check box "Speech recognition activated" to deactivate the speech recognition function and enable again the emotion recognition.
+
+* The image shows the GUI enchangin the check box mentioned.
+![recognition of emotions speech recognition](https://user-images.githubusercontent.com/31509775/32961664-70ac0eb0-cb97-11e7-95ce-b1ff4b253ca6.png)
+
+The speech recognition take a time while transform the speech to text. The GUI don´t show the informative messages, so if you can open a console to follow the changes it will do better the perform of the function. Also, is recommended have a good microphone and be in a low noise envairoment. The chatterbot model can generate answer to similar sentences to that were trained, is not necessary that be the same sentences. 
+
+* The image shows a few sentences spoken by the user and the anser generated.
+![speech recognition test gif](https://user-images.githubusercontent.com/31509775/32961706-92d650b8-cb97-11e7-9fb2-22ad5ed9a523.gif)
 
 
 

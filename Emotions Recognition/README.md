@@ -133,6 +133,13 @@ When the system is started, the GUI appear. The user can push on the button with
 * The image shows the GUI enchangin the button mentioned.
 ![recognition of emotions connect kinect](https://user-images.githubusercontent.com/31509775/32958701-44911f5a-cb8d-11e7-9e7c-5aeb7a462b50.png)
 
+This function works with the neural model trained by the author, in which the user can be sit or stand up. The advice is that you create your own data base with different person traying to represent the emotions with theirs bodys to re-train the neural model and increase the performance of the system.
+
+* The image shows the recognize of emotions performing a few positions being stand up.
+![emotions-recognition-stand-up-gif](https://user-images.githubusercontent.com/31509775/32961271-ec671d80-cb95-11e7-81c9-8508b1f0d820.gif)
+
+* The image shows the recognize of emotions performing a few positions being sit.
+![emotions-recognition-sit-down-gif](https://user-images.githubusercontent.com/31509775/32960893-9c1d4f6c-cb94-11e7-954b-d8808c3bda19.gif)
 
 
 

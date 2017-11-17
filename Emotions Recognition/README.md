@@ -30,12 +30,15 @@ The LSTM model used to introduce the conversation option was inspired in the [Ne
 ### Hardware and software requirements:
 
 * Microsoft Kinect V2 sensor.
+
 ![kinect](https://user-images.githubusercontent.com/31509775/32930198-222ed504-cb2b-11e7-8455-ba7d30df2631.jpg)
 
 * Microsoft Kinect V2 adapter. 
+
 ![kinect adapter](https://user-images.githubusercontent.com/31509775/32930206-2a22a600-cb2b-11e7-86f9-96ecb8669ddc.jpg)
 
 * Optional: Nvidia GPU.
+
 ![gpu](https://user-images.githubusercontent.com/31509775/32930230-5831bcfc-cb2b-11e7-8005-4cac20045a18.png)
 
 

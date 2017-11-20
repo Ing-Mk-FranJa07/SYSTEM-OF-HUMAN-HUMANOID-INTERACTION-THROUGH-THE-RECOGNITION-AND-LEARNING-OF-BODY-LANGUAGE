@@ -338,7 +338,7 @@ class Recognition_And_Learning_BodyLenguage_System(QtGui.QWidget):
         This option deactivate the others functions of the system.
         '''
         if self.CheckBox_Speech.isChecked():                                    # Verify is the option is select
-            self.CheckBox_Speech.setText("Speech Recognition Activated")        # Change the text in the GUI check box.
+            self.CheckBox_Speech.setText("Talk with Pepper Activated")          # Change the text in the GUI check box.
             
             if self.CheckBox_Alternative.isChecked():                           # Deactivate the game "Alternative World"
                 self.CheckBox_Alternative.setCheckState(0)
@@ -366,7 +366,7 @@ class Recognition_And_Learning_BodyLenguage_System(QtGui.QWidget):
             self.TimerSpeech.start(5)                                           # Activate the interruption to start the option "conversation".    
         
         else:
-            self.CheckBox_Speech.setText("Speech Recognition deactivated")      # Change the text in the GUI check box.
+            self.CheckBox_Speech.setText("Talk with Pepper deactivated")        # Change the text in the GUI check box.
 
             self.TimerSpeech.stop()                                             # Deactivate the interruption to end the option "conversation".
 

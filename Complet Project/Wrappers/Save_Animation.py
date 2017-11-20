@@ -87,15 +87,7 @@ def VerifyAndSenSecuence(Animation, Pepper):
         
         # Head.
         if HeadPitchList[M] == None:
-            Flag = True
-            I = 1
-            while Flag == True:
-                if HeadPitchList[M-I] == None: 
-                    I += 1
-                else: 
-                    Flag = False
-                    
-                    HeadPitchList[M] = HeadPitchList[M-I]
+            HeadPitchList[M] = HeadPitchList[M-1]
             
             Pepper.VerifyHeadPitchAngles(HeadPitchList[M], 0)
         
@@ -104,16 +96,8 @@ def VerifyAndSenSecuence(Animation, Pepper):
           
         # Right shoulder.
         if RShoulderPitchList[M] == None and RShoulderRollList[M] == None:
-            Flag = True
-            I = 1
-            while Flag == True:
-                if RShoulderPitchList[M-I] == None and RShoulderRollList[M-I] == None: 
-                    I += 1
-                else: 
-                    Flag = False
-                   
-                    RShoulderPitchList[M] = RShoulderPitchList[M-I]
-                    RShoulderRollList[M] = RShoulderRollList[M-I]
+            RShoulderPitchList[M] = RShoulderPitchList[M-1]
+            RShoulderRollList[M] = RShoulderRollList[M-1]
            
             Pepper.VerifyShouldersAndWristsAngles('RShoulderPitch', RShoulderPitchList[M])
             Pepper.VerifyShouldersAndWristsAngles('RShoulderRoll', RShoulderRollList[M])
@@ -124,16 +108,8 @@ def VerifyAndSenSecuence(Animation, Pepper):
         
         # Right elbow.
         if RElbowYawList[M] == None and RElbowRollList[M] == None:
-            Flag = True
-            I = 1
-            while Flag == True:
-                if RElbowYawList[M-I] == None and RElbowRollList[M-I] == None: 
-                    I += 1
-                else: 
-                    Flag = False
-                    
-                    RElbowYawList[M] = RElbowYawList[M-I]
-                    RElbowRollList[M] = RElbowRollList[M-I]
+            RElbowYawList[M] = RElbowYawList[M-1]
+            RElbowRollList[M] = RElbowRollList[M-1]
            
             Pepper.VerifyRElbowYawAngles(RElbowYawList[M])
             Pepper.VerifyRElbowRollAngles(RElbowRollList[M], RElbowYawList[M])
@@ -144,15 +120,7 @@ def VerifyAndSenSecuence(Animation, Pepper):
         
         # Right wrist.
         if RWristYawList[M] == None:
-            Flag = True
-            I = 1
-            while Flag == True:
-                if RWristYawList[M-I] == None: 
-                    I += 1
-                else: 
-                    Flag = False
-                    
-                    RWristYawList[M] = RWristYawList[M-I]
+            RWristYawList[M] = RWristYawList[M-1]
             
             Pepper.VerifyShouldersAndWristsAngles('RWristYaw', RWristYawList[M])
         
@@ -161,15 +129,7 @@ def VerifyAndSenSecuence(Animation, Pepper):
         
         # Right hand.
         if RHandList[M] == None:
-            Flag = True
-            I = 1
-            while Flag == True:
-                if RHandList[M-I] == None: 
-                    I += 1
-                else: 
-                    Flag = False
-                    
-                    RHandList[M] = RHandList[M-I]
+            RHandList[M] = RHandList[M-1]
             
             Pepper.SendToPepperHands('RHand', RHandList[M])
         
@@ -178,16 +138,8 @@ def VerifyAndSenSecuence(Animation, Pepper):
         
         # Left shoulder.
         if LShoulderPitchList[M] == None and LShoulderRollList[M] == None:
-            Flag = True
-            I = 1
-            while Flag == True:
-                if LShoulderPitchList[M-I] == None and LShoulderRollList[M-I] == None: 
-                    I += 1
-                else: 
-                    Flag = False
-                    
-                    LShoulderPitchList[M] = LShoulderPitchList[M-I]
-                    LShoulderRollList[M] = LShoulderRollList[M-I]
+            LShoulderPitchList[M] = LShoulderPitchList[M-1]
+            LShoulderRollList[M] = LShoulderRollList[M-1]
             
             Pepper.VerifyShouldersAndWristsAngles('LShoulderPitch', LShoulderPitchList[M])
             Pepper.VerifyShouldersAndWristsAngles('LShoulderRoll', LShoulderRollList[M])
@@ -198,36 +150,19 @@ def VerifyAndSenSecuence(Animation, Pepper):
         
         # Left elbow.
         if LElbowYawList[M] == None and LElbowRollList[M] == None:
-            Flag = True
-            I = 1
-            while Flag == True:
-                if LElbowYawList[M-I] == None and LElbowRollList[M-I] == None:
-                    I += 1
-                else:
-                    Flag = False
-                    
-                    LElbowYawList[M] = LElbowYawList[M-I]
-                    LElbowRollList[M] = LElbowRollList[M-I]
+            LElbowYawList[M] = LElbowYawList[M-1]
+            LElbowRollList[M] = LElbowRollList[M-1]
             
             Pepper.VerifyLElbowYawAngles(LElbowYawList[M])
             Pepper.VerifyLElbowRollAngles(LElbowRollList[M], LElbowYawList[M])
         
         else:
-            
             Pepper.VerifyLElbowYawAngles(LElbowYawList[M])
             Pepper.VerifyLElbowRollAngles(LElbowRollList[M], LElbowYawList[M])
         
         # Left wrist.
         if LWristYawList[M] == None:
-            Flag = True
-            I = 1
-            while Flag == True:
-                if LWristYawList[M-I] == None: 
-                    I += 1
-                else: 
-                    Flag = False
-                    
-                    LWristYawList[M] = LWristYawList[M-I]
+            LWristYawList[M] = LWristYawList[M-1]
             
             Pepper.VerifyShouldersAndWristsAngles('LWristYaw', LWristYawList[M])
        
@@ -236,21 +171,13 @@ def VerifyAndSenSecuence(Animation, Pepper):
         
         # Left hand.
         if LHandList[M] == None:
-            Flag = True
-            I = 1
-            while Flag == True:
-                if LHandList[M-I] == None: 
-                    I += 1
-                else: 
-                    Flag = False
-                    
-                    LHandList[M] = LHandList[M-I]
+            LHandList[M] = LHandList[M-1]
             
             Pepper.SendToPepperHands('LHand', LHandList[M])
             
         else:
             Pepper.SendToPepperHands('LHand', LHandList[M])
-        
+            
         time.sleep(0.15)
         
         # Are register the Pepper's joint orientations.

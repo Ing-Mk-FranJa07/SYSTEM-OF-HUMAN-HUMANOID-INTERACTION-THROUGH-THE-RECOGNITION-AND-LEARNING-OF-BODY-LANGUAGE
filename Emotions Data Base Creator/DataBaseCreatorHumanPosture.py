@@ -293,170 +293,66 @@ class HumanPostureAndEmotion(QtGui.QWidget):
             
             # Head.
             if HeadPitchList[M] == None and HeadYawList[M] == None  and HeadRollList[M] == None:
-                Flag = True
-                I = 1
-                while Flag == True:
-                    if HeadPitchList[M-I] == None and HeadYawList[M-I] == None and HeadRollList[M-I] == None: 
-                        I += 1
-                    else: 
-                        Flag = False
-                        
-                        HeadYawList[M] = HeadYawList[M-I]
-                        HeadPitchList[M] = HeadPitchList[M-I]
-                        HeadRollList[M] = HeadRollList[M-I]
+                HeadYawList[M] = HeadYawList[M-1]
+                HeadPitchList[M] = HeadPitchList[M-1]
+                HeadRollList[M] = HeadRollList[M-1]
                 
             # Right shoulder.
             if RShoulderPitchList[M] == None and RShoulderRollList[M] == None:
-                Flag = True
-                I = 1
-                while Flag == True:
-                    if RShoulderPitchList[M-I] == None and RShoulderRollList[M-I] == None: 
-                        I += 1
-                    else: 
-                        Flag = False
-                        
-                        RShoulderPitchList[M] = RShoulderPitchList[M-I]
-                        RShoulderRollList[M] = RShoulderRollList[M-I]
+                RShoulderPitchList[M] = RShoulderPitchList[M-1]
+                RShoulderRollList[M] = RShoulderRollList[M-1]
             
             # Right elbow.
             if RElbowYawList[M] == None and RElbowRollList[M] == None:
-                Flag = True
-                I = 1
-                while Flag == True:
-                    if RElbowYawList[M-I] == None and RElbowRollList[M-I] == None: 
-                        I += 1
-                    else: 
-                        Flag = False
-                        
-                        RElbowYawList[M] = RElbowYawList[M-I]
-                        RElbowRollList[M] = RElbowRollList[M-I]
+                RElbowYawList[M] = RElbowYawList[M-1]
+                RElbowRollList[M] = RElbowRollList[M-1]
             
             # Right wrist.
             if RWristYawList[M] == None:
-                Flag = True
-                I = 1
-                while Flag == True:
-                    if RWristYawList[M-I] == None: 
-                        I += 1
-                    else: 
-                        Flag = False
-                        
-                        RWristYawList[M] = RWristYawList[M-I]
+                RWristYawList[M] = RWristYawList[M-1]
             
             # Right hand.
             if RHandList[M] == None:
-                Flag = True
-                I = 1
-                while Flag == True:
-                    if RHandList[M-I] == None: 
-                        I += 1
-                    else: 
-                        Flag = False
-                        
-                        RHandList[M] = RHandList[M-I]
+                RHandList[M] = RHandList[M-1]
             
             # Left shoulder.
             if LShoulderPitchList[M] == None and LShoulderRollList[M] == None:
-                Flag = True
-                I = 1
-                while Flag == True:
-                    if LShoulderPitchList[M-I] == None and LShoulderRollList[M-I] == None: 
-                        I += 1
-                    else:
-                        Flag = False
-                        
-                        LShoulderPitchList[M] = LShoulderPitchList[M-I]
-                        LShoulderRollList[M] = LShoulderRollList[M-I]
+                LShoulderPitchList[M] = LShoulderPitchList[M-1]
+                LShoulderRollList[M] = LShoulderRollList[M-1]
             
             # Left elbow.
             if LElbowYawList[M] == None and LElbowRollList[M] == None:
-                Flag = True
-                I = 1
-                while Flag == True:
-                    if LElbowYawList[M-I] == None and LElbowRollList[M-I] == None: 
-                        I += 1
-                    else: 
-                        Flag = False
-                        
-                        LElbowYawList[M] = LElbowYawList[M-I]
-                        LElbowRollList[M] = LElbowRollList[M-I]
+                LElbowYawList[M] = LElbowYawList[M-1]
+                LElbowRollList[M] = LElbowRollList[M-1]
             
             # Left wrist.
             if LWristYawList[M] == None:
-                Flag = True
-                I = 1
-                while Flag == True:
-                    if LWristYawList[M-I] == None: 
-                        I += 1
-                    else: 
-                        Flag = False
-                        
-                        LWristYawList[M] = LWristYawList[M-I]
+                LWristYawList[M] = LWristYawList[M-1]
             
             # Left hand.
             if LHandList[M] == None:
-                Flag = True
-                I = 1
-                while Flag == True:
-                    if LHandList[M-I] == None: 
-                        I += 1
-                    else: 
-                        Flag = False
-                        
-                        LHandList[M] = LHandList[M-I]
+                [M] = LHandList[M-1]
 
             # Right hip.
             if RHipRollList[M] == None and RHipPitchList[M] == None:
-                Flag = True
-                I = 1
-                while Flag == True:
-                    if RHipRollList[M-I] == None and RHipPitchList[M-I] == None:
-                        I += 1
-                    else: 
-                        Flag = False
-                        
-                        RHipRollList[M] = RHipRollList[M-I]
-                        RHipPitchList[M] = RHipPitchList[M-I]
+                RHipRollList[M] = RHipRollList[M-1]
+                RHipPitchList[M] = RHipPitchList[M-1]
 
             # Right knee.
             if RKneeRollList[M] == None and RKneeYawList[M] == None:
-                Flag = True
-                I = 1
-                while Flag == True:
-                    if RKneeRollList[M-I] == None and RKneeYawList[M-I] == None:
-                        I += 1
-                    else: 
-                        Flag = False
-                        
-                        RKneeRollList[M] = RKneeRollList[M-I]
-                        RKneeYawList[M] = RKneeYawList[M-I]
+                RKneeRollList[M] = RKneeRollList[M-1]
+                RKneeYawList[M] = RKneeYawList[M-1]
 
             # Left hip.
             if LHipRollList[M] == None and LHipPitchList[M] == None:
-                Flag = True
-                I = 1
-                while Flag == True:
-                    if LHipRollList[M-I] == None and LHipPitchList[M-I] == None:
-                        I += 1
-                    else: 
-                        Flag = False
-                        
-                        LHipRollList[M] = LHipRollList[M-I]
-                        LHipPitchList[M] = LHipPitchList[M-I]
+                LHipRollList[M] = LHipRollList[M-1]
+                LHipPitchList[M] = LHipPitchList[M-1]
 
             # Left knee.
             if LKneeRollList[M] == None and LKneeYawList[M] == None:
-                Flag = True
-                I = 1
-                while Flag == True:
-                    if LKneeRollList[M-I] == None and LKneeYawList[M-I] == None: 
-                        I += 1
-                    else: 
-                        Flag = False
-                        
-                        LKneeRollList[M] = LKneeRollList[M-I]
-                        LKneeYawList[M] = LKneeYawList[M-I]
-    
+                LKneeRollList[M] = LKneeRollList[M-1]
+                LKneeYawList[M] = LKneeYawList[M-1]
+                
         # Is saved the name of the .csv file.
         FileName = str("...\Emotions_DataBase\ " + str(self.Text_Save.text()) + ".csv")
         

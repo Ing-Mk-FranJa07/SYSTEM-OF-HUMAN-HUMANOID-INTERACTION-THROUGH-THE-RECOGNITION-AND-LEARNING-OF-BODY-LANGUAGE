@@ -339,8 +339,7 @@ class Recognition_And_Learning_BodyLenguage_System(QtGui.QWidget):
         '''
         if self.CheckBox_Speech.isChecked():                                    # Verify is the option is select
             self.CheckBox_Speech.setText("Talk with Pepper Activated")          # Change the text in the GUI check box.
-            
-            if self.CheckBox_Alternative.isChecked():                           # Deactivate the game "Alternative World"
+                        if self.CheckBox_Alternative.isChecked():                           # Deactivate the game "Alternative World"
                 self.CheckBox_Alternative.setCheckState(0)
                 self.AlternativeWorld()
             
@@ -386,7 +385,7 @@ class Recognition_And_Learning_BodyLenguage_System(QtGui.QWidget):
             Surface, SequenceRec = self.Kinect.RunKinect(str('Pepper'))         # Get Kinect's image and an array with 15 joint angles.
             
             if SequenceRec is not None:
-                self.MotionSequence[self.RecordingSec - 1] = SequenceRec        # Form a 39x15 joint angles matrix.
+                self.MotionSequence[self.RecordingSec - 1] = SequenceRec        # Form a 39x16 joint angles matrix.
                 self.SkeletonTracked += 1
                 
             if self.RecordingSec == 39:                                         # Stop the recording.
@@ -419,7 +418,7 @@ class Recognition_And_Learning_BodyLenguage_System(QtGui.QWidget):
             Surface, CreateSequence = self.Kinect.RunKinect(str('Pepper'))      # Get Kinect's image and an array with 15 joint angles.
             
             if CreateSequence is not None:
-                self.MotionSequence[self.RecordingSec - 1] = CreateSequence     # Form a 39x15 joint angles matrix.
+                self.MotionSequence[self.RecordingSec - 1] = CreateSequence     # Form a 39x16 joint angles matrix.
                 self.SkeletonTracked += 1
                 
             if self.RecordingSec == 39:                                         # Stop the recording.

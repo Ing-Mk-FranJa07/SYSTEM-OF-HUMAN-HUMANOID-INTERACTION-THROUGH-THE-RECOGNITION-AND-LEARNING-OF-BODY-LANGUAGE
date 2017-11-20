@@ -576,7 +576,7 @@ class Recognition_And_Learning_BodyLenguage_System(QtGui.QWidget):
         # ----------------------------------------------------------------------
         # When the mood is classified like "Normal" is showed the emojie and 
         # is activated the speech recognition to talk with Pepper.
-        # When the mood is not determinated correctly, all the emojies are hidden.
+        # When the mood is not determined correctly, all the emojies are hidden.
         # ----------------------------------------------------------------------
             
         # Show Normal:

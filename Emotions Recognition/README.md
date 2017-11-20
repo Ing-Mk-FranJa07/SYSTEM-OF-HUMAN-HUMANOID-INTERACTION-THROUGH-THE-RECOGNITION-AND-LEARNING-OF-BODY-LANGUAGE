@@ -151,5 +151,5 @@ The speech recognition take a time while transform the speech to text. The GUI d
 * The image shows a few sentences spoken by the user and the answer generated.
 ![speech recognition test gif](https://user-images.githubusercontent.com/31509775/32961706-92d650b8-cb97-11e7-9fb2-22ad5ed9a523.gif)
 
-
+                                        ***Click on the image to see them with better quality*** 
 

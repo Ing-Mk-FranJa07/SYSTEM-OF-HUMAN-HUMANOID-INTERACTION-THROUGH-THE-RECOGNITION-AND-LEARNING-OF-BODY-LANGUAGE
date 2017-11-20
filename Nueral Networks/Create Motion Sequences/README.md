@@ -268,3 +268,5 @@ The GAN model presented here, can develop [motion sequences](https://github.com/
    399     GAN.Train(Iterations = 300, Batch_Size = 32, Version = str('1'), shuffle = False, OptimizerType = 2, Plot_Freq = 300)
    400     Timer.Time()
 ```
+
+**Click on the image to see them with better quality**

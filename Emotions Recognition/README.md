@@ -119,12 +119,12 @@ To get the eulerian angles (Yaw, Roll, Pitch) is necessary verify if the respect
 Finally, the emotion is recognize using the neural network model built and load previously which input is a 23 position array and output is a binary array of 6 positions, to generate a one hot codification to each emotion class. Depending of the codification is showed an emojie to represent the emotion in th GUI.
 
 * The image shows the flowchart of the process that allow recognize the emotion.
-![flowchart recognition of emotion process](https://user-images.githubusercontent.com/31509775/32956897-35c8bd66-cb88-11e7-9e10-b120116f2f9d.PNG)
+![flowchart recognition of emotion process](https://user-images.githubusercontent.com/31509775/33040309-a7e2d760-ce08-11e7-9ce2-75e8ea124e91.PNG)
 
 The second function of the system allow generate an answer using a LSTM neural model built with the chatterbot library, from the speech of the user that is gotten with the microphone of the pc (you can use a external microphone to) and then is tranformated into a text string that will be the input to the LSTM neural model. The text string and the answer generated are showed in the GUI.
 
 * The image shows the flowchart of the process that allow the speech recognition and the answers generation.
-![flowchart speech recognition](https://user-images.githubusercontent.com/31509775/32957089-b7585e90-cb88-11e7-993f-f67ec2a8f961.PNG)
+![flowchart show image](https://user-images.githubusercontent.com/31509775/33040345-c6e85e50-ce08-11e7-8638-dbd89b776dff.PNG)
 
 ### System user guide.
 

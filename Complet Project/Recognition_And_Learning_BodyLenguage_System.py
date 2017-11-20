@@ -573,17 +573,18 @@ class Recognition_And_Learning_BodyLenguage_System(QtGui.QWidget):
                 time.sleep(1)
                 self.Pepper.SendAnimation(Animation)
         
-        # --------------------------------------------------------------------
-        # The current lines show the mood with emojies, and also allow the 
-        # speech recognition with the mood is "Normal" or it can't be determined.
-        # --------------------------------------------------------------------
+        # ----------------------------------------------------------------------
+        # When the mood is classified like "Normal" is showed the emojie and 
+        # is activated the speech recognition to talk with Pepper.
+        # When the mood is not determinated correctly, all the emojies are hidden.
+        # ----------------------------------------------------------------------
             
         # Show Normal:
         elif np.all(EmotionCode == np.array([1,0,0,0,0,0])):
             self.HideEmojies()
             self.Frame_Normal.show(); self.Lbl_Normal.show()
             
-            self.GetAudio()                                                     # Function that recognize the speech using pc's microphone.
+            # self.GetAudio()                                                     # Function that recognize the speech using pc's microphone.
 
         # Mood no determined:
         else:

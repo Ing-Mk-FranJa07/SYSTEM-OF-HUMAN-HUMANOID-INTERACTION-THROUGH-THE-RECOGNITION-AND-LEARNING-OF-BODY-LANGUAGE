@@ -268,5 +268,7 @@ The GAN model presented here, can develop [motion sequences](https://github.com/
    399     GAN.Train(Iterations = 300, Batch_Size = 32, Version = str('1'), shuffle = False, OptimizerType = 2, Plot_Freq = 300)
    400     Timer.Time()
 ```
+* The image shows an animation motion sequence created by the user and the motion sequence created by the GAN model.
+![pepper original motion sequence](https://user-images.githubusercontent.com/31509775/33086815-cb8823ba-ceb6-11e7-8dcf-6df2f62d1f71.gif)
 
 **Click on the image to see them with better quality**

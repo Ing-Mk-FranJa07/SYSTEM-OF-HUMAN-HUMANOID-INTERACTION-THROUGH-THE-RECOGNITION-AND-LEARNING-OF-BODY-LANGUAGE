@@ -21,6 +21,7 @@ Is recommended install [Anaconda (Python 3.6 (64 bits) version](https://www.anac
 * csv version 1.0.0
 
 Optional software:
+
 * [CUDA® Toolkit 8.0](http://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/): Ensure that you append the relevant Cuda pathnames to the %PATH% environment variable as described in the NVIDIA documentation.
 * The NVIDIA drivers associated with CUDA Toolkit 8.0.
 * [cuDNN v6.1](https://developer.nvidia.com/cudnn): Note that cuDNN is typically installed in a different location from the other CUDA DLLs. Ensure that you add the directory where you installed the cuDNN DLL to your %PATH% environment variable.
@@ -42,8 +43,11 @@ The script [DataBase_Organize.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-H
 Also, this script add the codification to each category, in the both files, used like output of the neural network.
 
 **WARNINGS**
-* It's recommended extract the [.csv files created by the author](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Emotions%20Data%20Base%20Creator/Emotions%20DataBase) from each folder and save them in just one folder to use correctly the script written.
+
+* It's recommended extract the .csv files created by the author from each folder and save them in just one folder to use correctly the script written.
+
 * Please make sure of the path that has the address of the .csv files be correct in the follow lines (don't change or delete the files names that are written after the last slash):
+
 ```python
     35     Category_Train = open("...\DataSet_Organized\Emotions_Unified\Postures_Train " + str(File_Code) + ".csv", "w") 
    ...
@@ -63,30 +67,39 @@ Also, this script add the codification to each category, in the both files, used
    ...
    143    Data.to_csv("...\DataSet_Organized\DataSetPostures__" + str(File_Type) + ".csv", header = True)
  ``` 
- * Note that in the lines 117-119 are being changed information into the .csv files; if you're working with the [.csv files created by the author](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Emotions%20Data%20Base%20Creator/Emotions%20DataBase), don't change or delet this lines. If you're working with new data created using the tool: [DataBaseCreatorHumanPosture.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Emotions%20Data%20Base%20Creator), these lines are not necessaries.
+ 
+ * Note that in the lines 117-119 are being changed information into the .csv files; if you're working with the .csv files created by the author, don't change or delet this lines. If you're working with new data created using the tool: [DataBaseCreatorHumanPosture.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Emotions%20Data%20Base%20Creator), these lines are not necessaries.
+ 
  ```python
     117    Data = Data_Train.replace("Opened", 1)
     118    Data = Data_Train.replace("Closed", 2)
     119    Data = Data_Train.replace("Unknow", 3)
  ```
+ 
 ### Third step: Neural Network Structure.
 
-The first part of the code in the script: [RNA_Emotions_BodyPosture_Keras_Tensorflow.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Nueral%20Networks/Classify%20emotions/RNA_Emotions_BodyPosture_Keras_Tensorflow.py) load the training and the testing data, creating the sets to train and test the neural network. 
+The first part of the script developed load the training and the testing data, creating the sets to train and test the neural network. 
 
 **WARNING**
+
 * Please make sure of the path that has the address of the .csv files be correct in the follow lines (don't change or delete the files names that are written after the last slash):
+
 ```python
    60 Data_Train = pd.read_csv("...\DataSet_Organized\DataSetPostures_Train.csv", header = 0, index_col = 0)
    61 Data_Test = pd.read_csv("...\DataSet_Organized\DataSetPostures_Test.csv", header = 0, index_col = 0)
 ```
+
 The two first columns (angles: Head Roll and Head Pitch) are not used in the input training and testing set because they're not toasting information; also is created the ouput training and testing with the codification of each category.
+
 ```python
    64 X_Train = np.array(Data_Train.ix[:,2:25]) 
    65 Y_Train = np.array(Data_Train.ix[:,25:33])
    66 X_Test = np.array(Data_Test.ix[:,2:25])
    67 Y_Test = np.array(Data_Test.ix[:,25:33])
 ```
+
 After that the Data has been loaded and schuffled in training and testing sets; is created the model of the neural network (lines 73-92) The neural network has 23 inputs and two hidden layers, the first of them has the same numbers of nodes that the inputs, and the second hidden layer has 17 nodes; the both layers have a Relu activation function. The ouput layer has 6 nodes and its activation function is sigmoid because each node just can take two values: (0, 1) The total output is an "one hot" vector that contains six values; the neural network has like optimization function the categorical cross entropy loss, and it used the Stochastic downward gradient like the optimization type. 
+
 ```python
    73 # Are defined the parameters of the neural network and the model.
    74 HL_1_Nodes = 23
@@ -109,11 +122,12 @@ After that the Data has been loaded and schuffled in training and testing sets; 
    91             optimizer = sgd,                   # Optimization type: Stochastic downward gradient
    92             metrics = ['accuracy'])
 ```
-The next image is a representation of the neural network designed.
 
+* The next image is a representation of the neural network designed.
 ![Ann classification problem](https://user-images.githubusercontent.com/31509775/32282186-e80f7e7a-beee-11e7-85a2-af58946356f5.PNG)
 
 After that the neural network has been created, is trained and then is tested; the accuracy of the neural network designed by the author is the almost the 94%; to check the performance of the neural network; has been written a function that organize and show the cunfusion matrix; this function can show the matrix in two modes, porcentage or total data, just changing a boolean value ('Normalize') when it is called. 
+
 ```python
    29 def Plot_Confusion_Matrix(Matrix, Title, Cmap, Normalize = True):
    30     '''
@@ -144,8 +158,11 @@ After that the neural network has been created, is trained and then is tested; t
    55
    56     plt.show()
 ```
+
 **WARNING**
+
 * To plot the confusion matrix, it's compute using the index of the ouput node that has more activation, and no directly the neural network output. in the lines 60 and 70 are created two vectors to save the index of the one hot value in the codification of each emotion category of the ouput testing set and the output of the neural network; the lines 104-106 determine the index descrived. The line 109 compute the confusion matrix.
+
 ```python
    60 Index_Y_Test = np.empty([len(Y_Test),1], dtype = np.float64)
    70 Index_Y_Pred = np.empty([len(Y_Test),1], dtype = np.float64)
@@ -156,15 +173,18 @@ After that the neural network has been created, is trained and then is tested; t
   ...
   109 Confusion_Matrix = confusion_matrix(Index_Y_Test,Index_Y_Pred)
 ```
-The next image show the confusion matrix that represent the performance of the neural network designed by the author.
 
+* The next image show the confusion matrix that represent the performance of the neural network designed by the author.
 ![confusion matrix](https://user-images.githubusercontent.com/31509775/32284284-bf32ebda-bef4-11e7-820e-b14aba8524b3.png)
 
 Finally is saved the model created to be used in the differents tools developed: [RecognitionOfEmotions.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Emotions%20Recognition) and [Recognition_And_Learning_BodyLenguage_System.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Complet%20Project).
 
 **WARNINGS**
+
 * You can change the "version" of the model saved to don't rewrite the previous model saved using the line 121.
+
 * Please make sure of the path that has the address of the neural network model be correct in the line 122 (don't change or delete the model name that are written after the last slash, if you do it, please check the path to load the model in the tools that use the model):
+
 ```python
   120 # Is saved the model of the neural network.
   121 Version = '1' # Version of the model created.

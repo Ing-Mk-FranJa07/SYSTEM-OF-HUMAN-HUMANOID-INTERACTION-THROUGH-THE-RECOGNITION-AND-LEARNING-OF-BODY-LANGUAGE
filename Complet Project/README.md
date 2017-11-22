@@ -86,16 +86,16 @@ Optional software:
 
 * To download the Aldebaran softeare and SDK is necessary to have a valid account and a register robot Pepper interface.
 
-* Please make shure of download all the scripts and files presented in this repository.
+* Please make sure of download all the scripts and files presented in this repository.
 
-* The line 38 of the wrapper: [Neural_Networks_Models.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Complet%20Project/Wrappers/Neural_Networks_Models.py#L37-L38) allows load the ANN model built (you can re-train or modify this model with the script [RNA_Emotions_BodyPosture_Keras_Tensorflow.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Nueral%20Networks/Classify%20emotions)), the model is avaible in this repository with the name **"Model_RNA_Recognition_Of_Emotions"** in the folder [Data_And_RNA_Models](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Complet%20Project/Data_And_RNA_Models). **Please make shure that the path of the file is correct !**
+* The line 38 of the wrapper: [Neural_Networks_Models.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Complet%20Project/Wrappers/Neural_Networks_Models.py#L37-L38) allows load the ANN model built (you can re-train or modify this model with the script [RNA_Emotions_BodyPosture_Keras_Tensorflow.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Nueral%20Networks/Classify%20emotions)), the model is avaible in this repository with the name **"Model_RNA_Recognition_Of_Emotions"** in the folder [Data_And_RNA_Models](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Complet%20Project/Data_And_RNA_Models). **Please make sure that the path of the file is correct !**
 
 ```python
     37       # Is loaded the RNA model that perform the recognitions of emotions, using the joint angles information.  
     38       self.RNA_Emotions = load_model('...\Data_And_RNA_Models\Model_RNA_Recognition_Of_Emotions')
 ```
 
-* The line 41 of the wrapper: [Neural_Networks_Models.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Complet%20Project/Wrappers/Neural_Networks_Models.py#L37-L38) allows load the motion sequences data base used to make that Pepper reproduce behaviors animations (You can found the data base: **"Animations Sequences.csv"** in the folder: [Data_And_RNA_Models](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Complet%20Project/Data_And_RNA_Models). **Please make shure that the path of the file is correct !**
+* The line 41 of the wrapper: [Neural_Networks_Models.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Complet%20Project/Wrappers/Neural_Networks_Models.py#L37-L38) allows load the motion sequences data base used to make that Pepper reproduce behaviors animations (You can found the data base: **"Animations Sequences.csv"** in the folder: [Data_And_RNA_Models](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Complet%20Project/Data_And_RNA_Models). **Please make sure that the path of the file is correct !**
 
 ```python
     40       # Is loaded the Motion animations database.
@@ -115,7 +115,7 @@ Optional software:
 * Beacause the previous explanation, the lines 181-187 of the same Wrapper: [Neural_Networks_Models.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Complet%20Project/Wrappers/Neural_Networks_Models.py#L37-L38) are used to load the data base of the motion sequences created using the GAN model (you can found it in this repository in the folder: [Create motion sequences](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Nueral%20Networks/Create%20Motion%20Sequences) and is recommended first run this script to generate the motion sequences), selecting one of them each time in a random form. This is used to perform the Pepper's behavior in the "Alternative world" function. The logic to select and import the motion sequences follow the current explanation: is select a random epoch, 1 to 300, and then is selectec a random motion sequence, 1 to 32 (the author trained the GAN model by 300 epochs and save all the data generated, in each epoch are generated 32 motion sequences). Finally are loaded the file with the structure: "NewAnimation Epoch-Motion sequence"; example: "NewAnimation 100-32".
 
 **Please, if you generate a different number of motion sequences with the GAN model, change the random and validations values.**
-**Please make shure that the path to load the file is correct. The folder "DataBaseGeneratedByRNA" is in the folder: [Data_And_RNA_Models](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Complet%20Project/Data_And_RNA_Models). And has a few motion sequences developed; if you run the GAN model, it goes to save the motion sequences created in that folder, please check the path too.**
+**Please make sure that the path to load the file is correct. The folder "DataBaseGeneratedByRNA" is in the folder: [Data_And_RNA_Models](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Complet%20Project/Data_And_RNA_Models). And has a few motion sequences developed; if you run the GAN model, it goes to save the motion sequences created in that folder, please check the path too.**
 
 ```python
    181      # Are get two random int to select a original animation of the DataSet.
@@ -152,7 +152,7 @@ Optional software:
 
 * The lines 56 and 63 allow the training of the chatterbot models, when the training end, the file **"db.sqlite3"** is created, if you want, you can comment this line to avoid the time of the training, but please make shure that you have downloaded the **"db.sqlite3"** file into the folder: [Data_And_RNA_Models](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Complet%20Project/Data_And_RNA_Models).
 
-* The wrapper: [Save_Animation.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Complet%20Project/Wrappers/Save_Animation.py#L224-L235) is used to save the new motion sequences created. **Please make shure that the path of the file to save the new .csv files is correct in the lines 229 and 240**. 
+* The wrapper: [Save_Animation.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Complet%20Project/Wrappers/Save_Animation.py#L224-L235) is used to save the new motion sequences created. **Please make sure that the path of the file to save the new .csv files is correct in the lines 229 and 240**. 
 
 ```python
    229   FileName = str("...\Data_And_RNA_Models\New_Animation_Data\New_Animation_" + str(FileNumber) + ".csv")
@@ -162,7 +162,7 @@ Optional software:
    241   File = open(FileName, 'w') 
 ```
 
-* The line 71 of the main script allows load the GUI developed to use the system. **Please make shure that the path of the file is correct !**.
+* The line 71 of the main script allows load the GUI developed to use the system. **Please make sure that the path of the file is correct !**
 
 ```python
     70        # Is "imported" the file that get the GUI.                

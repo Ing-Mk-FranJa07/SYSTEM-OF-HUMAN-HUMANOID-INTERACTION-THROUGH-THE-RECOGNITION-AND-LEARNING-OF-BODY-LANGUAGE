@@ -4,16 +4,16 @@
 
 The script [RecognitionOfEmotions.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Emotions%20Recognition/RecognitionOfEmotions.py) use the GUI **RecognitionOfEmotionsGUI.ui** developed to show the perform of the [Neural network model](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Nueral%20Networks/Classify%20emotions) built to recognize the mood of one person and classify it using six categories: Happy, Sad, Angry, Surprised, Reflexive and Normal. 
 
-The system use the Kinect V2 camera to get the skeleton tracking and compute the angles orientation in the format [(Yaw, Roll, Pitch)] of each joint; the GUI shows the image gotten with the Kinect and the tracking. The neural network model use the joints orientation to determined the emotion that the user is represented with his body posture. The emotion is showed to the user using emojies in the GUI.
+The system use the **Microsoft Kinect V2 Camera** to get the skeleton tracking and compute the angles orientation in the format [(Yaw, Roll, Pitch)] of each joint; the GUI shows the image gotten with the Kinect and the tracking. The neural network model use the joints orientation to determined the emotion that the user is represented with his body posture. The emotion is showed to the user using emojies in the GUI.
 
-This system also has an option that allow have a conversation with a chatbox, this is possible doing speech recognition, to transform the user's speech into text and then implementing a [Long Short Term Memory network (LSTM)](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) which is a special kind of [Recurrent neural networks (RNN)](http://www.felixgers.de/papers/phd.pdf), capable of learning long-term dependencies. 
+This system also has an option that allow have a conversation with a chatbox, this is possible doing speech recognition, to transform the user's speech into text string and then implementing a [Long Short Term Memory network (LSTM)](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) which is a special kind of [Recurrent neural networks (RNN)](http://www.felixgers.de/papers/phd.pdf), capable of learning long-term dependencies. 
 
 * The image is a graphical representation of the system described.
 ![recognition of emotions graphic](https://user-images.githubusercontent.com/31509775/32928110-61e7ab6a-cb1e-11e7-990b-3b2147f6dc75.PNG)
 
 ### RNA models used:
 
-[The ANN built to perform the recognition of the emotions](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Nueral%20Networks/Classify%20emotions) using the body posture data, is a two hidden layers network that has 23 inputs and 6 ouputs that generate a codification to each emotion class designated.
+The ANN built to perform the recognition of the emotions using the body posture data, is a two hidden layers network that has 23 inputs and 6 ouputs that generate a codification to each emotion class designated.
 
 * The image is a representation of the neural network built.
 ![ann classification problem](https://user-images.githubusercontent.com/31509775/32928269-202f9f10-cb1f-11e7-8cfe-25d3a82e2511.PNG)
@@ -65,7 +65,7 @@ Optional software:
 
 ### WARNINGS:
 
-* To create a new corpus data in the chatterbot library, is necessary go to the chatterbot_corpus folder and then into the data folder (installed if you use Anaconda in: **C:\...\Anaconda2_Win32\Lib\site-packages\chatterbot_corpus\data**) and create a new folder with the name "Pepper_Speech" (this was the name used by the author to create the folder in which was saved the corpus with the dialogues of the [Conversation with Pepper.txt](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Emotions%20Recognition/Conversation%20with%20Pepper.txt) **Is important that if you select a different name, change the corpus name selector in the line 62 of the code**), and then create a file with the name **"myown.yml"** (you can open this file with any text editor) and paste the dialogues: [Conversation with Pepper.txt](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Emotions%20Recognition/Conversation%20with%20Pepper.txt). 
+* To create a new corpus data in the chatterbot library, is necessary go to the chatterbot_corpus folder and then into the data folder (installed if you use Anaconda in: **C:\...\Anaconda2_Win32\Lib\site-packages\chatterbot_corpus\data**) and create a new folder with the name "Pepper_Speech" (this was the name used by the author to create the folder in which was saved the corpus with the dialogues of the Conversation with Pepper) **Is important that if you select a different name, change the corpus name selector in the line 62 of the code**), and then create a file with the name **"myown.yml"** (you can open this file with any text editor) and paste the dialogues: [Conversation with Pepper.txt](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Emotions%20Recognition/Conversation%20with%20Pepper.txt). 
 ```python
     54  # Is created a model to generate a chatbox.
     55  PepperSay = ChatBot('Pepper Answers', 

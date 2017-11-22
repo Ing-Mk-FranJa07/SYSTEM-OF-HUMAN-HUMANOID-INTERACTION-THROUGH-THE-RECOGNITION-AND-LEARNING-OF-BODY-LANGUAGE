@@ -165,8 +165,8 @@ Optional software:
 * The line 71 of the main script allows load the GUI developed to use the system. **Please make sure that the path of the file is correct !**
 
 ```python
-    70        # Is "imported" the file that get the GUI.                
-    71        self.MyGUI = uic.loadUi('...\Recognition_And_Learning_BodyLenguageGUI.ui', self)
+    70          # Is "imported" the file that get the GUI.                
+    71          self.MyGUI = uic.loadUi('...\Recognition_And_Learning_BodyLenguageGUI.ui', self)
 ```
 
 

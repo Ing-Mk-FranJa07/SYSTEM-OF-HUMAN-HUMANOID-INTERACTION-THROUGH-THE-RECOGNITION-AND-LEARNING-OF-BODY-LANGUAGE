@@ -82,14 +82,14 @@ Optional software:
 
 * The line 62 allow the training of the chatterbot model, when the training end, the file **"db.sqlite3"** is created, if you want, you can comment this line to avoid the time of the training, but please make shure that you have downloaded the **"db.sqlite3"** file into the folder with all scripts presented in this repository.
 
-* The line 69 allow load the ANN model built (you can re-train or modify this model with the script [RNA_Emotions_BodyPosture_Keras_Tensorflow.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Nueral%20Networks/Classify%20emotions)), the model is avaible in this repository with the name **"Model_RNA_Recognition_Of_Emotions"**. **Please make shure that the path of the file is correct !**
+* The line 69 allow load the ANN model built (you can re-train or modify this model with the script [RNA_Emotions_BodyPosture_Keras_Tensorflow.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Nueral%20Networks/Classify%20emotions)), the model is avaible in this repository with the name **"Model_RNA_Recognition_Of_Emotions"**. **Please make sure that the path of the file is correct !**
 
 ```python
     68  # Is loaded the neural network model.
     69  RNA = load_model('...\Model_RNA_Recognition_Of_Emotions')
 ```
 
-* The line 108 allow load the GUI developed to use the system. **Please make shure that the path of the file is correct !**
+* The line 108 allow load the GUI developed to use the system. **Please make sure that the path of the file is correct !**
 
 ```python
     107        # Is loaded the file that get the GUI.       

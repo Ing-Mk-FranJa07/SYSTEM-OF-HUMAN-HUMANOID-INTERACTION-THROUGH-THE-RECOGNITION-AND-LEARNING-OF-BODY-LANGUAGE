@@ -155,11 +155,11 @@ Optional software:
 * The wrapper: [Save_Animation.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Complet%20Project/Wrappers/Save_Animation.py#L224-L235) is used to save the new motion sequences created. **Please make sure that the path of the file to save the new .csv files is correct in the lines 229 and 240**. 
 
 ```python
-   229   FileName = str("...\Data_And_RNA_Models\New_Animation_Data\New_Animation_" + str(FileNumber) + ".csv")
-   230   File = pd.read_csv(FileName, header = None)
+   229      FileName = str("...\Data_And_RNA_Models\New_Animation_Data\New_Animation_" + str(FileNumber) + ".csv")
+   230      File = pd.read_csv(FileName, header = None)
    ...
-   240   FileName = str("...\Data_And_RNA_Models\New_Animation_Data\New_Animation_" + str(FileNumber) + ".csv")
-   241   File = open(FileName, 'w') 
+   240      FileName = str("...\Data_And_RNA_Models\New_Animation_Data\New_Animation_" + str(FileNumber) + ".csv")
+   241      File = open(FileName, 'w') 
 ```
 
 * The line 71 of the main script allows load the GUI developed to use the system. **Please make sure that the path of the file is correct !**

@@ -15,6 +15,160 @@ The system developed has three more functions, one of them allow to the user to 
 * The image is a graphical representation of the system described.
 ![recogniton and learning body lenguage system](https://user-images.githubusercontent.com/31509775/33132372-86f54870-cf67-11e7-8f8f-106fbcedbe5c.PNG)
 
-### 
+### RNA models used:
+
+The ANN built to perform the recognition of the emotions using the body posture data, is a two hidden layers network that has 23 inputs and 6 ouputs that generate a codification to each emotion class designated.
+
+* The image is a representation of the neural network built.
+![ann classification problem](https://user-images.githubusercontent.com/31509775/32928269-202f9f10-cb1f-11e7-8cfe-25d3a82e2511.PNG)
+
+The LSTM were introduced by [Hochreiter & Schmidhuber (1997)](https://www.researchgate.net/publication/13853244_Long_Short-term_Memory), the LSTM, like all RNN, have the form of a chain of repeating modules of a neural network; but the difference with the regulars RNN is that this newtworks have reapeting modules with a very simple structure (a single tanh layer); and the LSTM has a reapting module with a different structure, in fact there are four neural network layers interacting in a very special way.
+
+* The image illustrates the repeating module of a normal RNN and the LSTM network.
+![lstm repeating module](https://user-images.githubusercontent.com/31509775/32632538-ffd338f6-c571-11e7-91e5-ac63bf978448.png)
+
+The LSTM model used to introduce the conversation option was inspired in the [Neural conversation model](https://arxiv.org/pdf/1506.05869v3.pdf) which is caracterize by use one sequence to get another sequence, seq2seq, this model was built using the [Chatterbot wrapper](http://chatterbot.readthedocs.io/en/stable/index.html), disponible to python, which is a library that makes easier generate automates responses to string inputs using a selectrion of machine learning algorithms, including RNN and LSTM models, to produce different types of responses. 
+
+* The image represents the LSTM model implemented with the Chatterbot tool.
+![lstm](https://user-images.githubusercontent.com/31509775/32928662-1654f376-cb21-11e7-9464-0a1ebd1df5c9.png)
+
+The GAN model used to created "originals" motion sequences, in fact is a joint work of two neural networks, the first of them create new data, using deconvolutional layers, from a ramdon numerics value, and the second compare this data with the original, data presented by the user in the training, to decide which is real and which is fake; using convolutional layers. Epoch by epoch the first neural network goes increasing the perform of the data created with the feedback of the second network. 
+
+* The image represents the first neural model structure used in the GAN model.
+![generative model7](https://user-images.githubusercontent.com/31509775/32303654-e7969c1e-bf37-11e7-83f8-d0871afc6ae4.PNG)
+
+* The image represents the second neural model structure used in the GAN model.
+![discriminative model](https://user-images.githubusercontent.com/31509775/32345300-c775c43c-bfd7-11e7-824c-e1d53ca4f967.PNG)
+
+### Hardware and software requirements:
+
+* Microsoft Kinect V2 sensor.
+
+![kinect](https://user-images.githubusercontent.com/31509775/32930198-222ed504-cb2b-11e7-8455-ba7d30df2631.jpg)
+
+* Microsoft Kinect V2 adapter. 
+
+![kinect adapter](https://user-images.githubusercontent.com/31509775/32930206-2a22a600-cb2b-11e7-86f9-96ecb8669ddc.jpg)
+
+* Robot Pepper developed by Aldebaran robotics from SoftBank group. 
+
+![robot peppper](https://user-images.githubusercontent.com/31509775/33133904-3c61430e-cf6c-11e7-9e78-a23be64623ab.png)
+
+* Optional: GPU card with CUDA Compute Capability 3.0 or higher [(List of supported GPU cards in NVIDIA Documentation)](https://developer.nvidia.com/cuda-gpus).
+
+![gpu](https://user-images.githubusercontent.com/31509775/32930230-5831bcfc-cb2b-11e7-8005-4cac20045a18.png)
+
+This system was developed using **PYTHON 2.7 (32 bits) in WINDOWS 10** to run correctly this script is necessary first to have installed:
+
+Is recommended install [Anaconda (Python 2.7 (32 bits) version](https://www.anaconda.com/download/#windows) to get easier the packages necessaries. 
+
+* [Coregraphe suit version 2.5.5 from SoftBank Robotics Community](http://doc.aldebaran.com/2-5/software/choregraphe/installing.html#desktop-installation): Aldebaran documentation website. Choregraphe suit installation guide.
+* [pynaoqi version 2.5.5.5](http://doc.aldebaran.com/2-5/dev/python/install_guide.html#python-install-guide): Aldebaran documentation website. Python SDK installation guide.
+* [Kinect for Windows SDK version 2.0](https://www.microsoft.com/en-us/download/details.aspx?id=44561): Microsoft website link with the installation instructions.
+* [pykinect2](https://github.com/Kinect/PyKinect2): GitHub link, this repository has all the instructions to use the Kinect V2 with Python.
+* [PyQT4 GPL version 4.11.4 for Python 2.7 (32 bits)](https://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.11.4/PyQt4-4.11.4-gpl-Py2.7-Qt4.8.7-x32.exe/download): Direct downlad link.
+* [pygame version 1.9.2](http://www.pygame.org/news): pygame website link, you can found the download option for the pygame version 1.9.2 there.
+* [keras version 2.0.6](https://keras.io/#installation): keras website link with all installation instructions.
+* [Theano version 0.9.0 (keras backend engine)](http://deeplearning.net/software/theano/install_windows.html): theano windows installation instructions link.
+* [speech recognition version 3.7.1](https://pypi.python.org/pypi/SpeechRecognition/): pypi.python website, all the installation instruction are specified there. (possible requirements: pyaudio version 0.2.11).
+* [chatterbot version 0.7.6](http://chatterbot.readthedocs.io/en/stable/setup.html): chatterbot website installation instructions link.
+* [cv2 version 3.0.0](https://docs.opencv.org/3.3.1/d5/de5/tutorial_py_setup_in_windows.html): OpenCV website link.
+* numpy version 1.12.1.
+* ctypes version 1.1.0
+
+Optional software:
+
+* [CUDA® Toolkit 8.0](http://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/): Ensure that you append the relevant Cuda pathnames to the %PATH% environment variable as described in the NVIDIA documentation.
+* The NVIDIA drivers associated with CUDA Toolkit 8.0.
+* [cuDNN v6.1](https://developer.nvidia.com/cudnn): Note that cuDNN is typically installed in a different location from the other CUDA DLLs. Ensure that you add the directory where you installed the cuDNN DLL to your %PATH% environment variable.
+
+### WARNINGS:
+
+* To download the Aldebaran softeare and SDK is necessary to have a valid account and a register robot Pepper interface.
+
+* Please make shure of download all the scripts and files presented in this repository.
+
+* The line 38 of the wrapper: [Neural_Networks_Models.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Complet%20Project/Wrappers/Neural_Networks_Models.py#L37-L38) allow load the ANN model built (you can re-train or modify this model with the script [RNA_Emotions_BodyPosture_Keras_Tensorflow.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Nueral%20Networks/Classify%20emotions)), the model is avaible in this repository with the name **"Model_RNA_Recognition_Of_Emotions"** in the folder [Data_And_RNA_Models](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Complet%20Project/Data_And_RNA_Models). **Please make shure that the path of the file is correct !**
+
+```python
+    37       # Is loaded the RNA model that perform the recognitions of emotions, using the joint angles information.  
+    38       self.RNA_Emotions = load_model('...\Data_And_RNA_Models\Model_RNA_Recognition_Of_Emotions')
+```
+
+* The line 41 of the wrapper: [Neural_Networks_Models.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Complet%20Project/Wrappers/Neural_Networks_Models.py#L37-L38) allow load the motion sequences data base used to make that Pepper reproduce behaviors animations (You can found the data base: **"Animations Sequences.csv"** in the folder: [Data_And_RNA_Models](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Complet%20Project/Data_And_RNA_Models). **Please make shure that the path of the file is correct !**
+
+```python
+    40       # Is loaded the Motion animations database.
+    41       self.AnimationsDataBase = pd.read_csv('...\Data_And_RNA_Models\Animations Sequence.csv', header = 0)
+    42       self.AnimationsDataBase.set_index("Animation", inplace = True)
+```
+
+* The lines 45-47 of the wrapper: [Neural_Networks_Models.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Complet%20Project/Wrappers/Neural_Networks_Models.py#L37-L38) should import the GAN models built to create new "originals" motion sequences, to be used in the "Alternative world" function, but they are commented because the in the version 2.7 of pyhton is not avaible tensorflow like backend to keras, so is necessary use theano, and this doesn´t the features to run the some layers of the models built. You can found the models in the in the folder [Data_And_RNA_Models](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Complet%20Project/Data_And_RNA_Models).
+
+```python
+    44       # Are loaded the GAN models, that perform the creation of Motion animation sequences.
+    45       #self.Adversarial = load_model('...\Data_And_RNA_Models\Adversarial Model')
+    46       #self.Discriminator = load_model('...\Data_And_RNA_Models\Discriminator Model')
+    47       #self.Generator = load_model('...\Data_And_RNA_Models\Generator Model')
+```
+
+* Beacause the previous explanation, the lines 181-187 of the same Wrapper: [Neural_Networks_Models.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Complet%20Project/Wrappers/Neural_Networks_Models.py#L37-L38) are used to load the data base of the motion sequences created using the GAN model (you can found it in this repository in the folder: [Create motion sequences](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Nueral%20Networks/Create%20Motion%20Sequences) and is recommended first run this script to generate the motion sequences), selecting one of them at the time in a random form. This is used to perform the Pepper's behavior in the "Alternative world" function. The logic to select and import the motion sequences follow the current explanation: is select a random epoch, 1 to 300, and then is selectec a random motion sequence, 1 to 32 (the author trained the GAN model by 300 epochs and save all the data generated, in each epoch are generated 32 motion sequences). Finally are loaded the file with the structure: "NewAnimation Epoch-Motion sequence"; example: "NewAnimation 100-32".
+
+**Please, if you generate a different number of motion sequences with the GAN model, change the randoms and valitations values.**
+**Please make shure that the path to load the file is correct. The folder "DataBaseGeneratedByRNA" is in the folder: [Data_And_RNA_Models](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Complet%20Project/Data_And_RNA_Models). And has a few motion sequences developed; if you run the GAN model, it goes to save the motion sequences created in that folder, please check the path too.**
+
+```python
+   181      # Are get two random int to select a original animation of the DataSet.
+   182      Iteration = np.random.randint(301); Iteration = [1 if Iteration == 0 else Iteration]; Iteration = [300 if Iteration == 301 else Iteration]
+   183      AnimationData = np.random.randint(33); AnimationData = [1 if AnimationData == 0 else AnimationData]; AnimationData = [300 if AnimationData == 301 else AnimationData]
+   184       
+   185       # Is loaded a original animation of the DataSet.
+   186       FileName = ("...\Data_And_RNA_Models\DataBaseGeneratedByRNA\ NewAnimation " + str(Iteration[0][0]) + "-" + str(AnimationData[0][0]) + ".csv")
+         File = pd.read_csv(FileName, header = None)
+```
+
+* To create a new corpus data in the chatterbot library, is necessary go to the chatterbot_corpus folder and then into the data folder (installed if you use Anaconda in: **C:\...\Anaconda2_Win32\Lib\site-packages\chatterbot_corpus\data**) and create a new folder with the name "Pepper_Speech" (this was the name used by the author to create the folder in which was saved the corpus with the dialogues of the Conversation with Pepper) **Is important that if you select a different name, change the corpus name selector in the line 56 of the wrapper: [Neural_Networks_Models.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Complet%20Project/Wrappers/Neural_Networks_Models.py#L37-L38) **), and then create a file with the name **"myown.yml"** (you can open this file with any text editor) and paste the dialogues: [Conversation with Pepper.txt](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Emotions%20Recognition/Conversation%20with%20Pepper.txt).
+
+```python
+    49      # Is configured a ChatBot model that allow get answers to pre-define questions.         
+    50      self. PepperSay = ChatBot('Pepper Answers', 
+    51                                 logic_adapter = ["chatterbot.logic.MathematicalEvualation",
+    52                                                  "chatterbot.logic.TimeLogicAdapter",
+    53                                                  "chatterbot.logic.BestMatch"])
+    54       
+    55      self.PepperSay.set_trainer(ChatterBotCorpusTrainer)                     # Configure the train method.
+    56      self.PepperSay.train("chatterbot.corpus.Pepper_Speech")                 # Train the model, with a specific dataset.
+```
+
+* To make that the robot Pepper perform a specific behavior with its speech, is used a second LSTM model created with the chatterbot tool, which its input is the answer generated by the first one, and their output is the tag with the name of the motion sequence that the robot goes to reproduce. This model must to be configurated in the same form that the previous, creating a folder in the corpus folder with the name "Pepper_Speech_Animation" **(Remind if you select a different name, you have to check the name in the line 62 of the wrapper: [Neural_Networks_Models.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Complet%20Project/Wrappers/Neural_Networks_Models.py#L37-L38))**, and then create a file with the name **"myown.yml"** and paste the dialogues: [Tags to play motion sequences in conversations.txt](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Complet%20Project/Data_And_RNA_Models/Tags%20to%20play%20motion%20sequences%20in%20conversations.txt) 
+
+```python
+    58      # Is configured a ChatBot model that allow get the animation codes consistently with the speech.
+    59      self.PepperAnimation = ChatBot('Pepper Speech Animations')
+    61  
+    62      self.PepperAnimation.set_trainer(ChatterBotCorpusTrainer)               # Configure the train method.
+    63      self.PepperAnimation.train("chatterbot.corpus.Pepper_Speech_Animation") # Train the model, with a specific dataset.
+```
+
+* The lines 56 and 63 allow the training of the chatterbot models, when the training end, the file **"db.sqlite3"** is created, if you want, you can comment this line to avoid the time of the training, but please make shure that you have downloaded the **"db.sqlite3"** file into the folder: [Data_And_RNA_Models](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Complet%20Project/Data_And_RNA_Models).
+
+* The wrapper: [Save_Animation.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Complet%20Project/Wrappers/Save_Animation.py#L224-L235) is used to save the new motion sequences created. **Please make shure that the path of the file to save the new .csv files is correct in the lines 229 and 240**. 
+
+```python
+   229   FileName = str("...\Data_And_RNA_Models\New_Animation_Data\New_Animation_" + str(FileNumber) + ".csv")
+   230   File = pd.read_csv(FileName, header = None)
+   ...
+   240   FileName = str("...\Data_And_RNA_Models\New_Animation_Data\New_Animation_" + str(FileNumber) + ".csv")
+   241   File = open(FileName, 'w') 
+```
+
+* The line 71 of the main script allow load the GUI developed to use the system. **Please make shure that the path of the file is correct !**.
+
+```python
+    70        # Is "imported" the file that get the GUI.                
+    71        self.MyGUI = uic.loadUi('...\Recognition_And_Learning_BodyLenguageGUI.ui', self)
+```
+
+
 
 

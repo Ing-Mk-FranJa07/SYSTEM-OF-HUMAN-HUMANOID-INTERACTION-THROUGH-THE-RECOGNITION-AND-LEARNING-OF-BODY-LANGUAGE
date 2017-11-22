@@ -124,7 +124,7 @@ Optional software:
    184       
    185       # Is loaded a original animation of the DataSet.
    186       FileName = ("...\Data_And_RNA_Models\DataBaseGeneratedByRNA\ NewAnimation " + str(Iteration[0][0]) + "-" + str(AnimationData[0][0]) + ".csv")
-         File = pd.read_csv(FileName, header = None)
+   187       File = pd.read_csv(FileName, header = None)
 ```
 
 * To create a new corpus data in the chatterbot library, is necessary go to the chatterbot_corpus folder and then into the data folder (installed if you use Anaconda in: **C:\...\Anaconda2_Win32\Lib\site-packages\chatterbot_corpus\data**) and create a new folder with the name "Pepper_Speech" (this was the name used by the author to create the folder in which was saved the corpus with the dialogues of the Conversation with Pepper) **Is important that if you select a different name, change the corpus name selector in the line 56 of the wrapper: [Neural_Networks_Models.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Complet%20Project/Wrappers/Neural_Networks_Models.py#L37-L38) **), and then create a file with the name **"myown.yml"** (you can open this file with any text editor) and paste the dialogues: [Conversation with Pepper.txt](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Complet%20Project/Data_And_RNA_Models/Conversation%20with%20Pepper.txt).

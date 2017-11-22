@@ -32,7 +32,7 @@ The LSTM model used to introduce the conversation option was inspired in the [Ne
 * The image represents the LSTM model implemented with the Chatterbot tool.
 ![lstm](https://user-images.githubusercontent.com/31509775/32928662-1654f376-cb21-11e7-9464-0a1ebd1df5c9.png)
 
-The GAN model used to created "originals" motion sequences, in fact is a joint work of two neural networks, the first of them create new data, using deconvolutional layers, from a ramdon numerics value, and the second compare this data with the original, data presented by the user in the training, to decide which is real and which is fake; using convolutional layers. Epoch by epoch the first neural network goes increasing the perform of the data created with the feedback of the second network. 
+The GAN model used to created "originals" motion sequences, in fact is a joint work of two neural networks, the first of them create new data, using deconvolutional layers, from a random numerics value, and the second compare this data with the original, data presented by the user in the training, to decide which is real and which is fake; using convolutional layers. Epoch by epoch the first neural network goes increasing the perform of the data created with the feedback of the second network. 
 
 * The image represents the first neural model structure used in the GAN model.
 ![generative model7](https://user-images.githubusercontent.com/31509775/32303654-e7969c1e-bf37-11e7-83f8-d0871afc6ae4.PNG)

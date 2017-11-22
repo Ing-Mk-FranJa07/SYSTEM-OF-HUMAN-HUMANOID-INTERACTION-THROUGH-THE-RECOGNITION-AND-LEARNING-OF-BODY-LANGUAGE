@@ -36,7 +36,7 @@ For the implementation of the system developed [Recognition_And_Learning_BodyLen
 
 ### Second step: Neural Network Structure.
 
-The script [Generate_Animations_GAN.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Nueral%20Networks/Create%20Motion%20Sequences/RNA_Generate_Animations_GAN.py) has two classes, the first class "TakeTime" is used to calculate the time spent to train the GAN model. The second class "DCGAN" is used to build and train the GAN model, also save the models and the motion sequences created by the GAN model; the init function allow load the data and organize it in the structure used by the model.
+The script developed has two classes, the first class "TakeTime" is used to calculate the time spent to train the GAN model. The second class "DCGAN" is used to build and train the GAN model, also save the models and the motion sequences created by the GAN model; the init function allow load the data and organize it in the structure used by the model.
 
 **The data structure** used by the model is an array that contain the data in a matrix that has: (40 rows, 16 columns, 1 channel), like a gray image = 1 channel, to generate this, the whole data, that is to say, all movement sequences are grouped, and to each sequences is added one raw copying the first raw. This is done, because the structure of the Generative model goes increasing the kernel in a multiple of 2. Also the data is normalize, dividing the whole data by the maximmun value, to put the all values in the interval -1.0 to 1.0.
 ```python
@@ -258,7 +258,7 @@ After the GAN model has been trained, the models of the networks: Generative, Di
    394                DataFrame.to_csv("...\DataBaseGeneratedByRNA\ NewAnimation " + str(L+1) + "-" + str(A+1) + ".csv", sep = ",", header = False, index = False, index_label = 'Node')
 ```
 
-The GAN model presented here, can develop [motion sequences](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Nueral%20Networks/Create%20Motion%20Sequences/DataBaseGeneratedByRNA), but this sequences are not similars to the [original motion sequences](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Motion%20Sequences%20Data%20Base%20Creator/Motion%20Sequences), you can change all the parameters used to buid and train the networks and also the optimizer algorithms, and try to get a better performance of this model.
+The GAN model presented here, can develop ["original" motion sequences](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Nueral%20Networks/Create%20Motion%20Sequences/DataBaseGeneratedByRNA), but this sequences are not similars to the motion sequences, you can change all the parameters used to buid and train the networks and also the optimizer algorithms, and try to get a better performance of this model.
 
 ```python
    395 if __name__ == '__main__':

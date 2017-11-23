@@ -280,9 +280,19 @@ The recognition of emotions function works using the ANN built and trained by th
 The imitation function allows the robot replay the moves performed by the user in front the kinect. Is necesarry that the tracking be completed to send the robot the angles values. The robot has a moves limitations so, there are some many moves that it can't replay.
 
 * The image shows the imitation function working.
+
 ![imitation function gif](https://user-images.githubusercontent.com/31509775/33188193-d6f4c176-d065-11e7-841a-6b2c3d0a5334.gif)
 
 The alternative world is game in which the user has a few seconds to perform moves with his body and then the robot goes to reproduce that moves if they would be perform in an alternative world. 
 
-* The image shows a example of the alternative world game.
+* The image shows an example of the alternative world game.
+
 ![alternative world game gif](https://user-images.githubusercontent.com/31509775/33188209-1400b17e-d066-11e7-9523-6c086c0191bc.gif)
+
+The user has the option to create his own motion sequences to be reproduced by the robot. If the user wants, he goes to have 5 seconds to create with his body the motion sequence, then the robot goes to reproduce it, and is the user want, he can save it creating a .csv file with the data.
+
+* The image shows an example of the option to create and save a new motion sequence.
+
+![create a new motion sequence gif](https://user-images.githubusercontent.com/31509775/33188307-e3b09cc2-d066-11e7-95bd-0fb57996cc33.gif)
+
+**Click on the image to see them with a better quality**

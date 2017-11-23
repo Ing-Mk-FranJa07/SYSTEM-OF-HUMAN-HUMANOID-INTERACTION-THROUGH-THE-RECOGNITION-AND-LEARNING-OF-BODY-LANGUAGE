@@ -257,6 +257,14 @@ The last internal process is used just to the function that allow create and sav
 
 ### System user guide:
 
+* The image shows the GUI developed to use the system:
+![recognition of emotions gui](https://user-images.githubusercontent.com/31509775/33186878-4351f178-d05b-11e7-857d-ff726080a77d.PNG)
+
+When the system is started the GUI appear. The first step to use the system is do the connection with the robot Pepper, or the virtual robot that you can use with the Choregraphe software. You need the Ip number (127.0.0.1 in the mayorie of the cases) and the Port number (you can find the port number of the virtual robot in the Choregraphe suit going to Edit -> Preferences -> Virtual Robot). Now you can use the speech recognition system to have conversation with Pepper, activating the checkbox "Talk with Pepper deactivated" in that momment the text goes to change to "Talk with Pepper activated", deschecking the checkibox the function ends, and you can use the emotions recognition connecting the kinect camera. Also you can use the imitation mode or the alternative world game in any momment cheacking the checkbox in any momment. Is you want create a new motion sequence you can do it in any momment clicking on the button "Create new animation motion sequence" while the kinect be connected. 
+
+* The image shows how start the system and use the differents functions of them.
+![recogniton and learning body lenguage user guide gif](https://user-images.githubusercontent.com/31509775/33186903-7f745128-d05b-11e7-8e2f-f0327d28e09c.gif)
+
 
 
 

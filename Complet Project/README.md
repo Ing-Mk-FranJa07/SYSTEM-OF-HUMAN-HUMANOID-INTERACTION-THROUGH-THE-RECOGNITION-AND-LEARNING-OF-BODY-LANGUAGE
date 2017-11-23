@@ -268,15 +268,21 @@ When the system is started the GUI appear. The first step to use the system is d
 In any moment the user can activate the speech recognition function, when this functions is activated the kinect camera is disconnect, this happen because the actualization of the GUI take more time that the time that need the code to be ran, so the GUI can´t show the new image, the change in the emojies and the speech and answer generated at the same time. Click again on the checkbox to deactivate this function and use the kinect camera again. The speech recognition take a time while transform the speech to text. The GUI don´t show the informative messages, so if you can open a console to follow the changes it will do better the perform of the function. Also, is recommended have a good microphone and be in a low noise envairoment. The chatterbot model can generate answer to similar sentences to that were trained, is not necessary that be the same sentences.
 
 * The image shows a few sentences spoken to the system and the answer spoken by the robot before repdroduce a motion sequence animation.
+
 ![speech recognition system](https://user-images.githubusercontent.com/31509775/33188139-44f4337e-d065-11e7-8fc0-fd1ec143ad93.gif)
 
 The recognition of emotions function works using the ANN built and trained by the author and generte a speech and behaviors motion sequences created by him too. The advice is that you create your own data base with different persons trying to represent the emotions with theirs bodys to re-train the neural model and increase the performance of the system. 
 
 * The image shows some examples of the response of the system using the robot Pepper like interface front the mood expresed by the user with his posture.
+
 ![recognition of emotions sytem gif](https://user-images.githubusercontent.com/31509775/33188045-7de6951a-d064-11e7-8b92-791e4e591f54.gif)
 
 The imitation function allows the robot replay the moves performed by the user in front the kinect. Is necesarry that the tracking be completed to send the robot the angles values. The robot has a moves limitations so, there are some many moves that it can't replay.
 
 * The image shows the imitation function working.
+![imitation function gif](https://user-images.githubusercontent.com/31509775/33188193-d6f4c176-d065-11e7-841a-6b2c3d0a5334.gif)
 
+The alternative world is game in which the user has a few seconds to perform moves with his body and then the robot goes to reproduce that moves if they would be perform in an alternative world. 
 
+* The image shows a example of the alternative world game.
+![alternative world game gif](https://user-images.githubusercontent.com/31509775/33188209-1400b17e-d066-11e7-9523-6c086c0191bc.gif)

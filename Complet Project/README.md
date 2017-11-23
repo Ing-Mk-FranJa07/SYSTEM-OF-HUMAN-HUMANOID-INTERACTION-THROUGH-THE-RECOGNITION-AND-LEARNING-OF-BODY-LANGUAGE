@@ -194,21 +194,21 @@ To start the interaction with Pepper based in the human mood, is necessary conne
 
 ***"Mimic style" (Imitation function):***
 
-When the imitation fucntion is activated, all the moves that the user makes with his body will copied by the robot in real time. The process to allow the imitation start to catching the images and show it in the GUI with the skeleton tracking of the body and compute the eulerian body joints angles to send them to the robot, if the tracking was corrected. 
+When the imitation fucntion is activated, all the moves that the user makes with his body will copied by the robot in real time. The process to allow the imitation start to catching the images and show it in the GUI with the skeleton tracking of the body and compute the eulerian body joints angles to send them to the robot, if the tracking was correct. 
 
 * The images shows the general flowchart of the imitation function.
 ![flowchart recognition and learning body lenguage imitation function](https://user-images.githubusercontent.com/31509775/33183858-a3dc2036-d047-11e7-8392-739f3b498c02.PNG)
 
 ***"Wear behavior" (Alternative world function):***
 
-When the game "Alternative world" is activated, the user will have a few seconds to make a motion sequence with his body and then Pepper goes to reproduce a total different motion sequence. The process start getting the image and show it in the GUI with the skeleton tracking (the original idea was used the tracking information to create a original motion sequences but because software limitations the real working doesn´t used the tracking informations), then is send to Pepper a random motion sequence created by the GAN model prevously.
+When the game "Alternative world" is activated, the user will have a few seconds to make a motion sequence with his body and then Pepper goes to reproduce a total different motion sequence. The process start getting the image and show it in the GUI with the skeleton tracking (the original idea was used the tracking information to create a original motion sequences but because software limitations the real working doesn´t used the tracking informations), then is send to Pepper, a random motion sequence created by the GAN model prevously.
 
 * The image shows the general flowchart of the game "Alternative world".
 ![flowchart recognition and learning body lenguage alternative world](https://user-images.githubusercontent.com/31509775/33184023-9a2fc8a2-d048-11e7-8a6b-161cd81b922e.PNG)
 
 ***"New animations" (Create and save new motion sequence function):***
 
-To create and save new motion sequence, is given to the user 5 seconds to perform moves with his body, while that time is catched the images and the skeleton tracking to generate a visual feedback in the GUI and also is computed the skeleton information to create a 39 values by each one of the 15 angles (16 with the Head Yaw that always is cero because the complexity to calculate it), if the tracking was corrected and was possible to get the enought information, the next step is make that the robot reproduce the motion sequence to decide if this is aceptabl, the user can saved or deleted the motion sequences, creating a .csv file or just clearing the information saved. If the tracking information was not enought is restarted the counter to start again.
+To create and save a new motion sequence, is given to the user 5 seconds to perform moves with his body while that is catched the images and the skeleton tracking to generate a visual feedback in the GUI and also is computed the skeleton information to create a 39 values by each one of the 15 angles (16 with the head Yaw that always is cero because the complexity to calculate it), if the tracking was correct and was possible to get the enought information, the next step is make that the robot reproduce the motion sequence to decide if this is aceptabl, the user can saved creating a .csv file or deleted the motion sequences just clearing the information saved. If the tracking information was not enought is restarted the counter to start again.
 
 * The image shows the general flowchart to the process that allow create a new motion sequence.
 ![flowchart recognition and learning body lenguage create new animations](https://user-images.githubusercontent.com/31509775/33184274-ba0c83ee-d049-11e7-9576-4c8997abc20a.PNG)
@@ -250,13 +250,12 @@ The process to ***verify the angles values*** before send it to the robot, is ba
 * The image shows the flowchart to verify the angles values process.
 ![flowchart recognition and learning body lenguage verify angles values process](https://user-images.githubusercontent.com/31509775/33181874-c5afe0ce-d03f-11e7-99e3-d096b582df00.PNG)
 
-The last internal process is used just to the function that allow create and save new motion sequences and this process is used to ***verify and change the "None" angles values***, is is found a "none" value, this is replaced by the previous value. This process is done by all joints values.
+The last internal process is used just to the function that allow create and save new motion sequences and this process is used to ***verify and change the "None" angles values***, if is found a "none" value, this is replaced by the previous value. This process is done by all joints values.
 
 * The image shows the flowchart to verify the "None" values process.
 ![flowchart recognition and learning body lenguage verify none values](https://user-images.githubusercontent.com/31509775/33183606-7c7feece-d046-11e7-9bcf-e54c3173feed.PNG)
 
-
-
+### System user guide:
 
 
 

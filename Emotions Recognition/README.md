@@ -103,6 +103,8 @@ The perform of the system is based in two big function that are integrated in th
 * The image show the general flowchart of the system.
 ![recognition of emotions general flowchart](https://user-images.githubusercontent.com/31509775/32955129-1384272c-cb83-11e7-93c8-78f8b97cfba4.PNG)
 
+***Skeleton tracking and recognition of emotions function***
+
 The skeleton tracking process allow get back the image gotten by the Kinect, and also, the body information about the joints tracked from the nearest body to the Kinect detected, the spatial ubication of each joint and their orientation. In this process the image es showed to the user and is drawn the skeleton representation on the user body in the image. The final objective of this process is to save the eulerian angles orientation of each joint. 
 
 * The image shows the general flowchart of the skeleton tracking process.
@@ -132,6 +134,8 @@ Finally, the emotion is recognize using the neural network model built and load 
 
 * The image shows the flowchart of the process that allow recognize the emotion.
 ![flowchart recognition of emotion process](https://user-images.githubusercontent.com/31509775/33040309-a7e2d760-ce08-11e7-9ce2-75e8ea124e91.PNG)
+
+***Speech recognition and generate answers function***
 
 The second function of the system allow generate an answer using a LSTM neural model built with the chatterbot library, from the speech of the user that is gotten with the microphone of the pc (you can use a external microphone to) and then is tranformated into a text string that will be the input to the LSTM neural model. The text string and the answer generated are showed in the GUI.
 

@@ -169,6 +169,14 @@ Optional software:
     71          self.MyGUI = uic.loadUi('...\Recognition_And_Learning_BodyLenguageGUI.ui', self)
 ```
 
+### Code explanation:
+
+The perform of the system is based in the use of the GUI developed; while the GUI be on, thw system goes to be working, allowing the interaction with the Robot Pepper throught two principal functions, the first one the recognition of the emotions to make that Pepper reproduce a coherent behavior, and the recognition of the speech that allow have conversation with Pepper in a question-answer wey. Also, the system can be used throught three extra functions that just are avaible when the Microsoft Kinect V2 camera is aviable, this functions are: The imitation mode, the "Alvertanite world" game and the option to create and save new motion sequences. 
+
+When the system start, the GUI is initiated and the first part is create the connection with the Robot Pepper, using a IP and Port Numbers. If the connection is successful, the user can activate the recognition of the emotions or the speech recognition function. Is this last is activated, in any momment, the Kinect camera will be disconnect, and the user should end the speech recognition before to connect the Kinect Camera and start the recognition of emotions. If the Kinect camera is connected, the user can change in any mommento to another function like the imitation mode, the "Alternative world" game or the creation of a new motion sequence, deactivating the recognition of emotions but no disconnecting the Kinect. 
+
+* The image shows the flowchart of the system general process.
+![flowchart recognition and learning body lenguage](https://user-images.githubusercontent.com/31509775/33159259-4e998996-cfdf-11e7-878f-a921dd9d63ab.PNG) 
 
 
 

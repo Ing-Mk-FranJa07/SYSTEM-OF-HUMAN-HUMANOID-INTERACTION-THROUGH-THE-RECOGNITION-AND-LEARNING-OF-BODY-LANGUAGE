@@ -189,20 +189,29 @@ When the function that allow have conversation with the robot is activated, the 
 
 To start the interaction with Pepper based in the human mood, is necessary connect the Kinect Camera, inmediatly the system start to capture images, when is recognize a body in the image is computed the skeleton tracking of that body, getting the data about the spatial position and the orientation, expressed in eulerian angles (Roll, Yaw, Pitch), of each body joint, With that information is drawn the skeleton representation on the user body in the image showed in the GUI, and also is recognized the emotion represented by the body posture using the ANN model pre-trained. Finally when the emotion is determinated, is sent to the robot a speech and then a motion sequence to make that Pepper speak and have a behaivor coherent with the emotion, also, in the GUI is showed the emotion recognized using emojies.
 
-* The image shows the main flowchart of the emotions recognition system.
+* The image shows the general flowchart of the emotions recognition system.
 ![flowchart recognition and learning body lenguage emotions recognition](https://user-images.githubusercontent.com/31509775/33177302-1d58960a-d030-11e7-81e4-1f2209673043.PNG)
 
 ***"Mimic style" (Imitation function):***
 
+When the imitation fucntion is activated, all the moves that the user makes with his body will copied by the robot in real time. The process to allow the imitation start to catching the images and show it in the GUI with the skeleton tracking of the body and compute the eulerian body joints angles to send them to the robot, if the tracking was corrected. 
 
+* The images shows the general flowchart of the imitation function.
+![flowchart recognition and learning body lenguage imitation function](https://user-images.githubusercontent.com/31509775/33183858-a3dc2036-d047-11e7-8392-739f3b498c02.PNG)
 
 ***"Wear behavior" (Alternative world function):***
 
+When the game "Alternative world" is activated, the user will have a few seconds to make a motion sequence with his body and then Pepper goes to reproduce a total different motion sequence. The process start getting the image and show it in the GUI with the skeleton tracking (the original idea was used the tracking information to create a original motion sequences but because software limitations the real working doesn´t used the tracking informations), then is send to Pepper a random motion sequence created by the GAN model prevously.
 
+* The image shows the general flowchart of the game "Alternative world".
+![flowchart recognition and learning body lenguage alternative world](https://user-images.githubusercontent.com/31509775/33184023-9a2fc8a2-d048-11e7-8a6b-161cd81b922e.PNG)
 
 ***"New animations" (Create and save new motion sequence function):***
 
+To create and save new motion sequence, is given to the user 5 seconds to perform moves with his body, while that time is catched the images and the skeleton tracking to generate a visual feedback in the GUI and also is computed the skeleton information to create a 39 values by each one of the 15 angles (16 with the Head Yaw that always is cero because the complexity to calculate it), if the tracking was corrected and was possible to get the enought information, the next step is make that the robot reproduce the motion sequence to decide if this is aceptabl, the user can saved or deleted the motion sequences, creating a .csv file or just clearing the information saved. If the tracking information was not enought is restarted the counter to start again.
 
+* The image shows the general flowchart to the process that allow create a new motion sequence.
+![flowchart recognition and learning body lenguage create new animations](https://user-images.githubusercontent.com/31509775/33184274-ba0c83ee-d049-11e7-9576-4c8997abc20a.PNG)
 
 ***System internal process***
 
@@ -231,15 +240,22 @@ To ***get the eulerian angles (Yaw, Roll, Pitch)*** is necessary verify if the r
 * The image shows the flowchart to the computing eulerian angles process.
 ![flowchart recognition and learning body lenguage get eulerian angles process](https://user-images.githubusercontent.com/31509775/33179980-2f944e82-d039-11e7-881e-61ceae421c15.PNG)
 
-To ***make that Pepper change its joints orientations*** first is determinaned by the function that is working. If the imitation mode is activated, just one change in each Pepper joint will be done each time. With the anothers functions the Pepper's joints goes to change its orientation several times (39 times). The control of the body start sending the waist angles vales, and then the head angles values, next to be send the right arm angles vales and finally the left arms angels values. All angles values must to be verify before to be sent, because the robot has a limitations in its joints moves ranges.
+To ***make that Pepper change its joints orientations*** first is determinaned by the function that is working. If the imitation mode is activated, just one change in each Pepper joints will be done each time. With the another functions the Pepper's joints goes to change its orientation several times (39 times). The control of the body start sending the waist angles values, and then the head angles values, next is sent the right arm angles values and finally the left arms angles values. All angles values must to be verify before to be sent, because the robot has a limitations in its joints moves ranges.
 
 * The image shows the flowchart to send the angles values to the robot Pepper joints.
 ![flowchart recognition and learning body lenguage send to pepper the angles values](https://user-images.githubusercontent.com/31509775/33181547-9d8fdde8-d03e-11e7-8a98-95cf2f5cab0e.PNG)
 
-The process to ***verify the angles values*** before send it to the robot, is based in the restrictions of it (you can go furthere finding more information about Pepper's restrictions moves [in this documentation](http://doc.aldebaran.com/2-5/family/pepper_technical/joints_pep.html)). Each angle is verify to know is belongs to a specifig range, depending of the position to the adjacent joints the value of a specific joint can has a different move range. If the value is within the range limits is sent, if not, is aproximated to the nearest limit and then is sent.
+The process to ***verify the angles values*** before send it to the robot, is based in the restrictions of it (you can go furthere finding more information about Pepper restrictions of moves [in this documentation](http://doc.aldebaran.com/2-5/family/pepper_technical/joints_pep.html)). Each angle is verify to know is belongs to a specifig range, depending of the position to the adjacent joints, the value of a specific joints can has a different move range. If the value is within the range limits,  is sent, if not, is aproximated to the nearest limit and then is sent.
 
 * The image shows the flowchart to verify the angles values process.
 ![flowchart recognition and learning body lenguage verify angles values process](https://user-images.githubusercontent.com/31509775/33181874-c5afe0ce-d03f-11e7-99e3-d096b582df00.PNG)
+
+The last internal process is used just to the function that allow create and save new motion sequences and this process is used to ***verify and change the "None" angles values***, is is found a "none" value, this is replaced by the previous value. This process is done by all joints values.
+
+* The image shows the flowchart to verify the "None" values process.
+![flowchart recognition and learning body lenguage verify none values](https://user-images.githubusercontent.com/31509775/33183606-7c7feece-d046-11e7-9bcf-e54c3173feed.PNG)
+
+
 
 
 

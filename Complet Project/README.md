@@ -221,7 +221,7 @@ To ***draw the skeleton representation*** on the user's body in the image, is ne
 * The image shows the logical process to draw the skeleton tracking.
 ![flowchart draw body](https://user-images.githubusercontent.com/31509775/32955651-9d23ae84-cb84-11e7-91b7-1035102d79a4.PNG)
 
-The process to **"draw the "bones"*** of the body is a simple process that verify if each joint have been tracked correctly or not, and use the spatial coordinates (x, y) from the first joint to start the bone and the coordiantes of the second joint to end the bone. Is the both joints were tracked correctly the bone will be drawn with a green color, if one of them was not tracked correctly the bone will be red.
+The process to ***draw the "bones"*** of the body is a simple process that verify if each joint have been tracked correctly or not, and use the spatial coordinates (x, y) from the first joint to start the bone and the coordiantes of the second joint to end the bone. Is the both joints were tracked correctly the bone will be drawn with a green color, if one of them was not tracked correctly the bone will be red.
 
 * The image shows the flowchart to the process to draw the bones.
 ![flowchart draw bones](https://user-images.githubusercontent.com/31509775/32955857-29cdbd5c-cb85-11e7-830a-82ebf09194be.PNG)
@@ -231,6 +231,15 @@ To ***get the eulerian angles (Yaw, Roll, Pitch)*** is necessary verify if the r
 * The image shows the flowchart to the computing eulerian angles process.
 ![flowchart recognition and learning body lenguage get eulerian angles process](https://user-images.githubusercontent.com/31509775/33179980-2f944e82-d039-11e7-881e-61ceae421c15.PNG)
 
+To ***make that Pepper change its joints orientations*** first is determinaned by the function that is working. If the imitation mode is activated, just one change in each Pepper joint will be done each time. With the anothers functions the Pepper's joints goes to change its orientation several times (39 times). The control of the body start sending the waist angles vales, and then the head angles values, next to be send the right arm angles vales and finally the left arms angels values. All angles values must to be verify before to be sent, because the robot has a limitations in its joints moves ranges.
+
+* The image shows the flowchart to send the angles values to the robot Pepper joints.
+![flowchart recognition and learning body lenguage send to pepper the angles values](https://user-images.githubusercontent.com/31509775/33181547-9d8fdde8-d03e-11e7-8a98-95cf2f5cab0e.PNG)
+
+The process to ***verify the angles values*** before send it to the robot, is based in the restrictions of it (you can go furthere finding more information about Pepper's restrictions moves [in this documentation](http://doc.aldebaran.com/2-5/family/pepper_technical/joints_pep.html)). Each angle is verify to know is belongs to a specifig range, depending of the position to the adjacent joints the value of a specific joint can has a different move range. If the value is within the range limits is sent, if not, is aproximated to the nearest limit and then is sent.
+
+* The image shows the flowchart to verify the angles values process.
+![flowchart recognition and learning body lenguage verify angles values process](https://user-images.githubusercontent.com/31509775/33181874-c5afe0ce-d03f-11e7-99e3-d096b582df00.PNG)
 
 
 

@@ -171,7 +171,7 @@ Optional software:
 
 ### Code explanation:
 
-The perform of the system is based in the use of the GUI developed; while the GUI be on, thw system goes to be working, allowing the interaction with the Robot Pepper throught two principal functions, the first one the recognition of the emotions to make that Pepper reproduce a coherent behavior, and the recognition of the speech that allow have conversation with Pepper in a question-answer wey. Also, the system can be used throught three extra functions that just are avaible when the Microsoft Kinect V2 camera is aviable, this functions are: The imitation mode, the "Alvertanite world" game and the option to create and save new motion sequences. 
+The perform of the system is based in the use of the GUI developed; while the GUI be on, thw system goes to be working, allowing the interaction with the Robot Pepper throught two principal functions, the first one the recognition of the emotions to make that Pepper reproduce a coherent behavior, and the recognition of the speech that allow have conversation with Pepper in a question-answer way. Also, the system can be used throught three extra functions that just are avaible when the Microsoft Kinect V2 camera is working, this functions are: The imitation mode, the "Alvertanite world" game and the option to create and save new motion sequences. 
 
 When the system start, the GUI is initiated and the first part is create the connection with the Robot Pepper, using a IP and Port Numbers. If the connection is successful, the user can activate the recognition of the emotions or the speech recognition function. Is this last is activated, in any momment, the Kinect camera will be disconnect, and the user should end the speech recognition before to connect the Kinect Camera and start the recognition of emotions. If the Kinect camera is connected, the user can change in any momment to another function like the imitation mode, the "Alternative world" game or the creation of a new motion sequence, deactivating the recognition of emotions but no disconnecting the Kinect. 
 
@@ -185,12 +185,54 @@ When the function that allow have conversation with the robot is activated, the 
 * The image shows the flowchart of the speech recognition system that allow to have conversation with Pepper.
 ![flowchart recognition and learning body lenguage speech recognition](https://user-images.githubusercontent.com/31509775/33161063-1326d44e-cfef-11e7-8ddc-7b8834e6940c.PNG) 
 
-****Understanding the humans emotions" (Recognition of emotions system):"***
+***"Understanding the humans emotions" (Recognition of emotions system):***
 
-To start the interaction with Pepper based in the human mood, is necessary connect the Kinect Camera, inmediatly the system start to capture images and search for the nearest body to the Kinect and get the skeleton tracking of that body. Is come back the data about the spatial position and the orientation, expressed in eulerian angles (Roll, Yaw, Pitch) of each body joint, With that information is dranw the skeleton representation on the user body in the image showed in the GUI, and also is recognized the emotion represented by the body posture using the ANN model pre-trained. Finally when the emotion is determinated, is sent to the robot a speech and then a motion sequence to make that Pepper speak and have a behaivor coherent with the emotion, also, in the GUI is showed the emotion recognized using emojies. 
+To start the interaction with Pepper based in the human mood, is necessary connect the Kinect Camera, inmediatly the system start to capture images, when is recognize a body in the image is computed the skeleton tracking of that body, getting the data about the spatial position and the orientation, expressed in eulerian angles (Roll, Yaw, Pitch), of each body joint, With that information is drawn the skeleton representation on the user body in the image showed in the GUI, and also is recognized the emotion represented by the body posture using the ANN model pre-trained. Finally when the emotion is determinated, is sent to the robot a speech and then a motion sequence to make that Pepper speak and have a behaivor coherent with the emotion, also, in the GUI is showed the emotion recognized using emojies.
 
 * The image shows the main flowchart of the emotions recognition system.
 ![flowchart recognition and learning body lenguage emotions recognition](https://user-images.githubusercontent.com/31509775/33177302-1d58960a-d030-11e7-81e4-1f2209673043.PNG)
+
+***"Mimic style" (Imitation function):***
+
+
+
+***"Wear behavior" (Alternative world function):***
+
+
+
+***"New animations" (Create and save new motion sequence function):***
+
+
+
+***System internal process***
+
+The ***skeleton tracking*** process start to save, and then show in the GUI, the new color frame catching by the Kinect and searching for a body in it. The kinect can recognize until six bodies at the same time, so just the information of the nearest body is used. The kinect can compute the spatial points and the orientation of each bodi joint, so the next step is come back and save this information from the kinect and draw the skeleton representation on the user body in the image.
+
+* The image shows the flowchart of the skeleton tracking process.
+![flowchart recognition and learning body lenguage skelton tracking](https://user-images.githubusercontent.com/31509775/33178946-cdec9fde-d035-11e7-8a69-41f3abf96fde.PNG)
+
+To ***show image*** gotten by the Kinect to the user using the GUI, is necessary create a surface to "paste" the image in it, and then create a RGB image from the surface. Is necessary modify the structure of the matrix resulting to generate a 3-D matrix with the RGB format and the size of the GUI frame. Finally must be created a pixel map from the RGB image to be "printed" in the GUI frame.
+
+* The image shows the flowchart of the show image process.
+![flowchart show image](https://user-images.githubusercontent.com/31509775/33179040-1d333cec-d036-11e7-8cf8-9278e62027f6.PNG)
+
+To ***draw the skeleton representation*** on the user's body in the image, is necessary use the spatial coordinates of two adjacent joints, for example, to draw the head is necesary use the head and the neck spatial coordinates, to draw the right arm is necessary use the right shoulder and right elbow spatial coordinates. 
+
+* The image shows the logical process to draw the skeleton tracking.
+![flowchart draw body](https://user-images.githubusercontent.com/31509775/32955651-9d23ae84-cb84-11e7-91b7-1035102d79a4.PNG)
+
+The process to **"draw the "bones"*** of the body is a simple process that verify if each joint have been tracked correctly or not, and use the spatial coordinates (x, y) from the first joint to start the bone and the coordiantes of the second joint to end the bone. Is the both joints were tracked correctly the bone will be drawn with a green color, if one of them was not tracked correctly the bone will be red.
+
+* The image shows the flowchart to the process to draw the bones.
+![flowchart draw bones](https://user-images.githubusercontent.com/31509775/32955857-29cdbd5c-cb85-11e7-830a-82ebf09194be.PNG)
+
+To ***get the eulerian angles (Yaw, Roll, Pitch)*** is necessary verify if the respective joint have been tracked correctly, if this the case, is get back the quaternion that contain the orientation and then is calculate the eulerian angles from it; is the joint was not tracked correctly its eulerian angles are saved with the "none" value. Depending of the function that be activated, at the end is conformed an array that contains 23 angles, or just 16; If is activated one function to control directly the Robot Pepper body throught the imitation of the user moves will be just 16 values in the array; and if the function to recognize the emotions is activated will be 23 values, adding the angles values of the both hips and knees. The process begin with the computing of the waist angles to guarantee tha have been done the skeleton tracking, and then are computed all the necessaries angles of each joint following a logic process.
+
+* The image shows the flowchart to the computing eulerian angles process.
+![flowchart recognition and learning body lenguage get eulerian angles process](https://user-images.githubusercontent.com/31509775/33179980-2f944e82-d039-11e7-881e-61ceae421c15.PNG)
+
+
+
 
 
 

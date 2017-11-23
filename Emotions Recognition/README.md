@@ -125,7 +125,7 @@ Draw each "bone" of the body is a simple process that verify if each joint have 
 * The image shows the flowchart to the process to draw the bones.
 ![flowchart draw bones](https://user-images.githubusercontent.com/31509775/32955857-29cdbd5c-cb85-11e7-830a-82ebf09194be.PNG)
 
-To get the eulerian angles (Yaw, Roll, Pitch) is necessary verify if the respective joint have been tracked correctly, if this the case, is get back the quaternion that contain the joint orientation and then is calculate the eulerian angles from it; is the joint was not tracked correctly its eulerian angles are saved with the "none" value. At the end is conformed an array that contains 23 angles. The process begin with the computing of the waist angles to guarantee tha have been done the skeleton tracking, and then are computed all the necessaries angles of each joint follow a logic process.
+To get the eulerian angles (Yaw, Roll, Pitch) is necessary verify if the respective joint have been tracked correctly, if this the case, is get back the quaternion that contain the orientation and then is calculate the eulerian angles from it; is the joint was not tracked correctly its eulerian angles are saved with the "none" value. At the end is conformed an array that contains 23 angles. The process begin with the computing of the waist angles to guarantee tha have been done the skeleton tracking, and then are computed all the necessaries angles of each joint following a logic process.
 
 * The image shows the flowchart to the computing eulerian angles process.
 ![flowchart computing body joints orientation to recognize emotions](https://user-images.githubusercontent.com/31509775/32956595-2d7c5272-cb87-11e7-90db-745f5508ce87.PNG)

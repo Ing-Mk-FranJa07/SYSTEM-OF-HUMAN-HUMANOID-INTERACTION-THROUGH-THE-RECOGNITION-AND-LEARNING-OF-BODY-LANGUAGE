@@ -185,7 +185,12 @@ When the function that allow have conversation with the robot is activated, the 
 * The image shows the flowchart of the speech recognition system that allow to have conversation with Pepper.
 ![flowchart recognition and learning body lenguage speech recognition](https://user-images.githubusercontent.com/31509775/33161063-1326d44e-cfef-11e7-8ddc-7b8834e6940c.PNG) 
 
+****Understanding the humans emotions" (Recognition of emotions system):"***
 
+To start the interaction with Pepper based in the human mood, is necessary connect the Kinect Camera, inmediatly the system start to capture images and search for the nearest body to the Kinect and get the skeleton tracking of that body. Is come back the data about the spatial position and the orientation, expressed in eulerian angles (Roll, Yaw, Pitch) of each body joint, With that information is dranw the skeleton representation on the user body in the image showed in the GUI, and also is recognized the emotion represented by the body posture using the ANN model pre-trained. Finally when the emotion is determinated, is sent to the robot a speech and then a motion sequence to make that Pepper speak and have a behaivor coherent with the emotion, also, in the GUI is showed the emotion recognized using emojies. 
+
+* The image shows the main flowchart of the emotions recognition system.
+![flowchart recognition and learning body lenguage emotions recognition](https://user-images.githubusercontent.com/31509775/33177302-1d58960a-d030-11e7-81e4-1f2209673043.PNG)
 
 
 

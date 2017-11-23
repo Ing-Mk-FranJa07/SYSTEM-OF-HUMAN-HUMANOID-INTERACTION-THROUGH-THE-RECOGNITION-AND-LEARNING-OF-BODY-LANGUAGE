@@ -173,10 +173,19 @@ Optional software:
 
 The perform of the system is based in the use of the GUI developed; while the GUI be on, thw system goes to be working, allowing the interaction with the Robot Pepper throught two principal functions, the first one the recognition of the emotions to make that Pepper reproduce a coherent behavior, and the recognition of the speech that allow have conversation with Pepper in a question-answer wey. Also, the system can be used throught three extra functions that just are avaible when the Microsoft Kinect V2 camera is aviable, this functions are: The imitation mode, the "Alvertanite world" game and the option to create and save new motion sequences. 
 
-When the system start, the GUI is initiated and the first part is create the connection with the Robot Pepper, using a IP and Port Numbers. If the connection is successful, the user can activate the recognition of the emotions or the speech recognition function. Is this last is activated, in any momment, the Kinect camera will be disconnect, and the user should end the speech recognition before to connect the Kinect Camera and start the recognition of emotions. If the Kinect camera is connected, the user can change in any mommento to another function like the imitation mode, the "Alternative world" game or the creation of a new motion sequence, deactivating the recognition of emotions but no disconnecting the Kinect. 
+When the system start, the GUI is initiated and the first part is create the connection with the Robot Pepper, using a IP and Port Numbers. If the connection is successful, the user can activate the recognition of the emotions or the speech recognition function. Is this last is activated, in any momment, the Kinect camera will be disconnect, and the user should end the speech recognition before to connect the Kinect Camera and start the recognition of emotions. If the Kinect camera is connected, the user can change in any momment to another function like the imitation mode, the "Alternative world" game or the creation of a new motion sequence, deactivating the recognition of emotions but no disconnecting the Kinect. 
 
 * The image shows the flowchart of the system general process.
 ![flowchart recognition and learning body lenguage](https://user-images.githubusercontent.com/31509775/33159259-4e998996-cfdf-11e7-878f-a921dd9d63ab.PNG) 
+
+***"Talk with Pepper function" (Speech recognition system):***
+
+When the function that allow have conversation with the robot is activated, the system turn on the microphone of the computer and access to it to catch the user speech (is possible to access to a external microphone), the audio data is transformed to text string using the SpeechRecognition library. The next step is generate an answer to the user speech, using the text string like input to a LSTM model, then this answer, first, is used to generate a "Tag" to import the specific motion sequences that allow to Pepper has a coherent behavior with the speech, and then is sent to the robot and the answer is spoken by it. After the robot has spoken the answer, it start to reproduce the motion sequences (this is because, although the robot has a function to speak and move at the same time, is limited to one change of value in its joints, and the motion sequence has 39 changes for each Pepper joints). 
+
+* The image shows the flowchart of the speech recognition system that allow to have conversation with Pepper.
+![flowchart recognition and learning body lenguage speech recognition](https://user-images.githubusercontent.com/31509775/33161063-1326d44e-cfef-11e7-8ddc-7b8834e6940c.PNG) 
+
+
 
 
 

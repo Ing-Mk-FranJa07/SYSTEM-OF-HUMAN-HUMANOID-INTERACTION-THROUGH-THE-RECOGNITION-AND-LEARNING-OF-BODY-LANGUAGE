@@ -190,7 +190,7 @@ When the function that allow have conversation with the robot is activated, the 
 To start the interaction with Pepper based in the human mood, is necessary connect the Kinect Camera, inmediatly the system start to capture images, when is recognize a body in the image is computed the skeleton tracking of that body, getting the data about the spatial position and the orientation, expressed in eulerian angles (Roll, Yaw, Pitch), of each body joint, With that information is drawn the skeleton representation on the user body in the image showed in the GUI, and also is recognized the emotion represented by the body posture using the ANN model pre-trained. Finally when the emotion is determinated, is sent to the robot a speech and then a motion sequence to make that Pepper speak and have a behaivor coherent with the emotion, also, in the GUI is showed the emotion recognized using emojies.
 
 * The image shows the general flowchart of the emotions recognition system.
-![flowchart recognition and learning body lenguage emotions recognition](https://user-images.githubusercontent.com/31509775/33177302-1d58960a-d030-11e7-81e4-1f2209673043.PNG)
+![flowchart recognition and learning body lenguage emotions recognition](https://user-images.githubusercontent.com/31509775/33219860-c149a4d8-d112-11e7-8d82-c4e86b93e07a.PNG)
 
 ***"Mimic style" (Imitation function):***
 

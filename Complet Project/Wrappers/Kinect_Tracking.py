@@ -392,18 +392,26 @@ class Kinect_Tracking(object):
                 HandL = None
                 
             if Type == 'Emotion':
-                return np.transpose([[HeadPitch], 
-                                     [RShoulderRoll], [RShoulderPitch], [RElbowYaw], [RElbowRoll], [RWristYaw], [HandR], 
-                                     [LShoulderRoll], [LShoulderPitch], [LElbowYaw], [LElbowRoll], [LWristYaw], [HandL],
-                                     [WaistRoll], [WaistPitch],
-                                     [RHipRoll], [RHipPitch], [RKneeYaw], [RKneeRoll],
-                                     [LHipRoll], [LHipPitch], [LKneeYaw], [LKneeRoll]]) 
+                if HeadPitch == None or RShoulderRoll == None or RShoulderPitch == None or RElbowYaw == None or RElbowRoll == None or RWristYawE == None or HandR == None or LShoulderRoll == None or LShoulderPitch == None or LElbowYaw == None or LElbowRoll == None or LWristYawE == None or HandL or WaistRoll == None or WaistPitch == None or RHipRoll == None or RHipPitch == None or RKneeYaw == None or RKneeRoll == None or LHipRoll == None or LHipPitch == None or LKneeYaw == None or LKneeRoll == None: 
+                    return None
+                
+                else:
+                    return np.transpose([[HeadPitch], 
+                                         [RShoulderRoll], [RShoulderPitch], [RElbowYaw], [RElbowRoll], [RWristYawE], [HandR], 
+                                         [LShoulderRoll], [LShoulderPitch], [LElbowYaw], [LElbowRoll], [LWristYawE], [HandL],
+                                         [WaistRoll], [WaistPitch],
+                                         [RHipRoll], [RHipPitch], [RKneeYaw], [RKneeRoll],
+                                         [LHipRoll], [LHipPitch], [LKneeYaw], [LKneeRoll]]) 
             
             if Type == 'Pepper':
-                return np.transpose([[HeadPitch], 
-                                     [RShoulderRoll], [RShoulderPitch], [RElbowYaw], [RElbowRoll], [RWristYaw], [HandR], 
-                                     [LShoulderRoll], [LShoulderPitch], [LElbowYaw], [LElbowRoll], [LWristYaw], [HandL],
-                                     [WaistRoll], [WaistPitch]]) 
+                if HeadPitch == None or RShoulderRoll == None or RShoulderPitch == None or RElbowYaw == None or RElbowRoll == None or RWristYawP == None or HandR == None or LShoulderRoll == None or LShoulderPitch == None or LElbowYaw == None or LElbowRoll == None or LWristYawP == None or HandL or WaistRoll == None or WaistPitch == None:
+                    return None
+                
+                else:
+                    return np.transpose([[HeadPitch], 
+                                         [RShoulderRoll], [RShoulderPitch], [RElbowYaw], [RElbowRoll], [RWristYawP], [HandR], 
+                                         [LShoulderRoll], [LShoulderPitch], [LElbowYaw], [LElbowRoll], [LWristYawP], [HandL],
+                                         [WaistRoll], [WaistPitch]]) 
         
     def DrawBodyBones(self, Joints, JointsPoints, Color, Joint0, Joint1):
         '''

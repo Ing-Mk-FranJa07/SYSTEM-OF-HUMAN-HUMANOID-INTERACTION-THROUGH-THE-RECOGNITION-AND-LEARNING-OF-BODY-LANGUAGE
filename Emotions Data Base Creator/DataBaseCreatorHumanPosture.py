@@ -117,7 +117,7 @@ class HumanPostureAndEmotion(QtGui.QWidget):
         super(HumanPostureAndEmotion, self).__init__()
         
         # Is loaded the file that get the GUI.   
-        self.MyGUI = uic.loadUi('...\DataBaseCreatorHumanPostureGUI.ui', self)
+        self.MyGUI = uic.loadUi('D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorHumanPosture\DataBaseCreatorHumanPostureGUI.ui', self)
 
         # Are associated the different options that have the GUI with its corresponding functions.
         self.connect(self.Btn_Kinect, QtCore.SIGNAL("clicked()"), self.InitKinect)
@@ -126,8 +126,7 @@ class HumanPostureAndEmotion(QtGui.QWidget):
         self.connect(self.Btn_Load, QtCore.SIGNAL("clicked()"), self.LoadPosture)
         self.connect(self.Btn_End, QtCore.SIGNAL("clicked()"), self.EndProgram)
         self.connect(self.Btn_Select_Emotion, QtCore.SIGNAL("clicked()"), self.SelectEmotion)
-        self.connect(self.Check_Video, QtCore.SIGNAL("clicked()"), self.ActivateSaveVideo)
-        self.connect(self.Check_Timer, QtCore.SIGNAL("clicked()"), self.ActivateRecordingTimer)            
+        self.connect(self.Check_Video, QtCore.SIGNAL("clicked()"), self.ActivateSaveVideo)         
         
         # Are created timers to have interruptions that allow execute functions.
         self.Timer = QtCore.QTimer(self.MyGUI)                                  # Timer that control the image tracking.
@@ -164,7 +163,6 @@ class HumanPostureAndEmotion(QtGui.QWidget):
             self.CreateVideoFile = 0                                            # Change flag's value to end .avi file creation.
             self.StartEnd = 0                                                   # Change flag's value to end the Kinect Sensor.                                  
             self.StartRec = 0                                                   # Change flag's value to end the recording.
-            self.UseTimer = 1                                                   # Change flag's value that change the recording modes.
         
         # Disconnect Kinect.        
         else:
@@ -352,9 +350,9 @@ class HumanPostureAndEmotion(QtGui.QWidget):
             if LKneeRollList[M] == None and LKneeYawList[M] == None:
                 LKneeRollList[M] = LKneeRollList[M-1]
                 LKneeYawList[M] = LKneeYawList[M-1]
-                
+    
         # Is saved the name of the .csv file.
-        FileName = str("...\Emotions_DataBase\ " + str(self.Text_Save.text()) + ".csv")
+        FileName = str("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorHumanPosture\DataBasePostures\ " + str(self.Text_Save.text()) + ".csv")
         
         # Is created the .csv file.
         File = open(FileName, 'w') 
@@ -460,11 +458,11 @@ class HumanPostureAndEmotion(QtGui.QWidget):
         # Are loaded the .avi and .csv files
         try: 
             # .csv file.
-            FileName = str("...\Emotions_DataBase\ " + str(self.Text_Load.text()) + ".csv")
+            FileName = str("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorHumanPosture\DataBasePostures\ " + str(self.Text_Load.text()) + ".csv")
             File = pd.read_csv(FileName, header = 0)
 
             # .avi file.
-            VideoName = str("...\Emotions_DataBase\ " + str(self.Text_Load.text()) + ".avi")
+            VideoName = str("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorHumanPosture\DataBasePostures\ " + str(self.Text_Load.text()) + ".avi")
             self.Video = cv2.VideoCapture(VideoName)
 
             FileLoad = 1                                                        # Check the correct load.
@@ -562,7 +560,6 @@ class HumanPostureAndEmotion(QtGui.QWidget):
             self.EmotionAsocieted = "Normal"
 
         self.Check_Video.setEnabled(True)                                       # Enabled the option to create .avi file.
-        self.Check_Timer.setEnabled(True)                                       # Enabled the recording mode.
         self.Text_Save.setEnabled(False)                                        # Disabled the option to put a name for .avi and .csv files.
         self.Box_Emotion_Selector.setEnabled(False)                             # Disabled the emotion selection.
         self.Btn_REC.setEnabled(True)                                           # Enabled the recording option.
@@ -584,19 +581,6 @@ class HumanPostureAndEmotion(QtGui.QWidget):
             self.Text_Save.setEnabled(False)                                    # Disabled the text box to put the name of the .avi and .csv files.          
             
             self.CreateVideoFile = 0                                            # Change the flag's value to end the .avi file creation.
-
-    def ActivateRecordingTimer(self):
-        '''
-        Function that allow change the mode of the recording, with time limit or
-        without time limit.
-        '''
-        # Activate the time limit:
-        if self.Check_Timer.isChecked():
-            self.UseTimer = 1                                                   # Change the flag's value to start the recording mode with time limit.    
-        
-        # Deactivate the time limit.
-        else:
-            self.UseTimer = 0                                                   # Change the flag's value to start the recording mode without time limit.
     
     def ShowVideo(self):
         '''
@@ -662,30 +646,28 @@ class HumanPostureAndEmotion(QtGui.QWidget):
         Main function that allow the skeleton tracking and get the body posture
         to save the joint angles and then create the .avi and .cvs files.
         '''
-        # The current lines allow the recordign of the video in a limited time.
-        if self.UseTimer == 1:
-            self.Segundos += 1
+        self.Segundos += 1
+         
+        # Deactive the timer in the limit time.
+        if self.Segundos == 29:
+            self.Timer.stop()                                               # Deactivate the interruption that get the skeleton tracking.                                               
              
-            # Deactive the timer in the limit time.
-            if self.Segundos == 29:
-                self.Timer.stop()                                               # Deactivate the interruption that get the skeleton tracking.                                               
-                 
-                try:                                                            # End the creation of the .avi file.
-                    self.VideoFile.release()
-                except AttributeError:
-                    pass
-                
-                self.Btn_REC.setText("REC")                                     # Indicate the user that can start the recording.
-                self.Btn_Save.setEnabled(True)                                  # Enabled the button that allow save the .avi and .csv files.
-                self.Text_Save.setEnabled(True)                                 # Enabled the option to put the name of the .avi and .csv files.
-                self.Box_Emotion_Selector.setEnabled(True)                      # Enabled the emotions selection.
-                self.frame_2.setEnabled(False)                                  # Disabled the joint angles information.
-                self.Text_Load.setEnabled(True)                                 # Enabled the text box to select with the name a .csv file saved.
-                self.Btn_Load.setEnabled(True)                                  # Enabled the option to load a a .avi and .csv file saved.
-                
-                self.StartRec = 0                                               # Change the flag's value to start the recording.
-                 
-                return
+            try:                                                            # End the creation of the .avi file.
+                self.VideoFile.release()
+            except AttributeError:
+                pass
+            
+            self.Btn_REC.setText("REC")                                     # Indicate the user that can start the recording.
+            self.Btn_Save.setEnabled(True)                                  # Enabled the button that allow save the .avi and .csv files.
+            self.Text_Save.setEnabled(True)                                 # Enabled the option to put the name of the .avi and .csv files.
+            self.Box_Emotion_Selector.setEnabled(True)                      # Enabled the emotions selection.
+            self.frame_2.setEnabled(False)                                  # Disabled the joint angles information.
+            self.Text_Load.setEnabled(True)                                 # Enabled the text box to select with the name a .csv file saved.
+            self.Btn_Load.setEnabled(True)                                  # Enabled the option to load a a .avi and .csv file saved.
+            
+            self.StartRec = 0                                               # Change the flag's value to start the recording.
+             
+            return
 
         # Is reshape the Kinect's image in the format that allow cv2.
         self.Image = pygame.surfarray.array3d(self.FrameSurface)                # Pygame's surface is converted in an array. 
@@ -729,7 +711,7 @@ class HumanPostureAndEmotion(QtGui.QWidget):
         Function that create .avi file with the format selected.
         '''
         # Is saved the name of the .avi file
-        VideoFilePath =  str("...\Emotions_DataBase\ " + str(self.Text_Save.text()) + ".avi")
+        VideoFilePath =  str("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorHumanPosture\DataBasePostures\ " + str(self.Text_Save.text()) + ".avi")
         
         # Is defined the format of the file.
         VideoFileType = cv2.VideoWriter_fourcc('M','J','P','G')                 
@@ -1109,4 +1091,4 @@ if __name__ == '__main__':
     
     App = QtGui.QApplication(sys.argv)
     GUI = HumanPostureAndEmotion()
-    sys.exit(App.exec_()
+    sys.exit(App.exec_())

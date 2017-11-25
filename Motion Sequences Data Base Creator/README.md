@@ -178,8 +178,7 @@ To create a new animation, the user has to connect the kinect and digit the name
 To load an animation saved previously, the user must to digit the name of the .avi and .csv files, and load the data. The system goes to reproduce the video (if this exists) and the motion sequence.
 
 * The image shows an example to load an animation.
+![load an animation gif](https://user-images.githubusercontent.com/31509775/33233735-9cb3c780-d1e8-11e7-9998-5aefd9d91463.gif)
 
-
-
-
+**Click on the image to see them with a better quality**
 

@@ -173,7 +173,7 @@ When the system is started the GUI appear. The first step to use the system is d
 To create a new animation, the user has to connect the kinect and digit the name which he wants save the .avi and .csv file. Now the user can start to record the motion sequence and when the recording ends, the user can send the motion sequence to be reproduce by the robot. After that, if the user wants, he can save the motion sequences, digiting the name of the animation and save the data.
 
 * The image shows an example to create of a new motion sequence.
-
+![create new animation gif](https://user-images.githubusercontent.com/31509775/33233626-d65051cc-d1e6-11e7-92b1-40604bb48c2c.gif)
 
 To load an animation saved previously, the user must to digit the name of the .avi and .csv files, and load the data. The system goes to reproduce the video (if this exists) and the motion sequence.
 

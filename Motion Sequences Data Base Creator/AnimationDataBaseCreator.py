@@ -591,17 +591,16 @@ class GUI(QtGui.QWidget):
                 FileName = str("...\DataBaseCreatorSecuenceOfMovements\BaseDeDatos\ " + str(self.Text_File_Name.text()) + ".csv")
                 File = pd.read_csv(FileName, header = 0)
                 
-                PlayVideo = 2   
+                PlayVideo = 2                                                   # Check the partial load.
             except:
                 try:
                     # .csv file 
                     FileName = str("...\DataBaseCreatorSecuenceOfMovements\DataBaseGeneratedByRNA\ " + str(self.Text_File_Name.text()) + ".csv")
                     File = pd.read_csv(FileName, header = None)
                     
-                    PlayVideo = 2                                                   # Check the partial load.
-                
+                    PlayVideo = 2                                                # Check the partial load.
                 except:
-                    PlayVideo = 0                                                   # Check the incorrect load.
+                    PlayVideo = 0                                                # Check the incorrect load.
                     pass
                 pass
             pass

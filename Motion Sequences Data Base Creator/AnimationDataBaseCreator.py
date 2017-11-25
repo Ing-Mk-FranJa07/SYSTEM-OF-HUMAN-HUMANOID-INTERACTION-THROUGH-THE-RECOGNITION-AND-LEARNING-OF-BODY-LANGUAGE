@@ -585,18 +585,14 @@ class GUI(QtGui.QWidget):
             self.Video = cv2.VideoCapture(self.VideoName)
             
             PlayVideo = 1                                                       # Check the correct load.    
-            
         except:
-            
             try:
                 # .csv file. 
                 FileName = str("...\DataBaseCreatorSecuenceOfMovements\BaseDeDatos\ " + str(self.Text_File_Name.text()) + ".csv")
                 File = pd.read_csv(FileName, header = 0)
                 
-                PlayVideo = 2
-                
+                PlayVideo = 2   
             except:
-
                 try:
                     # .csv file 
                     FileName = str("...\DataBaseCreatorSecuenceOfMovements\DataBaseGeneratedByRNA\ " + str(self.Text_File_Name.text()) + ".csv")
@@ -606,11 +602,8 @@ class GUI(QtGui.QWidget):
                 
                 except:
                     PlayVideo = 0                                                   # Check the incorrect load.
-    
                     pass
-            
                 pass
-            
             pass
         
         # If the .avi and .csv files are loaded correctly, the motion sequence is

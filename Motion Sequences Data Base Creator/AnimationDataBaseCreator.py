@@ -259,7 +259,7 @@ class GUI(QtGui.QWidget):
         self.Text_File_Name.setEnabled(False)                                   # Disabled the text box to put the name of the .avi and .csv files.
         self.Btn_Recording.setText("Recording")                                 # Change the text in the GUI button.                              
         
-        # Is saved the motion sequences name.
+        # Is saved the .avi and .csv files names.
         self.FileName = str(self.Text_File_Name.text())
         VideoFilePath =  str("...\DataBaseCreatorSecuenceOfMovements\BaseDeDatos\ " + self.FileName + ".avi")
         

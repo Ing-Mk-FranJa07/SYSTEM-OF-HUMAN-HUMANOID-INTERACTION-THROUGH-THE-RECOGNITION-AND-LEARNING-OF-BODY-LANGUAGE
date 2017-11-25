@@ -162,8 +162,22 @@ To load an animation created and saved previously, the system come back the name
 
 ### System user guide:
 
+* The image shows the GUI of the system.
+![animation data base creator gui](https://user-images.githubusercontent.com/31509775/33233449-f6d652dc-d1e3-11e7-99a6-88646572f664.PNG)
+
+When the system is started the GUI appear. The first step to use the system is do the connection with the robot Pepper, or the virtual robot that you can use with the Choregraphe software. You need the Ip number (127.0.0.1 in the mayorie of the cases) and the Port number (you can find the port number of the virtual robot in the Choregraphe suit going to Edit -> Preferences -> Virtual Robot). Now the user can create a new animation or load an animation created previouly.
+
+* The image shows how connect the system with the virtual robot.
+![ip and port number gif](https://user-images.githubusercontent.com/31509775/33233536-563f033a-d1e5-11e7-9218-21f151f30826.gif)
+
+To create a new animation, the user has to connect the kinect and digit the name which he wants save the .avi and .csv file. Now the user can start to record the motion sequence and when the recording ends, the user can send the motion sequence to be reproduce by the robot. After that, if the user wants, he can save the motion sequences, digiting the name of the animation and save the data.
+
+* The image shows an example to create of a new motion sequence.
 
 
+To load an animation saved previously, the user must to digit the name of the .avi and .csv files, and load the data. The system goes to reproduce the video (if this exists) and the motion sequence.
+
+* The image shows an example to load an animation.
 
 
 

@@ -124,7 +124,7 @@ To get the eulerian angles (Yaw, Roll, Pitch) is necessary verify if the respect
 The angles are verify to delete any "none" value, if is found a none value this is replaced by the previous correct value. The control of the body start sending the waist angles values, and then the head angles values, next is sent the right arm angles values and finally the left arms angles values. All angles values must to be verify before to be sent, because the robot has a limitations in its joints moves ranges.
 
 * The image shows the flowchart to verify the "none" values.
-![flowchart body posture data base creator verify none values](https://user-images.githubusercontent.com/31509775/33280942-a906a72a-d371-11e7-8852-9f49a872f34d.PNG))
+![flowchart body posture data base creator verify none values](https://user-images.githubusercontent.com/31509775/33280942-a906a72a-d371-11e7-8852-9f49a872f34d.PNG)
 
 Finally the angles are saved in the .csv file created.
 

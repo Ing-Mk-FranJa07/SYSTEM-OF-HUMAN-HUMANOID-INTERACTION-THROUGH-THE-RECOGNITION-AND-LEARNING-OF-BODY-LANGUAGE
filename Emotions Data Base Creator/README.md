@@ -128,7 +128,7 @@ The angles are verify to delete any "none" value, if is found a none value this 
 
 Finally the angles are saved in the .csv file created.
 
-***Load and reproduce an animation***
+***Load and reproduce a body posture***
 
 To load an animation created and saved previously, the system come back the name of the .avi and .csv files digited by the user, and clear the lists used to have the angles information to each joint. The files are loaded and the angles information is saved in the corresponding lists, if the .avi file was loaded succesfull, the video and the angles information are playing at the same time, show them in the GUI. 
 

@@ -1,0 +1,20 @@
+<RCC>
+  <qresource prefix="Happy">
+    <file>Happy.png</file>
+  </qresource>
+  <qresource prefix="Sad">
+    <file>Sad.png</file>
+  </qresource>
+  <qresource prefix="Angry">
+    <file>Angry.png</file>
+  </qresource>
+  <qresource prefix="Surprised">
+    <file>Surprised.png</file>
+  </qresource>
+  <qresource prefix="Reflexive">
+    <file>Reflexive.png</file>
+  </qresource>
+  <qresource prefix="Normal">
+    <file>Normal.png</file>
+  </qresource>
+</RCC>

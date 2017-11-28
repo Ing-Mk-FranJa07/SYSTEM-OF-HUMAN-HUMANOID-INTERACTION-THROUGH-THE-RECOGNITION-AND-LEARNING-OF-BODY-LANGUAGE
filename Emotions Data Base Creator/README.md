@@ -150,6 +150,7 @@ To create a new file that contain the body joints orientation that describe the 
 To load a file (video and data) created previouly the user must digit the name of the file and just click on "load file".
 
 * The image shows an examples to load files created.
+
 ![load posture gif](https://user-images.githubusercontent.com/31509775/33324699-5c30278e-d41e-11e7-9e4a-d67376db5466.gif)
 
 **Click on the images to see them with better quality**

@@ -191,7 +191,7 @@ Finally is saved the model created to be used in the differents tools developed:
   122 RNA.save('...\Model_RNA_Recognition_Of_Emotions ' + Version)
 ```
 
-**Click on the image to see them with better quality**
+**Click on the images to see them with better quality**
 
 
 

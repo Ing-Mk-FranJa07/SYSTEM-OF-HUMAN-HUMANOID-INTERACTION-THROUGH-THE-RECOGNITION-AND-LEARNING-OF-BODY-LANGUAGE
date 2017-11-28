@@ -289,4 +289,4 @@ The GAN model presented here, can develop ["originals" motion sequences](https:/
 
 ![pepper original motion sequence](https://user-images.githubusercontent.com/31509775/33086815-cb8823ba-ceb6-11e7-8dcf-6df2f62d1f71.gif)
 
-**Click on the image to see them with better quality**
+**Click on the images to see them with better quality**

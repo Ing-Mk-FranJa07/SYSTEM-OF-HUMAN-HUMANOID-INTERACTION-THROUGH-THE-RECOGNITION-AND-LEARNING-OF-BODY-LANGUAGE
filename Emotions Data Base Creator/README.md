@@ -82,9 +82,9 @@ Is recommended install [Anaconda (Python 2.7 (32 bits) version](https://www.anac
 
 ### Code explanation:
 
-The system works using the GUI developed in whic the user can record a new body posture using the kinect camera and selecting the type of the emotion that he is going to represent. Digiting the name which he wants save the information the user can create a .avi and .csv files after that the system has recorded the posture. 
+The system works using the GUI developed in which the user can record a new body posture using the kinect camera and selecting the type of the emotion that he is going to represent. Digiting the name with he wants save the information the user can create a .avi and .csv files after that the system has recorded the posture. 
 
-When the system started, the GUI is thrown and the user can connect the kinect to create a new posture or loaded a posture created digiting the name of the .avi and .csv files and loaded them. If the user wants create a new posture he must connect the kinect and select the type of the emotion that he goes to perform with his body posture, after that the user must to put the name of to save the files and then he can record the posture and finally, if he wants, he can save the informacion (video and angles data) or restart the process.
+When the system start, the GUI is thrown and the user can connect the kinect to create a new posture or loaded a posture created digiting the name of the .avi and .csv files and loaded them. If the user wants create a new posture he must connect the kinect and select the type of the emotion that he goes to perform with his body posture, after that the user must to put the name of to save the files and then he can record the posture and finally, if he wants, he can save the informacion (video and angles data) or restart the process.
 
 * The image shows the general flowchart of the system.
 ![flowchart body posture data base creator general process](https://user-images.githubusercontent.com/31509775/33280062-dd34a388-d36e-11e7-86f8-dbcce559e451.PNG)
@@ -134,3 +134,22 @@ To load an animation created and saved previously, the system come back the name
 
 * The image shows the flowchart of the load animation process.
 ![flowchart body posture data base creator load a body posture](https://user-images.githubusercontent.com/31509775/33281012-d0351516-d371-11e7-8bc9-3489fb279a96.PNG)
+
+### System user guide:
+
+When the system is stated the GUI es thrown and the user has two options: Create a new posture performing a emotion with his body or, load a posture created. 
+
+* The image shows the GUI of the system.
+![data base creator gui](https://user-images.githubusercontent.com/31509775/33323936-ff653c76-d41b-11e7-96d6-a0afca092560.PNG)
+
+To create a new file that contain the body joints orientation that describe the posture that is performing the user, is necessary connect the kinect camera and select the emotion that is going to represent, then the user must to digit the name which he wants save the file, and finally record the posture.
+
+* The image shows an examples to create files with the body orientantion angles.
+![create posture gif](https://user-images.githubusercontent.com/31509775/33324698-5c035268-d41e-11e7-83d9-a831d6b114c9.gif)
+
+To load a file (video and data) created previouly the user must digit the name of the file and just click on "load file".
+
+* The image shows an examples to load files created.
+![load posture gif](https://user-images.githubusercontent.com/31509775/33324699-5c30278e-d41e-11e7-9e4a-d67376db5466.gif)
+
+**Click on the images to see them with better quality**

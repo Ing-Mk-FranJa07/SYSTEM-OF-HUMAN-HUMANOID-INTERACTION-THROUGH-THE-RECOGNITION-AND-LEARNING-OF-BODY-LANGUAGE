@@ -180,5 +180,5 @@ To load an animation saved previously, the user must to digit the name of the .a
 * The image shows an example to load an animation.
 ![load an animation gif](https://user-images.githubusercontent.com/31509775/33233735-9cb3c780-d1e8-11e7-9998-5aefd9d91463.gif)
 
-**Click on the image to see them with a better quality**
+**Click on the images to see them with a better quality**
 

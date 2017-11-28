@@ -295,4 +295,4 @@ The user has the option to create his own motion sequences to be reproduced by t
 
 ![create a new motion sequence gif](https://user-images.githubusercontent.com/31509775/33188307-e3b09cc2-d066-11e7-95bd-0fb57996cc33.gif)
 
-**Click on the image to see them with a better quality**
+**Click on the images to see them with a better quality**

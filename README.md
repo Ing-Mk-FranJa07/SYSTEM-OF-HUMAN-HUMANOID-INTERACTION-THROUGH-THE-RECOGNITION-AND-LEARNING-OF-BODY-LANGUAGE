@@ -38,6 +38,20 @@ It is really important that systems are developed and integrated into the humano
 
 Around the world, various companies, research centers and universities are making advances in robotics-oriented research and the application of artificial intelligence strategies and algorithms for social purposes; Through this project the Autonoma de Occidente University in conjunction with "Haute Ecole d'Ing'enierie et de Gestion du Canton de Vaud" (HEIG-VD), through cooperation between teachers and students of both institutions, will be able to expand their lines and research nurseries and will give way to a range of new research opportunities for different students, who will be able to enjoy enriching life experiences through the modality of student exchanges, contributing to the integral formation from the academy, research and know new cultures and approaches to engineering thinking.
 
+### Repository structure:
+
+This repository has all the tools developed to create a system that allow try to increase the interaction between humans and humanoids throght the emotions recognition and the body lenguage. 
+
+* The folder **Complet project** has the complet system developed with the explanation of the scripts and the tool used.
+
+* The folder **Emotions data base creator** has the tool developed to create a data base of body postures used to train the artificial neural network that recognize the emotions of the humans.
+
+* The folder **Emotions recognition** has the tool developed to test the performing of the ANN built to recognize the mood of the humans, and also it allows use the speech recognition system to test the LSTM model used to have conversations between humans and the system.
+
+* The folder **Motion sequences Data Base Creator** has the tool developed to create and save the motion sequences used to "teach" the robot how behave in differents situations using the imitation of the moves performed by the humans.
+
+* The folder **Neural Networks** has the scripts used to created the neural networks used in the system to recognize the emotions and create originals motion sequences.
+
 ### Acknowledgement:
 
 I want render thanks frist than all to God, and my parents by the support and the confidence that ever they have gave me. Also, I want render special thanks to the Ph.D Jesus Alfonso López Sotelo and Ph.D Andres Perez to the oportunity to travel and develop this research project in Switzerland lead me enojoy of a real life sperience and the enrichment in my personal and professional learning. 

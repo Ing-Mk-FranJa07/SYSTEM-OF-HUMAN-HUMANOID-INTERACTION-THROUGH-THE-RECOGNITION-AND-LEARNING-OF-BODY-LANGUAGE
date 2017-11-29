@@ -40,3 +40,6 @@ Around the world, various companies, research centers and universities are makin
 
 ### Acknowledgement:
 
+I want render thanks frist than all to God, and my parents by the support and the confidence that ever they have gave me. Also, I want render special thanks to the Ph.D Jesus Alfonso López Sotelo and Ph.D Andres Perez to the oportunity to travel and develop this research project in Switzerland lead me enojoy of a real life sperience and the enrichment in my personal and professional learning. 
+
+![switzerland experiences](https://user-images.githubusercontent.com/31509775/33392941-8c42896a-d50b-11e7-9942-40f9da43b454.PNG)

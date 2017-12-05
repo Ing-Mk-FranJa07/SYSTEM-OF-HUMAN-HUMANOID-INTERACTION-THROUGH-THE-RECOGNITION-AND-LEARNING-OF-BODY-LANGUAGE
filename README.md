@@ -1,6 +1,6 @@
 # SYSTEM-OF-HUMAN-HUMANOID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE
 
-Graduation project developed by the Mecatronic Engineer Francisco Javier Gonzalez Lopez of the Autonoma de Occidente University (Colombia) in the facilities and with the cooperation of the HEIG-VD University (Switzerland) 
+Graduation project developed by the Mechatronic Engineer Francisco Javier Gonzalez Lopez of the Autonoma de Occidente University (Colombia) in the facilities and with the cooperation of the HEIG-VD University (Switzerland) 
 
 ![logo](https://user-images.githubusercontent.com/31509775/33390836-2026bf9a-d505-11e7-94da-43cc540deb2f.PNG)
 

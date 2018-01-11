@@ -12,7 +12,7 @@ All the diverse applications to which the humanoid robots are being focused, hav
 
 A solution to improve human-humanoid interaction is through body language and the development of "artificial emotions", which has led to the development of social robotics and cognitive robotics, which seek social robots that "know what they do" Through learning in dynamic environments and interaction through effective and real communication with human beings.
 
-Recently, social robots such as Pepper, created by Aldebaran Robotics and Softbank Mobile, have been developed. It has an emotional motor that allows it to study the gestures and the face of the person who interacts with it. Starting from the base created in Pepper, the propose is to develop a system that besides recognizing body gestures, can reproduce them or generate iy own gestures that send the desired message, generating artificial emotions, in order to increase the confidence and acceptance on the part of the beings humans.
+Recently, social robots such as Pepper, created by Aldebaran Robotics and Softbank Mobile, have been developed. It has an emotional motor that allows it to study the gestures and the face of the person who interacts with it. Starting from the base created in Pepper, the propose is to develop a system that besides recognizing body gestures, can reproduce them or generate iy own gestures that send the desired message, generating artificial emotions, in order to increase the confidence and acceptance on the part of the human beings.
 
 ### Objectives:
 

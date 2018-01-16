@@ -206,7 +206,7 @@ Before the start with the training of the neural networks, is necessary create t
 
 * The model's parameters can be configurated in the init function in the **lines 127-156**.
 
-Finaly, the GAN model is trained. **The GAN model training** is developed following two steps in each epoch. First, is necessary train the discriminator, showing it some examples of the real data and somo examples of the fake data created by the generative network using just noise; the second step is train the generative network via the chained models, that is to say, train the adversarial model generating sample data and try to push the chained generative network and the discriminative network to tell if the data is real or not; however is necessary don't alter the weights of the discriminative network during this step, so that's whay the training of the discriminative network is freeze. 
+Finaly, the GAN model is trained. **The GAN model training** is developed following two steps in each epoch. First, is necessary train the discriminator, showing it some examples of the real data and some examples of the fake data created by the generative network using just noise; the second step is train the generative network via the chained models, that is to say, train the adversarial model generating sample data and try to push the chained generative network and the discriminative network to tell if the data is real or not; however is necessary don't alter the weights of the discriminative network during this step, so that's why the training of the discriminative network is freeze. 
 
 ```python
    332        # The networks are trained.

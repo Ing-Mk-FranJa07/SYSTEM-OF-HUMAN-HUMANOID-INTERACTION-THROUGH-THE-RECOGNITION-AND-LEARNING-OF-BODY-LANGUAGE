@@ -96,7 +96,7 @@ The system get back the name of the .avi and .csv file digited by the user, the 
 * The image shoes the flowchart to the record a motion sequence process.
 ![flowchart body posture data base creator create new body posture](https://user-images.githubusercontent.com/31509775/33280180-3cf784ca-d36f-11e7-93e5-adb35a5ee0ac.PNG)
 
-The ***skeleton tracking*** process start to save, and then show in the GUI, the new color frame catching by the Kinect and searching for a body in it. The kinect can recognize until six bodies at the same time, so just the information of the nearest body is used. The kinect can compute the spatial points and the orientation of each bodi joint, so the next step is come back and save this information from the kinect and draw the skeleton representation on the user body in the image.
+The ***skeleton tracking*** process start to save, and then show in the GUI, the new color frame catching by the Kinect and searching for a body in it. The kinect can recognize until six bodies at the same time, so just the information of the nearest body is used. The kinect can compute the spatial points and the orientation of each body joint, so the next step is come back and save this information from the kinect and draw the skeleton representation on the user body in the image.
 
 * The image shows the flowchart of the skeleton tracking process.
 ![flowchart body posture data base creator skeleton tracking process](https://user-images.githubusercontent.com/31509775/33280233-64a25c16-d36f-11e7-9144-18885f7a71aa.PNG)

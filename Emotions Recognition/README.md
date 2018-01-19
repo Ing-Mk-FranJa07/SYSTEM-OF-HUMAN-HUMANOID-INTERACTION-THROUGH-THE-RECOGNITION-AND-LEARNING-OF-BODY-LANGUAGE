@@ -140,7 +140,7 @@ Finally, the emotion is recognize using the neural network model built and load 
 The second function of the system allow generate an answer using a LSTM neural model built with the chatterbot library, from the speech of the user that is gotten with the microphone of the pc (you can use a external microphone to) and then is tranformated into a text string that will be the input to the LSTM neural model. The text string and the answer generated are showed in the GUI.
 
 * The image shows the flowchart of the process that allow the speech recognition and the answers generation.
-![flowchart show image](https://user-images.githubusercontent.com/31509775/33040345-c6e85e50-ce08-11e7-8638-dbd89b776dff.PNG)
+![flowchart speech recognition](https://user-images.githubusercontent.com/31509775/35164998-a0d487d4-fd1a-11e7-99f1-70c3342fc22c.PNG)
 
 ### System user guide.
 

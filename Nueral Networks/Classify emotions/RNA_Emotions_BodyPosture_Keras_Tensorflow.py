@@ -115,6 +115,7 @@ plt.xlabel('Epoch')
 plt.ylabel('Accuracy')
 plt.legend()
 plt.show()
+
 # Is tested the neural network.
 Y_Pred = RNA.predict(X_Test); print('Prediction of the output of the test data','\n',Y_Pred); print('\n'*4)
  

@@ -101,8 +101,7 @@ The two first columns (angles: Head Roll and Head Pitch) are not used in the inp
 After that the Data has been loaded and schuffled in training and testing sets; is created the model of the neural network (lines 73-92) The neural network has 23 inputs and two hidden layers, the first of them has the same numbers of nodes that the inputs, and the second hidden layer has 17 nodes; the both layers have a Relu activation function. The ouput layer has 6 nodes and its activation function is sigmoid because each node just can take two values: (0, 1) The total output is an "one hot" vector that contains six values; the neural network has like optimization function the categorical cross entropy loss, and it used the Stochastic downward gradient like the optimization type. 
 
 ```python
-   73 # Are defined the parameters of the neural network and the model.
-   74 HL_1_Nodes = 23
+   73 # Are defined the parameters of the neural network and the model.   74 HL_1_Nodes = 23
    75 HL_2_Nodes = 17
    76 RNA = Sequential()
    77
@@ -164,14 +163,15 @@ After that the neural network has been created, is trained and then is tested; t
 * To plot the confusion matrix, it's compute using the index of the ouput node that has more activation, and no directly the neural network output. in the lines 60 and 70 are created two vectors to save the index of the one hot value in the codification of each emotion category of the ouput testing set and the output of the neural network; the lines 104-106 determine the index descrived. The line 109 compute the confusion matrix.
 
 ```python
-   60 Index_Y_Test = np.empty([len(Y_Test),1], dtype = np.float64)
+   69 Index_Y_Test = np.empty([len(Y_Test),1], dtype = np.float64)
    70 Index_Y_Pred = np.empty([len(Y_Test),1], dtype = np.float64)
   ...
-  104 for i in range(len(Y_Test)):
-  105     Index_Y_Pred[i] = np.argmax(Y_Pred[i,:])     
-  106     Index_Y_Pred[i] = np.argmax(Y_Pred[i,:])
-  ...
-  109 Confusion_Matrix = confusion_matrix(Index_Y_Test,Index_Y_Pred)
+  127 for i in range(len(Y_Test)):
+  128     Index_Y_Pred[i] = np.argmax(Y_Pred[i,:])     
+  129     Index_Y_Pred[i] = np.argmax(Y_Pred[i,:])
+  130
+  131 # Is calculated the confusion matrix.
+  132 Confusion_Matrix = confusion_matrix(Index_Y_Test,Index_Y_Pred)
 ```
 
 * The next image show the confusion matrix that represent the performance of the neural network designed by the author.
@@ -186,9 +186,9 @@ Finally is saved the model created to be used in the differents tools developed:
 * Please make sure of the path that has the address of the neural network model be correct in the line 122 (don't change or delete the model name that are written after the last slash, if you do it, please check the path to load the model in the tools that use the model):
 
 ```python
-  120 # Is saved the model of the neural network.
-  121 Version = '1' # Version of the model created.
-  122 RNA.save('...\Model_RNA_Recognition_Of_Emotions ' + Version)
+  143 # Is saved the model of the neural network.
+  144 Version = '1' # Version of the model created.
+  145 RNA.save('...\Model_RNA_Recognition_Of_Emotions ' + Version)
 ```
 
 **Click on the images to see them with better quality**

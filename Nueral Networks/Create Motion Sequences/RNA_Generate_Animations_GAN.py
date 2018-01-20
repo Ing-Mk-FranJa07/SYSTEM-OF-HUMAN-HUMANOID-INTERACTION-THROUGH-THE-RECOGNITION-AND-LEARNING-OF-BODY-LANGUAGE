@@ -65,34 +65,34 @@ class DCGAN(object):
     def __init__(self):
         '''
         Function that set up the Data set.
-        The original data is a 39*16 matrix, are added one raw and one column 
-        to form a 40*16 matrix, to ease the manipulation of the networks.
+        The original data is a 39*16 matrix, are added one raw to form a 40*16 
+        matrix, to ease the manipulation of the networks.
         '''
         # Parameters used to build the input data set.
-        Repetition = 1                                                          # Variable used to increase the original animation in the input data.
+        Repetition = 100                                                          # Variable used to increase the original animation in the input data.
         plus = 0                                                                # Variable used to increase the original animation in the input data.
         self.DataSet = np.empty([Repetition*32,40,16])                          # Input Data.
         
         # Is loaded the motion sequences.
         for D in range(Repetition):
             # Motion sequences used to represent emotions:
-            for i in range(1,11):                
-                FileName = str("...\Motion_Sequences\ Emotion " + str(i) + ".csv")
+            for i in range(1,11):
+                FileName = str("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorSecuenceOfMovements\BaseDeDatos\ Emotion " + str(i) + ".csv")
                 Data = pd.read_csv(FileName, header = 0, index_col = 0)
 
                 self.DataSet[plus + i - 1, 0, :] = np.array(Data.ix[0,:])
                 self.DataSet[plus + i - 1, 1:, :] = np.array(Data.ix[:,:])
                 
             # Motions sequences used to used in conversations.
-            for i in range(1,23):                 
-                FileName = str("...\Motion_Sequences\ Animation " + str(i) + ".csv")
+            for i in range(1,23):
+                FileName = str("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorSecuenceOfMovements\BaseDeDatos\ Animation " + str(i) + ".csv")
                 Data = pd.read_csv(FileName, header = 0, index_col = 0)
 
                 self.DataSet[plus + 9 + i, 0, :] = np.array(Data.ix[0,:])
                 self.DataSet[plus + 9 + i, 1:, :] = np.array(Data.ix[:,:])
         
-            plus += 31
-            
+            plus += 32
+        
         # Set up the input data.
         self.DataSet = self.DataSet.reshape(self.DataSet.shape[0], self.DataSet.shape[1], self.DataSet.shape[2], 1)
         self.DataSet = self.DataSet.astype('float32')
@@ -109,7 +109,7 @@ class DCGAN(object):
         # Are defined the neural network parameters.
             # Neural Networks input.
         self.Input_Gen = 100                                                    # Shape of the Generative network input
-        self.Input_Dis = (self.DataSet.shape[1:])                               # Shape of the Discriminative netwokr input = [Rows, Cols, Chan].
+        self.Input_Dis = (self.DataSet.shape[1:])                               # Shape of the Discriminative network input = [Rows, Cols, Chan].
             # Hidden layers outputs.
         self.Depth_Dis = 64                                                     # Initial depth of the Discriminative layers.                      
         self.Depth = 256                                                        # Initial depth of the Generative layers.
@@ -120,36 +120,8 @@ class DCGAN(object):
         self.strides = 2
             # Neural networks train parameters.
         self.Dropout_rate = 0.1                                                 # Percentage to dropout the input data.
-        self.Momentum = 0.2                                                         
-        self.Momentum_D = 0.2
-        self.Momentum_A = 0.05
-        LearningRate_D = 2e-2                                                   # Discriminative network learning rate.   
-        Decrement_D = 1e-5                                                      # Discriminative network decay.
-        LearningRate_A = 25e-2                                                  # Adversarial model learning rate.
-        Decrement_A = 1e-5                                                      # Adversarial model decay.
-            # Neural networks optimizers .
-                # Adversarial model.
-        self.Adam_A = Adam(lr = 1e-4) 
-        self.RMS_A = RMSprop(lr = LearningRate_A, decay = Decrement_A)
-        self.SGD_A = SGD(lr = LearningRate_A, decay = Decrement_A, momentum = self.Momentum_A, nesterov = False)
-                # Discriminative model.
-        self.Adam_D = Adam(lr = 1e-4) 
-        self.RMS_D = RMSprop(lr = LearningRate_D, decay = Decrement_D)
-        self.SGD_D = SGD(lr = LearningRate_D, decay = Decrement_D, momentum = self.Momentum_D, nesterov = False)
-        
-    def ShuffleDataSet(self, shuffle = False):
-        '''
-        Function that shuffle the input data, and create a validation data.
-        *** Was not used.
-        '''
-        if shuffle:
-            X_Train = self.DataSet[0:int(len(self.DataSet)*0.85), :, :, :]
-            X_Test= self.DataSet[int(len(self.DataSet)*0.85):, :, :, :]
-        
-            return X_Train, X_Test
-        else:
-            return self.DataSet, np.zeros([1, 40, 16, 1])
-  
+        self.Momentum = 0.2
+    
     def Plot_Loss(self, Losses):
         '''
         Function that plot the Adversarial and Discriminator models Losses.
@@ -168,13 +140,13 @@ class DCGAN(object):
         plt.plot(Acc['D'], label = 'Discriminative accuracy')
         plt.plot(Acc['A'], label = 'Adversarial accuracy')
         plt.legend()
-        plt.show()
+        plt.show()     
         
     def CreateGen(self):
         '''
         Function that create the model of the Generative network.
         '''
-        # Is created the Generator network.
+        # Is created the Generative network.
         Gen = Sequential()
         
         # First layer of the network.
@@ -206,6 +178,7 @@ class DCGAN(object):
         Gen.add(Conv2DTranspose(1, self.Kernel, border_mode = 'same'))
         Gen.add(Activation('tanh'))
         
+        # Model summary.
         print('Generative network model:'+'\n'*2); Gen.summary(line_length = 100, positions = [.45, .7, 2, 1.]); print('\n'*2)
         
         return Gen
@@ -247,11 +220,12 @@ class DCGAN(object):
         Dis.add(Dense(1))
         Dis.add(Activation('sigmoid'))
         
+        # Model summary.
         print('Discriminative network model:'+'\n'*2); Dis.summary(); print('\n'*2)
         
         return Dis
     
-    def DiscriminatorModel(self, OptimizerType = 0):
+    def DiscriminativeModel(self, LearningRate_D, Decrement_D):
         '''
         Function that implement the Discriminator model.
         '''
@@ -262,16 +236,12 @@ class DCGAN(object):
         D.add(self.CreateDis())
 
         # Is definite the network training.
-        if OptimizerType == 0:
-            D.compile(loss = 'binary_crossentropy', optimizer = self.Adam_D, metrics = ['accuracy'])
-        elif OptimizerType == 1:
-            D.compile(loss = 'binary_crossentropy', optimizer = self.RMS_D, metrics = ['accuracy'])
-        elif OptimizerType == 2:
-            D.compile(loss = 'binary_crossentropy', optimizer = self.SGD_D, metrics = ['accuracy'])
+        RMS_D = RMSprop(lr = LearningRate_D, decay = Decrement_D)
+        D.compile(loss = 'binary_crossentropy', optimizer = RMS_D, metrics = ['accuracy'])
         
         return D
     
-    def AdversarialModel(self, Generator, Discriminator, OptimizerType = 0):
+    def AdversarialModel(self, Generator, Discriminator, LearningRate_A, Decrement_A):
         '''
         Function that implement the Adversarial model (Generative + Discriminative)
         '''
@@ -285,104 +255,101 @@ class DCGAN(object):
         A.add(Discriminator)
         
         # Is definet the network training.
-        if OptimizerType == 0:
-            A.compile(loss = 'binary_crossentropy', optimizer = self.Adam_A, metrics = ['accuracy'])
-        elif OptimizerType == 1:
-            A.compile(loss = 'binary_crossentropy', optimizer = self.RMS_A, metrics = ['accuracy'])
-        elif OptimizerType == 2:
-            A.compile(loss = 'binary_crossentropy', optimizer = self.SGD_A, metrics = ['accuracy'])
+        RMS_A = RMSprop(lr = LearningRate_A, decay = Decrement_A)
+        A.compile(loss = 'binary_crossentropy', optimizer = RMS_A, metrics = ['accuracy'])
         
+        # Model summary.
         print('Adversarial network model:'+'\n'*2); A.summary(); print('\n'*2)
         
         return A
-
-    def Train(self, Iterations = 10, Batch_Size = 32, Version = str('1'), shuffle = False, OptimizerType = 0, Plot_Freq = 300):
+    
+    def Train(self, Iterations = 10, Batch_Size = 32, Version = str('1'), Plot_Freq = 20, LearningRate_A = 0.0001, Decrement_A = 3e-8, LearningRate_D = 0.0002, Decrement_D = 6e-8):
         '''
         Function that train the GAN model.
         First is trained the Discriminator model, using the original motions 
         sequences and motion sequences created by the Generative network without 
-        be trained; then is trained the Adversarial network (Gen + Dis) to 
+        be trained; then is trained the Adversarial model (Gen + Dis) to 
         increase the performer of the Generative network.
         '''
-        X_Train, X_Test = self.ShuffleDataSet(shuffle)
+        X_Train = self.DataSet
         
         # Are created the models of the neural network.
         Generator = self.CreateGen()
-        Discriminator = self.DiscriminativeModel(OptimizerType)
-        Adversarial = self.AdversarialModel(Generator, Discriminator, OptimizerType)
+        Discriminator = self.DiscriminativeModel(LearningRate_D, Decrement_D)
+        Adversarial = self.AdversarialModel(Generator, Discriminator, LearningRate_A, Decrement_A)
         
         ListAnimations = np.empty([Iterations, Batch_Size, 39, 16])             # List used to save the new motion sequences.
-    
+        
         Losses = {'D':[], 'A':[]}                                               # List used to save the discriminator and the adversarial models losses.
         Accs = {'D':[], 'A':[]}                                                 # List used to save the discriminator and the adversarial models accuracies.
         
         # The networks are trained.
         for I in range(Iterations):
             Index = np.random.randint(X_Train.shape[0], size = Batch_Size)      # List used to saved the index of the motion sequence selected.
-            
+             
             # Are loaded the animations in a random order.
             Animations = X_Train[Index, :, :, :]
-
-            # Is created the input of the Generator model.
+ 
+            # Is created the input of the Generative model.
             Noise = np.random.uniform(-1.0, 1.0, size = [Batch_Size, self.Input_Gen])
-            
+             
             # Are created new motion sequences.
             FakeAnimations = Generator.predict(Noise)
-            
+             
             # Is created the training set to the Discriminator model.
             X = np.concatenate((Animations, FakeAnimations))
             Y = np.ones([2*Batch_Size, 1]); Y[Batch_Size:, :] = 0
-            
+             
             # The Discriminator model is trained 
             Dis_loss = Discriminator.train_on_batch(X, Y)
-            
+             
             # Is created the training set to the Adversarial model.
             Adv_Noise = np.random.uniform(-1.0, 1.0, size = [Batch_Size, self.Input_Gen])
             Adv_Y = np.ones([Batch_Size, 1])
-            
+             
             # The Adversarial model is trained.
             Adv_loss = Adversarial.train_on_batch(Adv_Noise, Adv_Y)
-            
+             
             # Is showed the evolution of the training.
             log_mesg = "%d: [D loss: %f, acc: %f]" % (I, Dis_loss[0], Dis_loss[1])
-            log_mesg = "%s  [A loss: %f, acc: %f]" % (log_mesg, Adv_loss[0], Adv_loss[1])
+            log_mesg = "%s: [A loss: %f, acc: %f]" % (log_mesg, Adv_loss[0], Adv_loss[1])
             print(log_mesg)
-         
+             
             # Is saved the discriminator and the adversarial models losses to be plotted.
             Losses['D'].append(Dis_loss[0])
             Losses['A'].append(Adv_loss[0])
-            
+             
             # Is saved the discriminator and the adversarial models accuracies to be plotted.
             Accs['D'].append(Dis_loss[1])
             Accs['A'].append(Adv_loss[1])
-            
+             
             # Is denormalize the new motion sequences.
             FakeAnimations = FakeAnimations.reshape(FakeAnimations.shape[0], FakeAnimations.shape[1], FakeAnimations.shape[2])
             FakeAnimations = FakeAnimations[:, 1: ,:]
             FakeAnimations = FakeAnimations * self.DataMax
-            
+             
             # The new motion sequences are added to the list.
             ListAnimations[I,:,:,:] = FakeAnimations
-           
+             
             # Are plotted the both losses and accuracies.
             if I % Plot_Freq == Plot_Freq - 1:
                 self.Plot_Loss(Losses)
-                self.Plot_Acc(Accs)
-        
+                self.Plot_Acc(Accs)        
+         
         # Are saved the nueral networks models.
-        Adversarial.save('...\Adversarial Model ' + Version)
-        Discriminator.save('...\Discriminator Model ' + Version)
-        Generator.save('...\Generator Model ' + Version)
- 
+        Adversarial.save('D:\Tesis\Python\Liclipse\Tesis\ImplementRNAs\Prueba_GAN\Adversarial Model')
+        Discriminator.save('D:\Tesis\Python\Liclipse\Tesis\ImplementRNAs\Prueba_GAN\Discriminative Model')
+        Generator.save('D:\Tesis\Python\Liclipse\Tesis\ImplementRNAs\Prueba_GAN\Generative Model')
+  
         # Are saved the new motion sequences in .cvs files.
         for L in range(len(ListAnimations)):
             for A in range(len(FakeAnimations)) :
                 DataFrame = pd.DataFrame(ListAnimations[L, A, :, :])
-                DataFrame.to_csv("...\DataBaseGeneratedByRNA\ NewAnimation " + str(L+1) + "-" + str(A+1) + ".csv", sep = ",", header = False, index = False, index_label = 'Node')
-        
+                DataFrame.to_csv("D:\Tesis\Python\Liclipse\Tesis\TrackingKinect\DataBaseCreatorSecuenceOfMovements\DataBaseGeneratedByRNA\ NewAnimation " + Version + " " + str(L+1) + "-" + str(A+1) + ".csv", sep = ",", header = False, index = False, index_label = 'Node')
+          
 if __name__ == '__main__':
     
     GAN = DCGAN()
     Timer = TakeTime()
-    GAN.Train(Iterations = 300, Batch_Size = 32, Version = str('1'), shuffle = False, OptimizerType = 2, Plot_Freq = 300)
+    GAN.Train(Iterations = 1000, Batch_Size = 32, Version = str('1'), Plot_Freq = 1000, LearningRate_A = 0.0002, Decrement_A = 3e-2, LearningRate_D = 0.0002, Decrement_D = 6e-8)
     Timer.Time()

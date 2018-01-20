@@ -218,7 +218,7 @@ class DCGAN(object):
         Dis = Sequential()
         
         # First layer of the network.
-        Dis.add(Conv2D(self.Depth_Dis, self.Kernel, strides = self.strides, input_shape = self.Input_Dis, padding = 'same'))
+        Dis.add(Conv2D(self.Depth_Dis, self.Kernel, strides = int(self.strides/self.strides), input_shape = self.Input_Dis, padding = 'same'))
         Dis.add(LeakyReLU(alpha = 0.2))
         Dis.add(Dropout(self.Dropout_rate))
         

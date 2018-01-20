@@ -41,11 +41,6 @@ class Neural_Networks_Models(object):
         self.AnimationsDataBase = pd.read_csv('...\Data_And_RNA_Models\Animations Sequence.csv', header = 0)
         self.AnimationsDataBase.set_index("Animation", inplace = True)
         
-        # Are loaded the GAN models, that perform the creation of Motion animation sequences.
-        #self.Adversarial = load_model('...\Data_And_RNA_Models\Adversarial Model')
-        #self.Discriminator = load_model('...\Data_And_RNA_Models\Discriminator Model')
-        #self.Generator = load_model('...\Data_And_RNA_Models\Generator Model')
-        
         # Is configured a ChatBot model that allow get answers to pre-define questions.         
         self. PepperSay = ChatBot('Pepper Answers', 
                              logic_adapter = ["chatterbot.logic.MathematicalEvualation",

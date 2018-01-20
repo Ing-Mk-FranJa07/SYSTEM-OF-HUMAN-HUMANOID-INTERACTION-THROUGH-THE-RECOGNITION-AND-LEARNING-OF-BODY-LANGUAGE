@@ -175,7 +175,7 @@ class Neural_Networks_Models(object):
         '''        
         # Are get two random int to select a original animation of the DataSet.
         Iteration = np.random.randint(301); Iteration = [1 if Iteration == 0 else Iteration]; Iteration = [300 if Iteration == 301 else Iteration]
-        AnimationData = np.random.randint(33); AnimationData = [1 if AnimationData == 0 else AnimationData]; AnimationData = [300 if AnimationData == 301 else AnimationData]
+        AnimationData = np.random.randint(65); AnimationData = [1 if AnimationData == 0 else AnimationData]; AnimationData = [64 if AnimationData == 65 else AnimationData]
         
         # Is loaded a original animation of the DataSet.
         FileName = ("...\Data_And_RNA_Models\DataBaseGeneratedByRNA\ NewAnimation " + str(Iteration[0][0]) + "-" + str(AnimationData[0][0]) + ".csv")

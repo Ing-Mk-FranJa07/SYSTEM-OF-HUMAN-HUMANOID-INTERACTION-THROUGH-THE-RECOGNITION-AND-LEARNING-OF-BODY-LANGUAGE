@@ -12,7 +12,7 @@ In this case, the script [RNA_Generate_Animations_GAN.py](https://github.com/Ing
 
 The image show a representation of the GAN model created.
 
-![gan model](https://user-images.githubusercontent.com/31509775/32303734-6251d8c4-bf38-11e7-8555-b827076c2108.PNG)
+![gan model](https://user-images.githubusercontent.com/31509775/35186134-2b8dab0e-fddd-11e7-8fad-0e60e305e5c2.PNG)
 
 ### Software requirements:
 

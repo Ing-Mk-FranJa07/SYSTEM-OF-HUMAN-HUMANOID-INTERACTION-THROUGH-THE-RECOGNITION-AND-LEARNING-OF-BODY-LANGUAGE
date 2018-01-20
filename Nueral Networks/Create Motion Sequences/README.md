@@ -107,7 +107,7 @@ The script developed has two classes, the first class "TakeTime" is used to calc
    74        self.DataSet = np.empty([Repetition*32,40,16])                          # Input Data.
 ```
 
-The class "DCGAN" has a function named "CreateGen" which build the **Generative network model**, this network synthesizes the "fake" motion sequences. The fake motion sequence is generated from a 100-dimensional noise, that has a uniform distribution between -1.0 to 1.0) using the inverse of convolution, transposed convolution. In between the layers, batch normalization is used to stabilizes learning, is used the upsampling between the first three layers because it synthesizes better the data. The activation function after each layer is the Hiperbolic tangent "tanh", because its output take a real value between -1.0 to 1.0 (same interval that the originals motion sequences); the droput is used in the first layer to prevents over fitting. 
+The class "DCGAN" has a function named "CreateGen" which build the **Generative network model**, this network synthesizes the "fake" motion sequences. The fake motion sequence is generated from a 100-dimensional noise, that has a uniform distribution between -1.0 to 1.0 using the inverse of convolution, transposed convolution. In between the layers, batch normalization is used to stabilizes learning, is used the upsampling between the first three layers because it synthesizes better the data. The activation function after each layer is the Hiperbolic tangent "tanh", because its output take a real value between -1.0 to 1.0 (same interval that the originals motion sequences); the droput is used in the first layer to prevents over fitting. 
 
 ```python
    191    def CreateGen(self):

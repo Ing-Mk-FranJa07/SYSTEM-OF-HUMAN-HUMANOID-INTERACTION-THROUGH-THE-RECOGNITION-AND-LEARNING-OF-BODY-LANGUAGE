@@ -103,28 +103,19 @@ Optional software:
     42       self.AnimationsDataBase.set_index("Animation", inplace = True)
 ```
 
-* The lines 45-47 of the wrapper: [Neural_Networks_Models.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Complet%20Project/Wrappers/Neural_Networks_Models.py#L37-L38) should import the GAN models built to create new "originals" motion sequences, to be used in the "Alternative world" function, but they are commented because the in the version 2.7 of pyhton is not avaible tensorflow like backend to keras, so is necessary use theano, and this doesn´t the features to run the some layers of the models built. You can found the models in the in the folder [Data_And_RNA_Models](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Complet%20Project/Data_And_RNA_Models).
-
-```python
-    44       # Are loaded the GAN models, that perform the creation of Motion animation sequences.
-    45       #self.Adversarial = load_model('...\Data_And_RNA_Models\Adversarial Model')
-    46       #self.Discriminator = load_model('...\Data_And_RNA_Models\Discriminator Model')
-    47       #self.Generator = load_model('...\Data_And_RNA_Models\Generator Model')
-```
-
-* Beacause the previous explanation, the lines 181-187 of the same Wrapper: [Neural_Networks_Models.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Complet%20Project/Wrappers/Neural_Networks_Models.py#L37-L38) are used to load the data base of the motion sequences created using the GAN model (you can found it in this repository in the folder: [Create motion sequences](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Nueral%20Networks/Create%20Motion%20Sequences) and is recommended first run this script to generate the motion sequences), selecting one of them each time in a random form. This is used to perform the Pepper's behavior in the "Alternative world" function. The logic to select and import the motion sequences follow the current explanation: is select a random epoch, 1 to 300, and then is selectec a random motion sequence, 1 to 32 (the author trained the GAN model by 300 epochs and save all the data generated, in each epoch are generated 32 motion sequences). Finally are loaded the file with the structure: "NewAnimation Epoch-Motion sequence"; example: "NewAnimation 100-32".
+* The lines 176-178 of the same Wrapper: [Neural_Networks_Models.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Complet%20Project/Wrappers/Neural_Networks_Models.py#L37-L38) are used to load the data base of the motion sequences created using the GAN model (you can found it in this repository in the folder: [Create motion sequences](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Nueral%20Networks/Create%20Motion%20Sequences) and is recommended first run this script to generate the motion sequences), selecting one of them each time in a random form. This is used to perform the Pepper's behavior in the "Alternative world" function. The logic to select and import the motion sequences follow the current explanation: is select a random epoch, 1 to 300, and then is selectec a random motion sequence, 1 to 64 (the author selected the data of thev last 300 epochs of the GAN model and save all the data generated). Finally are loaded the file with the structure: "NewAnimation Epoch-Motion sequence"; example: "NewAnimation 100-32".
 
 **Please, if you generate a different number of motion sequences with the GAN model, change the random and validations values.**
 **Please make sure that the path to load the file is correct. The folder "DataBaseGeneratedByRNA" is in the folder: [Data_And_RNA_Models](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Complet%20Project/Data_And_RNA_Models). And has a few motion sequences developed; if you run the GAN model, it goes to save the motion sequences created in that folder, please check the path too.**
 
 ```python
-   181      # Are get two random int to select a original animation of the DataSet.
-   182      Iteration = np.random.randint(301); Iteration = [1 if Iteration == 0 else Iteration]; Iteration = [300 if Iteration == 301 else Iteration]
-   183      AnimationData = np.random.randint(33); AnimationData = [1 if AnimationData == 0 else AnimationData]; AnimationData = [300 if AnimationData == 301 else AnimationData]
-   184       
-   185       # Is loaded a original animation of the DataSet.
-   186       FileName = ("...\Data_And_RNA_Models\DataBaseGeneratedByRNA\ NewAnimation " + str(Iteration[0][0]) + "-" + str(AnimationData[0][0]) + ".csv")
-   187       File = pd.read_csv(FileName, header = None)
+   176      # Are get two random int to select a original animation of the DataSet.
+   177      Iteration = np.random.randint(301); Iteration = [1 if Iteration == 0 else Iteration]; Iteration = [300 if Iteration == 301 else Iteration]
+   178      AnimationData = np.random.randint(65); AnimationData = [1 if AnimationData == 0 else AnimationData]; AnimationData = [64 if AnimationData == 65 else AnimationData]
+   179       
+   180       # Is loaded a original animation of the DataSet.
+   181       FileName = ("...\Data_And_RNA_Models\DataBaseGeneratedByRNA\ NewAnimation " + str(Iteration[0][0]) + "-" + str(AnimationData[0][0]) + ".csv")
+   182       File = pd.read_csv(FileName, header = None)
 ```
 
 * To create a new corpus data in the chatterbot library, is necessary go to the chatterbot_corpus folder and then into the data folder (installed if you use Anaconda in: **C:\...\Anaconda2_Win32\Lib\site-packages\chatterbot_corpus\data**) and create a new folder with the name "Pepper_Speech" (this was the name used by the author to create the folder in which was saved the corpus with the dialogues of the Conversation with Pepper) **Is important that if you select a different name, change the corpus name selector in the line 56 of the wrapper: [Neural_Networks_Models.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Complet%20Project/Wrappers/Neural_Networks_Models.py#L37-L38) **), and then create a file with the name **"myown.yml"** (you can open this file with any text editor) and paste the dialogues: [Conversation with Pepper.txt](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Complet%20Project/Data_And_RNA_Models/Conversation%20with%20Pepper.txt).

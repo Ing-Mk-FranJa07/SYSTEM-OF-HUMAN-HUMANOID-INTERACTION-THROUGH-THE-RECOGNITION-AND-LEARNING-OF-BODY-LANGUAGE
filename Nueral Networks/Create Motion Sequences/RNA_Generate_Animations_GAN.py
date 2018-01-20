@@ -65,7 +65,7 @@ class DCGAN(object):
     def __init__(self):
         '''
         Function that set up the Data set.
-        The original data is a 39*15 matrix, are added one raw and one column 
+        The original data is a 39*16 matrix, are added one raw and one column 
         to form a 40*16 matrix, to ease the manipulation of the networks.
         '''
         # Parameters used to build the input data set.

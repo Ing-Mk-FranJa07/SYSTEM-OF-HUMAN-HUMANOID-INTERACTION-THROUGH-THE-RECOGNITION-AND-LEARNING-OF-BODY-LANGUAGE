@@ -206,6 +206,8 @@ class DCGAN(object):
         Gen.add(Conv2DTranspose(1, self.Kernel, border_mode = 'same'))
         Gen.add(Activation('tanh'))
         
+        print('Generative network model:'+'\n'*2); Gen.summary(line_length = 100, positions = [.45, .7, 2, 1.]); print('\n'*2)
+        
         return Gen
 
     def CreateDis(self):
@@ -245,6 +247,8 @@ class DCGAN(object):
         Dis.add(Dense(1))
         Dis.add(Activation('sigmoid'))
         
+        print('Discriminative network model:'+'\n'*2); Dis.summary(); print('\n'*2)
+        
         return Dis
     
     def DiscriminatorModel(self, OptimizerType = 0):
@@ -267,18 +271,18 @@ class DCGAN(object):
         
         return D
     
-    def AdversarialModel(self, OptimizerType = 0):
+    def AdversarialModel(self, Generator, Discriminator, OptimizerType = 0):
         '''
-        Function that implement the Adversarial model (Generator + Discriminator)
+        Function that implement the Adversarial model (Generative + Discriminative)
         '''
         # Is created a model to saved the both netwroks.
         A = Sequential()
         
         # Is added the Generative network. 
-        A.add(self.CreateGen())
+        A.add(Generator)
         
         # Is added the Discriminative network.
-        A.add(self.CreateDis())
+        A.add(Discriminator)
         
         # Is definet the network training.
         if OptimizerType == 0:
@@ -287,6 +291,8 @@ class DCGAN(object):
             A.compile(loss = 'binary_crossentropy', optimizer = self.RMS_A, metrics = ['accuracy'])
         elif OptimizerType == 2:
             A.compile(loss = 'binary_crossentropy', optimizer = self.SGD_A, metrics = ['accuracy'])
+        
+        print('Adversarial network model:'+'\n'*2); A.summary(); print('\n'*2)
         
         return A
 
@@ -301,9 +307,9 @@ class DCGAN(object):
         X_Train, X_Test = self.ShuffleDataSet(shuffle)
         
         # Are created the models of the neural network.
-        Adversarial = self.AdversarialModel(OptimizerType)
-        Discriminator = self.DiscriminatorModel(OptimizerType)
         Generator = self.CreateGen()
+        Discriminator = self.DiscriminativeModel(OptimizerType)
+        Adversarial = self.AdversarialModel(Generator, Discriminator, OptimizerType)
         
         ListAnimations = np.empty([Iterations, Batch_Size, 39, 16])             # List used to save the new motion sequences.
     

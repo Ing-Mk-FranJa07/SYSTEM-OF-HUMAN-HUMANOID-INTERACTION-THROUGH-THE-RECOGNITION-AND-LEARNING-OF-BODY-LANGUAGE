@@ -90,45 +90,46 @@ The script developed has two classes, the first class "TakeTime" is used to calc
 The class "DCGAN" has a function named "CreateGen" which build the **Generative network model**, this network synthesizes the "fake" motion sequences. The fake motion sequence is generated from a 100-dimensional noise, that has a uniform distribution between -1.0 to 1.0 using the inverse of convolution, transposed convolution. Between the layers, batch normalization is used to stabilizes learning, is used the upsampling between the first three layers because it synthesizes better the data. The activation function after each layer is the Hiperbolic tangent "tanh", because its output take a real value between -1.0 to 1.0 (same interval that the originals motion sequences); the droput is used in the first layer to prevents over fitting. 
 
 ```python
-   173    def CreateGen(self):
-   174        '''
-   175        Function that create the model of the Generative network.
-   176        '''
-   177        # Is created the Generative network.
-   178        Gen = Sequential()
-   179        
-   180        # First layer of the network.
-   181        Gen.add(Dense(self.Width* self.Length* self.Depth, input_dim = self.Input_Gen))
-   182        Gen.add(BatchNormalization(momentum = self.Momentum))
-   183        Gen.add(Activation('tanh'))
-   184        Gen.add(Reshape((self.Width, self.Length, self.Depth))) 
-   185        Gen.add(Dropout(self.Dropout_rate))
-   186        
-   187        # Second layer of the network.
-   188        Gen.add(UpSampling2D(size = (2, 2)))
-   189        Gen.add(Conv2DTranspose(int(self.Depth/2), self.Kernel, border_mode = 'same'))
-   190        Gen.add(BatchNormalization(momentum = self.Momentum))
-   191        Gen.add(Activation('tanh'))
-   192        
-   193        # Third layer of the network.
-   194        Gen.add(UpSampling2D(size = (2, 2)))
-   195        Gen.add(Conv2DTranspose(int(self.Depth/4), self.Kernel, border_mode = 'same'))
-   196        Gen.add(BatchNormalization(momentum = self.Momentum))
-   197        Gen.add(Activation('tanh'))
-   198        
-   199        # Fourth layer of the network.
-   200        Gen.add(UpSampling2D(size = (2, 2)))
-   201        Gen.add(Conv2DTranspose(int(self.Depth/8), self.Kernel, border_mode = 'same'))
-   202        Gen.add(BatchNormalization(momentum = self.Momentum))
-   203        Gen.add(Activation('tanh'))
-   204       
-   205        # Output layer.
-   206        Gen.add(Conv2DTranspose(1, self.Kernel, border_mode = 'same'))
-   207        Gen.add(Activation('tanh'))
-   208        
-   209        print('Generative network model:'+'\n'*2); Gen.summary(line_length = 100, positions = [.45, .7, 2, 1.]); print('\n'*2)
-   210      
-   211        return Gen
+   145    def CreateGen(self):
+   146        '''
+   147        Function that create the model of the Generative network.
+   148        '''
+   149        # Is created the Generative network.
+   150        Gen = Sequential()
+   151        
+   152        # First layer of the network.
+   153        Gen.add(Dense(self.Width* self.Length* self.Depth, input_dim = self.Input_Gen))
+   154        Gen.add(BatchNormalization(momentum = self.Momentum))
+   155        Gen.add(Activation('tanh'))
+   156        Gen.add(Reshape((self.Width, self.Length, self.Depth))) 
+   157        Gen.add(Dropout(self.Dropout_rate))
+   158        
+   159        # Second layer of the network.
+   160        Gen.add(UpSampling2D(size = (2, 2)))
+   161        Gen.add(Conv2DTranspose(int(self.Depth/2), self.Kernel, border_mode = 'same'))
+   162        Gen.add(BatchNormalization(momentum = self.Momentum))
+   163        Gen.add(Activation('tanh'))
+   164        
+   165        # Third layer of the network.
+   166        Gen.add(UpSampling2D(size = (2, 2)))
+   167        Gen.add(Conv2DTranspose(int(self.Depth/4), self.Kernel, border_mode = 'same'))
+   169        Gen.add(BatchNormalization(momentum = self.Momentum))
+   170        Gen.add(Activation('tanh'))
+   171        
+   172        # Fourth layer of the network.
+   173        Gen.add(UpSampling2D(size = (2, 2)))
+   174        Gen.add(Conv2DTranspose(int(self.Depth/8), self.Kernel, border_mode = 'same'))
+   175        Gen.add(BatchNormalization(momentum = self.Momentum))
+   176        Gen.add(Activation('tanh'))
+   177       
+   178        # Output layer.
+   179        Gen.add(Conv2DTranspose(1, self.Kernel, border_mode = 'same'))
+   180        Gen.add(Activation('tanh'))
+   181
+   182        # Model summary.
+   183        print('Generative network model:'+'\n'*2); Gen.summary(line_length = 100, positions = [.45, .7, 2, 1.]); print('\n'*2)
+   184      
+   185        return Gen
 ```
 
 * The image represent the structure of the Generative network.
@@ -137,46 +138,47 @@ The class "DCGAN" has a function named "CreateGen" which build the **Generative 
 The function named "CreateDis" build the **Discriminative network model** which decide if the data is real (original motion sequences) or fake (motion sequences created by the generative network) and is a deep convolutional neural netwrok. The input is a matrix that follows the structure (40 rows x 16 columns x 1 channel), the output of this model is obtained with the sigmoid function that determine the probability of how real is the data; (0.0 = complete fake, 1.0 = complete real); this model is different to a typical convolutional network is the absence of max-pooling bweteen layers, instead is used a stride convolution for down sampling. The activation function used in each convolutional layer is leaky Relu, and the dropout between layers prevent overfitting and memorization.
 
 ```python
-   213    def CreateDis(self):
-   214        '''
-   215        Function that create the model of the Discriminative network.
-   216        '''
-   217        # Is created the Discriminative network.
-   218        Dis = Sequential()
-   219        
-   220        # First layer of the network.
-   221        Dis.add(Conv2D(self.Depth_Dis, self.Kernel, strides = int(self.strides/self.strides), input_shape = self.Input_Dis, padding = 'same'))
-   222        Dis.add(LeakyReLU(alpha = 0.2))
-   223        Dis.add(Dropout(self.Dropout_rate))
-   224        
-   225        # Second layer of the network.
-   226        Dis.add(Conv2D(self.Depth_Dis*2, self.Kernel, strides = self.strides, padding = 'same'))   
-   227        Dis.add(LeakyReLU(alpha = 0.2))
-   228        Dis.add(Dropout(self.Dropout_rate))
-   229        
-   230        # Third layer of the network.
-   231        Dis.add(Conv2D(self.Depth_Dis*4, self.Kernel, strides = self.strides, padding = 'same'))
-   232        Dis.add(LeakyReLU(alpha = 0.2))
-   233        Dis.add(Dropout(self.Dropout_rate))
-   234         
-   235        # Fourth layer of the network.
-   236        Dis.add(Conv2D(self.Depth_Dis*8, self.Kernel, strides = self.strides, padding = 'same'))
-   237        Dis.add(LeakyReLU(alpha = 0.2))
-   238        Dis.add(Dropout(self.Dropout_rate))
-   239
-   240        # Fifth layer of the network.
-   241        Dis.add(Conv2D(self.Depth_Dis*16, self.Kernel, strides = int(self.strides/self.strides), padding = 'same'))
-   242        Dis.add(LeakyReLU(alpha = 0.2))
-   243        Dis.add(Dropout(self.Dropout_rate))
-   244
-   245        # Output layer.
-   246        Dis.add(Flatten())
-   247        Dis.add(Dense(1))
-   248        Dis.add(Activation('sigmoid'))
-   249
-   250        print('Discriminative network model:'+'\n'*2); Dis.summary(); print('\n'*2)
-   251
-   252        return Dis
+   186    def CreateDis(self):
+   187        '''
+   188        Function that create the model of the Discriminative network.
+   189        '''
+   190        # Is created the Discriminative network.
+   191        Dis = Sequential()
+   192        
+   193        # First layer of the network.
+   194        Dis.add(Conv2D(self.Depth_Dis, self.Kernel, strides = int(self.strides/self.strides), input_shape = self.Input_Dis, padding = 'same'))
+   195        Dis.add(LeakyReLU(alpha = 0.2))
+   196        Dis.add(Dropout(self.Dropout_rate))
+   197        
+   198        # Second layer of the network.
+   199        Dis.add(Conv2D(self.Depth_Dis*2, self.Kernel, strides = self.strides, padding = 'same'))   
+   200        Dis.add(LeakyReLU(alpha = 0.2))
+   201        Dis.add(Dropout(self.Dropout_rate))
+   202        
+   203        # Third layer of the network.
+   204        Dis.add(Conv2D(self.Depth_Dis*4, self.Kernel, strides = self.strides, padding = 'same'))
+   205        Dis.add(LeakyReLU(alpha = 0.2))
+   206        Dis.add(Dropout(self.Dropout_rate))
+   207         
+   208        # Fourth layer of the network.
+   209        Dis.add(Conv2D(self.Depth_Dis*8, self.Kernel, strides = self.strides, padding = 'same'))
+   210        Dis.add(LeakyReLU(alpha = 0.2))
+   211        Dis.add(Dropout(self.Dropout_rate))
+   212
+   213        # Fifth layer of the network.
+   214        Dis.add(Conv2D(self.Depth_Dis*16, self.Kernel, strides = int(self.strides/self.strides), padding = 'same'))
+   215        Dis.add(LeakyReLU(alpha = 0.2))
+   216        Dis.add(Dropout(self.Dropout_rate))
+   217
+   218        # Output layer.
+   219        Dis.add(Flatten())
+   220        Dis.add(Dense(1))
+   221        Dis.add(Activation('sigmoid'))
+   222
+   223        # Model summary.
+   224        print('Discriminative network model:'+'\n'*2); Dis.summary(); print('\n'*2)
+   225
+   226        return Dis
 ```
 
 * The image represent the structure of the Discriminative network.
@@ -186,44 +188,40 @@ Before the start with the training of the neural networks, is necessary create t
 
 **WARNINGS**
 
-* The optimizer algorithm can be choosen between the Adam, RMSProp and SGD for the both models changin the value (0, 1, 2) of the flag "OptimizerType" in the **line 387** where is called the main loop of the script. 
-
-* The model's parameters can be configurated in the init function in the **lines 109-138**.
-
 Finaly, the GAN model is trained. **The GAN model training** is developed following two steps in each epoch. First, is necessary train the discriminator, showing it some examples of the real data and some examples of the fake data created by the generative network using just noise; the second step is train the generative network via the chained models, that is to say, train the adversarial model generating sample data and try to push the chained generative network and the discriminative network to tell if the data is real or not; however is necessary don't alter the weights of the discriminative network during this step, so that's why the training of the discriminative network is freeze. 
 
 ```python
-   319        # The networks are trained.
-   320        for I in range(Iterations):
-   321            Index = np.random.randint(X_Train.shape[0], size = Batch_Size)      # List used to saved the index of the motion sequence selected.
+   286        # The networks are trained.
+   287        for I in range(Iterations):
+   288            Index = np.random.randint(X_Train.shape[0], size = Batch_Size)      # List used to saved the index of the motion sequence selected.
             
-   322            # Are loaded the animations in a random order.
-   323            Animations = X_Train[Index, :, :, :]
-   324
-   325            # Is created the input of the Generator model.
-   326            Noise = np.random.uniform(-1.0, 1.0, size = [Batch_Size, self.Input_Gen])
-   327          
-   328            # Are created new motion sequences.
-   329            FakeAnimations = Generator.predict(Noise)
-   330           
-   331            # Is created the training set to the Discriminator model.
-   332            X = np.concatenate((Animations, FakeAnimations))
-   333            Y = np.ones([2*Batch_Size, 1]); Y[Batch_Size:, :] = 0
-   334           
-   335            # The Discriminator model is trained 
-   336            Dis_loss = Discriminator.train_on_batch(X, Y)
-   337           
-   338            # Is created the training set to the Adversarial model.
-   339            Adv_Noise = np.random.uniform(-1.0, 1.0, size = [Batch_Size, self.Input_Gen])
-   340            Adv_Y = np.ones([Batch_Size, 1])
-   341          
-   342            # The Adversarial model is trained.
-   343            Adv_loss = Adversarial.train_on_batch(Adv_Noise, Adv_Y)
-   344        
-   345            # Is showed the evolution of the training.
-   346            log_mesg = "%d: [D loss: %f, acc: %f]" % (I, Dis_loss[0], Dis_loss[1])
-   347            log_mesg = "%s  [A loss: %f, acc: %f]" % (log_mesg, Adv_loss[0], Adv_loss[1])
-   348            print(log_mesg)
+   289            # Are loaded the animations in a random order.
+   290            Animations = X_Train[Index, :, :, :]
+   291
+   292            # Is created the input of the Generator model.
+   293            Noise = np.random.uniform(-1.0, 1.0, size = [Batch_Size, self.Input_Gen])
+   294          
+   295            # Are created new motion sequences.
+   296            FakeAnimations = Generator.predict(Noise)
+   297           
+   298            # Is created the training set to the Discriminator model.
+   299            X = np.concatenate((Animations, FakeAnimations))
+   300            Y = np.ones([2*Batch_Size, 1]); Y[Batch_Size:, :] = 0
+   301           
+   302            # The Discriminator model is trained 
+   303            Dis_loss = Discriminator.train_on_batch(X, Y)
+   304           
+   305            # Is created the training set to the Adversarial model.
+   306            Adv_Noise = np.random.uniform(-1.0, 1.0, size = [Batch_Size, self.Input_Gen])
+   307            Adv_Y = np.ones([Batch_Size, 1])
+   308          
+   309            # The Adversarial model is trained.
+   310            Adv_loss = Adversarial.train_on_batch(Adv_Noise, Adv_Y)
+   311        
+   312            # Is showed the evolution of the training.
+   313            log_mesg = "%d: [D loss: %f, acc: %f]" % (I, Dis_loss[0], Dis_loss[1])
+   314            log_mesg = "%s  [A loss: %f, acc: %f]" % (log_mesg, Adv_loss[0], Adv_loss[1])
+   315            print(log_mesg)
 ```
 
 * The image represente the train loop of the GAN model.
@@ -235,10 +233,10 @@ Finaly, the GAN model is trained. **The GAN model training** is developed follow
 After the GAN model has been trained, the models of the networks: Generative, Discriminative and Adversarial, are saved. Also, the motion sequences created in the training process are saved to, after they have been reshaped and denormalize to have the structure of the original data. 
 
 ```python
-   359           # Is denormalize the new motion sequences.
-   360            FakeAnimations = FakeAnimations.reshape(FakeAnimations.shape[0], FakeAnimations.shape[1], FakeAnimations.shape[2])
-   361            FakeAnimations = FakeAnimations[:, 1: ,:]
-   362            FakeAnimations = FakeAnimations * self.DataMax
+   326           # Is denormalize the new motion sequences.
+   327            FakeAnimations = FakeAnimations.reshape(FakeAnimations.shape[0], FakeAnimations.shape[1], FakeAnimations.shape[2])
+   328            FakeAnimations = FakeAnimations[:, 1: ,:]
+   329            FakeAnimations = FakeAnimations * self.DataMax
 ```
 
 **WARNING**
@@ -246,27 +244,27 @@ After the GAN model has been trained, the models of the networks: Generative, Di
 * Please make sure of the path that has the address of the models and the .csv files be correct in the follow lines (don't change or delete the files names that are written after the last slash):
 
 ```python
-   372        # Are saved the nueral networks models.
-   373        Adversarial.save('...\Adversarial Model ' + Version)
-   374        Discriminator.save('...\Discriminator Model ' + Version)
-   375        Generator.save('...\Generator Model ' + Version)
-   376
-   377        # Are saved the new motion sequences in .cvs files.
-   378        for L in range(len(ListAnimations)):
-   379           for A in range(len(FakeAnimations)) :
-   380                DataFrame = pd.DataFrame(ListAnimations[L, A, :, :])
-   381                DataFrame.to_csv("...\DataBaseGeneratedByRNA\ NewAnimation " + str(L+1) + "-" + str(A+1) + ".csv", sep = ",", header = False, index = False, index_label = 'Node')
+   339        # Are saved the nueral networks models.
+   340        Adversarial.save('...\Adversarial Model')
+   341        Discriminator.save('...\Discriminator Model')
+   342        Generator.save('...\Generator Model')
+   343
+   344        # Are saved the new motion sequences in .cvs files.
+   345        for L in range(len(ListAnimations)):
+   346           for A in range(len(FakeAnimations)) :
+   347                DataFrame = pd.DataFrame(ListAnimations[L, A, :, :])
+   348                DataFrame.to_csv("...\DataBaseGeneratedByRNA\ NewAnimation " + Version + " " + str(L+1) + "-" + str(A+1) + ".csv", sep = ",", header = False, index = False, index_label = 'Node')
 ```
 
-The GAN model presented here, can develop ["originals" motion sequences](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Nueral%20Networks/Create%20Motion%20Sequences/DataBaseGeneratedByRNA), but this sequences are not similars to the motion sequences, you can change all the parameters used to buid and train the networks and also the optimizer algorithms, and try to get a better performance of this model.
+The GAN model presented here, can develop ["originals" motion sequences](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Nueral%20Networks/Create%20Motion%20Sequences/DataBaseGeneratedByRNA), but this sequences are not exactly to the motion sequences developed by the author, whatever, tuning more the model, its possible to get a better result.
 
 ```python
-   383 if __name__ == '__main__':
-   384     
-   385     GAN = DCGAN()
-   386     Timer = TakeTime()
-   387     GAN.Train(Iterations = 300, Batch_Size = 32, Version = str('1'), shuffle = False, OptimizerType = 2, Plot_Freq = 300)
-   388     Timer.Time()
+   350 if __name__ == '__main__':
+   351     
+   352     GAN = DCGAN()
+   353     Timer = TakeTime()
+   354     GAN.Train(Iterations = 1000, Batch_Size = 32, Version = str('1'), Plot_Freq = 1000, LearningRate_A = 0.0002, Decrement_A = 3e-2, LearningRate_D = 0.0002, Decrement_D = 6e-8)
+   355     Timer.Time()
 ```
 
 * The image shows an animation motion sequence created by the user and the motion sequence created by the GAN model.

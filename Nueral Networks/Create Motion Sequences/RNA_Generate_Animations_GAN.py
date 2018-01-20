@@ -82,15 +82,6 @@ class DCGAN(object):
 
                 self.DataSet[plus + i - 1, 0, :] = np.array(Data.ix[0,:])
                 self.DataSet[plus + i - 1, 1:, :] = np.array(Data.ix[:,:])
-
-    #             self.DataSet[i - 1, 0, :] = np.array(Data.ix[0,:])
-    #             self.DataSet[i - 1, 1:, :] = np.array(Data.ix[:,:])
-                
-#                 for D in range(Repetition):#                      
-#                     self.DataSet[plus + D, 0, :] = np.array(Data.ix[0,:])
-#                     self.DataSet[plus + D, 1:, :] = np.array(Data.ix[:,:])
-#              
-#                 plus += Repetition
                 
             # Motions sequences used to used in conversations.
             for i in range(1,23):                 
@@ -99,17 +90,8 @@ class DCGAN(object):
 
                 self.DataSet[plus + 9 + i, 0, :] = np.array(Data.ix[0,:])
                 self.DataSet[plus + 9 + i, 1:, :] = np.array(Data.ix[:,:])
-    
-    #             self.DataSet[9 + i, 0, :] = np.array(Data.ix[0,:])
-    #             self.DataSet[9 + i, 1:, :] = np.array(Data.ix[:,:])
-                
-#                 for D in range(Repetition):#                   
-#                     self.DataSet[plus + D, 0, :] = np.array(Data.ix[0,:])
-#                     self.DataSet[plus + D, 1:, :] = np.array(Data.ix[:,:])
-#                  
-#                 plus += Repetition
         
-#            plus += 31
+            plus += 31
             
         # Set up the input data.
         self.DataSet = self.DataSet.reshape(self.DataSet.shape[0], self.DataSet.shape[1], self.DataSet.shape[2], 1)

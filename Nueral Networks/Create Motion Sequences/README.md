@@ -54,9 +54,7 @@ The script developed has two classes, the first class "TakeTime" is used to calc
 
 **WARNINGS**
 
-* Please make sure of the path that has the address of the .csv files be correct in the lines 80 and 97 (don't change or delete the files names that are written after the last slash):
-
-* The code has a few commented lines (87-95, 106-112), that you can use or change to add copies of the 32 motion sequences created, this is because the author was traying to generete better motion sequences and the data set is pretty short, but the advice is try to create more and more motion sequences, or generete a random noise to the motion sequences created trying to have more data; also, you can load the same data several times to increase the data set.
+* Please make sure of the path that has the address of the .csv files be correct in the lines 80 and 88 (don't change or delete the files names that are written after the last slash):
 
 ```python
    76         # Is loaded the motion sequences.
@@ -69,33 +67,15 @@ The script developed has two classes, the first class "TakeTime" is used to calc
    83                 self.DataSet[plus + i - 1, 0, :] = np.array(Data.ix[0,:])
    84                 self.DataSet[plus + i - 1, 1:, :] = np.array(Data.ix[:,:])
    85
-   86     #             self.DataSet[i - 1, 0, :] = np.array(Data.ix[0,:])
-   87     #             self.DataSet[i - 1, 1:, :] = np.array(Data.ix[:,:])
-   88
-   89 #                 for D in range(Repetition):#                      
-   90 #                     self.DataSet[plus + D, 0, :] = np.array(Data.ix[0,:])
-   91 #                     self.DataSet[plus + D, 1:, :] = np.array(Data.ix[:,:])
-   92 #              
-   93 #                 plus += Repetition
-   94
-   95             # Motions sequences used to used in conversations.
-   96             for i in range(1,23):                 
-   97                 FileName = str("...\Motion_Sequences\ Animation " + str(i) + ".csv")
-   98                 Data = pd.read_csv(FileName, header = 0, index_col = 0)
-   99
-  100                 self.DataSet[plus + 9 + i, 0, :] = np.array(Data.ix[0,:])
-  101                 self.DataSet[plus + 9 + i, 1:, :] = np.array(Data.ix[:,:])
-  102
-  103     #             self.DataSet[9 + i, 0, :] = np.array(Data.ix[0,:])
-  104     #             self.DataSet[9 + i, 1:, :] = np.array(Data.ix[:,:])
-  105
-  106 #                 for D in range(Repetition):#                   
-  107 #                     self.DataSet[plus + D, 0, :] = np.array(Data.ix[0,:])
-  108 #                     self.DataSet[plus + D, 1:, :] = np.array(Data.ix[:,:])
-  109 #                  
-  110 #                 plus += Repetition
-  111
-  112 #            plus += 31
+   86             # Motions sequences used to used in conversations.
+   87             for i in range(1,23):                 
+   88                 FileName = str("...\Motion_Sequences\ Animation " + str(i) + ".csv")
+   89                 Data = pd.read_csv(FileName, header = 0, index_col = 0)
+   90
+   91                 self.DataSet[plus + 9 + i, 0, :] = np.array(Data.ix[0,:])
+   92                 self.DataSet[plus + 9 + i, 1:, :] = np.array(Data.ix[:,:])
+   93
+   94            plus += 31
 ```
 
 * Take care with the parameters to handling the long of the data set in the lines 72-74.
@@ -107,7 +87,7 @@ The script developed has two classes, the first class "TakeTime" is used to calc
    74        self.DataSet = np.empty([Repetition*32,40,16])                          # Input Data.
 ```
 
-The class "DCGAN" has a function named "CreateGen" which build the **Generative network model**, this network synthesizes the "fake" motion sequences. The fake motion sequence is generated from a 100-dimensional noise, that has a uniform distribution between -1.0 to 1.0 using the inverse of convolution, transposed convolution. In between the layers, batch normalization is used to stabilizes learning, is used the upsampling between the first three layers because it synthesizes better the data. The activation function after each layer is the Hiperbolic tangent "tanh", because its output take a real value between -1.0 to 1.0 (same interval that the originals motion sequences); the droput is used in the first layer to prevents over fitting. 
+The class "DCGAN" has a function named "CreateGen" which build the **Generative network model**, this network synthesizes the "fake" motion sequences. The fake motion sequence is generated from a 100-dimensional noise, that has a uniform distribution between -1.0 to 1.0 using the inverse of convolution, transposed convolution. Between the layers, batch normalization is used to stabilizes learning, is used the upsampling between the first three layers because it synthesizes better the data. The activation function after each layer is the Hiperbolic tangent "tanh", because its output take a real value between -1.0 to 1.0 (same interval that the originals motion sequences); the droput is used in the first layer to prevents over fitting. 
 
 ```python
    191    def CreateGen(self):
@@ -152,7 +132,7 @@ The class "DCGAN" has a function named "CreateGen" which build the **Generative 
 * The image represent the structure of the Generative network.
 ![generative model7](https://user-images.githubusercontent.com/31509775/32303654-e7969c1e-bf37-11e7-83f8-d0871afc6ae4.PNG)
 
-The function named "CreateDis" build the **Discriminative network model** which decide if the data is real (original motion sequences) or fake (motion sequences created by the generative network) and is a deep convolutional neural netwrok. The input is a matrix that follow structure (40 rows x 16 columns x 1 channel), the output of this model is optained with the sigmoid function that determine the probability of how real is the data; (0.0 = complety fake, 1.0 = complety real); this model is different to a typical convolutional network is the absence of max-pooling in bweteen layers, instead is used a strided convolution for downsampling. The activation function used in each convolutional layer is leaky Relu, and the dropout between layers prevent over fitting and memorization.
+The function named "CreateDis" build the **Discriminative network model** which decide if the data is real (original motion sequences) or fake (motion sequences created by the generative network) and is a deep convolutional neural netwrok. The input is a matrix that follows the structure (40 rows x 16 columns x 1 channel), the output of this model is obtained with the sigmoid function that determine the probability of how real is the data; (0.0 = complete fake, 1.0 = complete real); this model is different to a typical convolutional network is the absence of max-pooling bweteen layers, instead is used a stride convolution for down sampling. The activation function used in each convolutional layer is leaky Relu, and the dropout between layers prevent overfitting and memorization.
 
 ```python
    229    def CreateDis(self):

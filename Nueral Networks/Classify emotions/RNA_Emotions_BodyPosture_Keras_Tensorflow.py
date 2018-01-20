@@ -90,9 +90,31 @@ RNA.compile(loss = 'categorical_crossentropy', # Optimization function.
             optimizer = sgd,                   # Optimization type: Stochastic downward gradient
             metrics = ['accuracy'])
  
+# Is showed the summary of the red.
+RNA.summary()
+
 # Is trained the neural network.
 Training = RNA.fit(X_Train, Y_Train, epochs = 25, batch_size = 1, verbose = 2); print('\n'*4)
 
+# Is ploted the Loss and the accuracy.
+Loss = np.array(Training.history['loss'])
+Acc = np.array(Training.history['acc'])
+
+plt.figure(figsize=(10,8))
+plt.plot(Loss, label = 'Loss')
+plt.title('Training Loss')
+plt.xlabel('Epoch')
+plt.ylabel('Loss')
+plt.legend()
+plt.show()
+
+plt.figure(figsize=(10,8))
+plt.plot(Acc, label = 'Accuracy', color = 'g' )
+plt.title('Training Accuracy')
+plt.xlabel('Epoch')
+plt.ylabel('Accuracy')
+plt.legend()
+plt.show()
 # Is tested the neural network.
 Y_Pred = RNA.predict(X_Test); print('Prediction of the output of the test data','\n',Y_Pred); print('\n'*4)
  

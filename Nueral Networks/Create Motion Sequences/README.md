@@ -227,8 +227,8 @@ Finaly, the GAN model is trained. **The GAN model training** is developed follow
 * The image represente the train loop of the GAN model.
 ![gan training loop](https://user-images.githubusercontent.com/31509775/32347817-e3cae3b2-bfdf-11e7-9786-eae586f0dbf8.PNG)
 
-* The next image show the loss and accuracy of the Adversarial and Generator models built and trained by the author after 300 epochs.
-![acc and loss gan](https://user-images.githubusercontent.com/31509775/35189361-edc5cc90-fe16-11e7-9ffb-c66fbfb154be.PNG)
+* The next image show the loss and accuracy of the Adversarial and Generator models built and trained by the author after 1000 epochs.
+![acc and loss gan](https://user-images.githubusercontent.com/31509775/35189368-18f9189a-fe17-11e7-9450-6600cc059199.PNG)
 
 After the GAN model has been trained, the models of the networks: Generative, Discriminative and Adversarial, are saved. Also, the motion sequences created in the training process are saved to, after they have been reshaped and denormalize to have the structure of the original data. 
 

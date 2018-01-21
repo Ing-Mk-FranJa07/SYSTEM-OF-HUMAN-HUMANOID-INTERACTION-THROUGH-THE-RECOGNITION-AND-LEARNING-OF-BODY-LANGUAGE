@@ -273,6 +273,6 @@ The GAN model presented here, can develop ["originals" motion sequences](https:/
 
 * The image shows an animation motion sequence created by the user and the motion sequence created by the GAN model.
 
-![pepper original motion sequence](https://user-images.githubusercontent.com/31509775/33086815-cb8823ba-ceb6-11e7-8dcf-6df2f62d1f71.gif)
+![comparing motion sequences](https://user-images.githubusercontent.com/31509775/35190041-508c57b8-fe26-11e7-9848-85b4b8aa1ee3.gif)
 
 **Click on the images to see them with better quality**

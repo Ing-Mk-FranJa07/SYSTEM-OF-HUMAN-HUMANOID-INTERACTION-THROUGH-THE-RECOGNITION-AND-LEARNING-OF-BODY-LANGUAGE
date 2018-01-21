@@ -228,7 +228,7 @@ Finaly, the GAN model is trained. **The GAN model training** is developed follow
 ![gan training loop](https://user-images.githubusercontent.com/31509775/32347817-e3cae3b2-bfdf-11e7-9786-eae586f0dbf8.PNG)
 
 * The next image show the loss and accuracy of the Adversarial and Generator models built and trained by the author after 1000 epochs.
-![acc and loss gan](https://user-images.githubusercontent.com/31509775/35189368-18f9189a-fe17-11e7-9450-6600cc059199.PNG)
+![acc and loss gan](https://user-images.githubusercontent.com/31509775/35189625-da20310c-fe1c-11e7-9d84-c92d473011c7.PNG)
 
 After the GAN model has been trained, the models of the networks: Generative, Discriminative and Adversarial, are saved. Also, the motion sequences created in the training process are saved to, after they have been reshaped and denormalize to have the structure of the original data. 
 
@@ -266,6 +266,10 @@ The GAN model presented here, can develop ["originals" motion sequences](https:/
    354     GAN.Train(Iterations = 1000, Batch_Size = 32, Version = str('1'), Plot_Freq = 1000, LearningRate_A = 0.0002, Decrement_A = 3e-2, LearningRate_D = 0.0002, Decrement_D = 6e-8)
    355     Timer.Time()
 ```
+
+* The image shows a comparation between a motion sequences created by the GAN model designed in the first epoch and in the last epoch of the training. It can be seen the change of the erratic values generated to a soft sequence of angles values.
+
+![fist and last epoch motion sequence](https://user-images.githubusercontent.com/31509775/35189633-264665e2-fe1d-11e7-9512-0d091d263d1a.png)
 
 * The image shows an animation motion sequence created by the user and the motion sequence created by the GAN model.
 

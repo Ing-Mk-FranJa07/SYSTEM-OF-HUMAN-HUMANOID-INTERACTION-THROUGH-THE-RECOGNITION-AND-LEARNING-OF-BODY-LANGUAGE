@@ -4,7 +4,7 @@
 ### Description:
 
 The script [RNA_Emotions_BodyPosture_Keras_Tensorflow.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Nueral%20Networks/Classify%20emotions/RNA_Emotions_BodyPosture_Keras_Tensorflow.py) was developed to create, train and test an artificial neural network which classify the mood of one person using like input 
-a vector that containing 23 angles, each angle descrive the orientation of a specific joint of the body. 
+a vector that containing 23 angles, each angle describe the orientation of a specific joint of the body. 
 
 ### Software requirements:
 
@@ -30,7 +30,7 @@ To use correctly this script, please consider the follow steps.
 
 ### First step: Create Data Base.
 
-It's necesarry to have a data base, and it's possible create it with the tool: [DataBaseCreatorHumanPosture.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Emotions%20Data%20Base%20Creator), this tool generate a .csv file in which is saved a matrix that containing 25 joints angles and the description of the emotion that is being represented: [Angry 1](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Emotions%20Data%20Base%20Creator/Emotions%20DataBase/Angry/Angry%201.csv) is a sample of the matrix created by the author with the tool.
+It's necessary to have a data base, and it's possible create it with the tool: [DataBaseCreatorHumanPosture.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Emotions%20Data%20Base%20Creator), this tool generate a .csv file in which is saved a matrix that containing 25 joints angles and the description of the emotion that is being represented: [Angry 1](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Emotions%20Data%20Base%20Creator/Emotions%20DataBase/Angry/Angry%201.csv) is a sample of the matrix created by the author with the tool.
 
 For the implementation of the system developed: [RecognitionOfEmotions.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Emotions%20Recognition) were created 40 .csv files of each category: [Happy, Sad, Angry, Surprised, Reflexive and Normal](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Emotions%20Data%20Base%20Creator/Emotions%20DataBase). 
 
@@ -98,7 +98,7 @@ The two first columns (angles: Head Roll and Head Pitch) are not used in the inp
    67 Y_Test = np.array(Data_Test.ix[:,25:33])
 ```
 
-After that the Data has been loaded and schuffled in training and testing sets; is created the model of the neural network (lines 73-92) The neural network has 23 inputs and two hidden layers, the first of them has the same numbers of nodes that the inputs, and the second hidden layer has 17 nodes; the both layers have a Relu activation function. The ouput layer has 6 nodes and its activation function is sigmoid because each node just can take two values: (0, 1) The total output is an "one hot" vector that contains six values; the neural network has like optimization function the categorical cross entropy loss, and it used the Stochastic downward gradient like the optimization type. 
+After that the Data has been loaded and schuffled in training and testing sets; is created the model of the neural network (lines 73-92) The neural network has 23 inputs and two hidden layers, the first of them has the same numbers of nodes that the inputs, and the second hidden layer has 17 nodes; the both layers have a Relu activation function. The output layer has 6 nodes and its activation function is sigmoid because each node just can take two values: (0, 1) The total output is an "one hot" vector that contains six values; the neural network has like optimization function the categorical cross entropy loss, and it used the Stochastic downward gradient like the optimization type. 
 
 ```python
    73 # Are defined the parameters of the neural network and the model.   74 HL_1_Nodes = 23
@@ -177,7 +177,7 @@ After that the neural network has been created, is trained and then is tested; t
 * The next image show the confusion matrix that represent the performance of the neural network designed by the author.
 ![confusion matrix](https://user-images.githubusercontent.com/31509775/32284284-bf32ebda-bef4-11e7-820e-b14aba8524b3.png)
 
-Finally is saved the model created to be used in the differents tools developed: [RecognitionOfEmotions.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Emotions%20Recognition) and [Recognition_And_Learning_BodyLenguage_System.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Complet%20Project).
+Finally is saved the model created to be used in the different tools developed: [RecognitionOfEmotions.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Emotions%20Recognition) and [Recognition_And_Learning_BodyLenguage_System.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Complet%20Project).
 
 **WARNINGS**
 

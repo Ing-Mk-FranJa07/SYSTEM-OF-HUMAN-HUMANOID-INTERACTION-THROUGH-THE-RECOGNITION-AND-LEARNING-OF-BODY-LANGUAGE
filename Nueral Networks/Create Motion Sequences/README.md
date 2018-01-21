@@ -184,7 +184,7 @@ The function named "CreateDis" build the **Discriminative network model** which 
 * The image represent the structure of the Discriminative network.
 ![discriminative model](https://user-images.githubusercontent.com/31509775/32345300-c775c43c-bfd7-11e7-824c-e1d53ca4f967.PNG)
 
-Before the start with the training of the neural networks, is necessary create the GAN model, and for this is necesary two models the first one is the **Disciminator model** (DiscriminatorModel function) that is the discriminative network with the loss function definied, the second model is the **Adversarial model** (AdversarialModel function) that is the generative and the discriminative networks stacked together; the generative part is trying to foll the discriminative and learning from its feedback at the same time. The models uses the binary cross entropy like optimization function.
+Before the start with the training of the neural networks, is necessary create the GAN model, and for this is necesary two models the first one is the **Disciminator model** (DiscriminatorModel function) that is the discriminative network with the loss function definied, the second model is the **Adversarial model** (AdversarialModel function) that is the generative and the discriminative networks stacked together; the generative part is trying to foll the discriminative and learning from its feedback at the same time. The models uses the binary cross entropy like optimization function, and RMSprop optimization algorithm.
 
 **WARNINGS**
 
@@ -228,7 +228,7 @@ Finaly, the GAN model is trained. **The GAN model training** is developed follow
 ![gan training loop](https://user-images.githubusercontent.com/31509775/32347817-e3cae3b2-bfdf-11e7-9786-eae586f0dbf8.PNG)
 
 * The next image show the loss and accuracy of the Adversarial and Generator models built and trained by the author after 300 epochs.
-![acc and loss gan](https://user-images.githubusercontent.com/31509775/32348907-614a960e-bfe3-11e7-9fc7-21a152a0fba0.PNG)
+![acc and loss gan](https://user-images.githubusercontent.com/31509775/35189361-edc5cc90-fe16-11e7-9ffb-c66fbfb154be.PNG)
 
 After the GAN model has been trained, the models of the networks: Generative, Discriminative and Adversarial, are saved. Also, the motion sequences created in the training process are saved to, after they have been reshaped and denormalize to have the structure of the original data. 
 

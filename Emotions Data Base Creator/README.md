@@ -28,7 +28,7 @@ Is recommended install [Anaconda (Python 2.7 (32 bits) version](https://www.anac
 
 * [Kinect for Windows SDK version 2.0](https://www.microsoft.com/en-us/download/details.aspx?id=44561): Microsoft website link with the installation instructions.
 * [pykinect2](https://github.com/Kinect/PyKinect2): GitHub link, this repository has all the instructions to use the Kinect V2 with Python.
-* [PyQT4 GPL version 4.11.4 for Python 2.7 (32 bits)](https://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.11.4/PyQt4-4.11.4-gpl-Py2.7-Qt4.8.7-x32.exe/download): Direct downlad link.
+* [PyQT4 GPL version 4.11.4 for Python 2.7 (32 bits)](https://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.11.4/PyQt4-4.11.4-gpl-Py2.7-Qt4.8.7-x32.exe/download): Direct download link.
 * [pygame version 1.9.2](http://www.pygame.org/news): pygame website link, you can found the download option for the pygame version 1.9.2 there.
 * [pandas version 0.19.2](https://pandas.pydata.org/): pandas website link, the download option to the version 0.19.2 is there.
 * [cv2 version 3.0.0](https://docs.opencv.org/3.3.1/d5/de5/tutorial_py_setup_in_windows.html): OpenCV website link.
@@ -84,14 +84,14 @@ Is recommended install [Anaconda (Python 2.7 (32 bits) version](https://www.anac
 
 The system works using the GUI developed in which the user can record a new body posture using the kinect camera and selecting the type of the emotion that he is going to represent. Digiting the name with he wants save the information the user can create a .avi and .csv files after that the system has recorded the posture. 
 
-When the system start, the GUI is thrown and the user can connect the kinect to create a new posture or loaded a posture created digiting the name of the .avi and .csv files and loaded them. If the user wants create a new posture he must connect the kinect and select the type of the emotion that he goes to perform with his body posture, after that the user must to put the name of to save the files and then he can record the posture and finally, if he wants, he can save the informacion (video and angles data) or restart the process.
+When the system start, the GUI is thrown and the user can connect the kinect to create a new posture or loaded a posture created digiting the name of the .avi and .csv files and loaded them. If the user wants create a new posture he must connect the kinect and select the type of the emotion that he goes to perform with his body posture, after that the user must to put the name of to save the files and then he can record the posture and finally, if he wants, he can save the information (video and angles data) or restart the process.
 
 * The image shows the general flowchart of the system.
 ![flowchart body posture data base creator general process](https://user-images.githubusercontent.com/31509775/33280062-dd34a388-d36e-11e7-86f8-dbcce559e451.PNG)
 
 ***Record a new body posture***
 
-The system get back the name of the .avi and .csv file digited by the user, the lists used to save the angles orientation of the body joints are cleared, and finally start the recordign, saving the image gotten by the kinect and computing the skeleton tracking to come back the eulerian angles orientation while three seconds.
+The system gets back the name of the .avi and .csv file digited by the user, the lists used to save the angles orientation of the body joints are cleared, and finally start the recordign, saving the image gotten by the kinect and computing the skeleton tracking to come back the eulerian angles orientation while three seconds.
 
 * The image shoes the flowchart to the record a motion sequence process.
 ![flowchart body posture data base creator create new body posture](https://user-images.githubusercontent.com/31509775/33280180-3cf784ca-d36f-11e7-93e5-adb35a5ee0ac.PNG)
@@ -106,22 +106,22 @@ To show image gotten by the Kinect to the user using the GUI, is necessary creat
 * The image shows the flowchart of the show image process.
 ![flowchart body posture data base creator show image](https://user-images.githubusercontent.com/31509775/33280261-79adb132-d36f-11e7-9ccf-0dc7a0745e8f.PNG)
 
-To draw the skeleton representation on the user's body in the image, is necessary use the spatial coordinates of two adjacent joints, for example, to draw the head is necesary use the head and the neck spatial coordinates, to draw the right arm is necessary use the right shoulder and right elbow spatial coordinates. 
+To draw the skeleton representation on the user's body in the image, is necessary use the spatial coordinates of two adjacent joints, for example, to draw the head is necessary use the head and the neck spatial coordinates, to draw the right arm is necessary use the right shoulder and right elbow spatial coordinates. 
 
 * The image shows the logical process to draw the skeleton tracking.
 ![flowchart body posture data base creator draw bones](https://user-images.githubusercontent.com/31509775/33280289-952d7334-d36f-11e7-8bf7-09aaeaac2706.PNG)
 
-The process to draw the "bones"of the body is a simple process that verify if each joint have been tracked correctly or not, and use the spatial coordinates (x, y) from the first joint to start the bone and the coordiantes of the second joint to end the bone. Is the both joints were tracked correctly the bone will be drawn with a green color, if one of them was not tracked correctly the bone will be red.
+The process to draw the "bones" of the body is a simple process that verify if each joint have been tracked correctly or not, and use the spatial coordinates (x, y) from the first joint to start the bone and the coordinates of the second joint to end the bone. Is the both joints were tracked correctly the bone will be drawn with a green color, if one of them was not tracked correctly the bone will be red.
 
 * The image shows the flowchart to the process to draw the bones.
 ![flowchart body posture data base creator draw bones](https://user-images.githubusercontent.com/31509775/33280371-d369d67e-d36f-11e7-9a81-6d16fd02e2b5.PNG)
 
-To get the eulerian angles (Yaw, Roll, Pitch) is necessary verify if the respective joint have been tracked correctly, if this the case, is get back the quaternion that contain the orientation and then is calculate the eulerian angles from it; is the joint was not tracked correctly its eulerian angles are saved with the "none" value. Are saved 23 angles, the process begin with the computing of the waist angles to guarantee tha have been done the skeleton tracking, and then are computed all the necessaries angles of each joint following a logic process.
+To get the eulerian angles (Yaw, Roll, Pitch) is necessary verify if the respective joint have been tracked correctly, if this the case, is get back the quaternion that contain the orientation and then is calculate the eulerian angles from it; is the joint was not tracked correctly its eulerian angles are saved with the "none" value. Are saved 23 angles, the process begins with the computing of the waist angles to guarantee that have been done the skeleton tracking, and then are computed all the necessaries angles of each joint following a logic process.
 
 * The image shows the flowchart to the computing eulerian angles process.
 ![flowchart body posture data base creator get eulerian angles process](https://user-images.githubusercontent.com/31509775/33280402-f15a9754-d36f-11e7-9871-1eb5bdc98da0.PNG)
 
-The angles are verify to delete any "none" value, if is found a none value this is replaced by the previous correct value. The control of the angles values start sending the waist angles values, and then the head angles values, next is sent the right arm angles values and finally the left arms angles values.
+The angles are verified to delete any "none" value, if is found a none value this is replaced by the previous correct value. The control of the angles values starts sending the waist angles values, and then the head angles values, next is sent the right arm angles values and finally the left arms angles values.
 
 * The image shows the flowchart to verify the "none" values.
 ![flowchart body posture data base creator verify none values](https://user-images.githubusercontent.com/31509775/33280942-a906a72a-d371-11e7-8852-9f49a872f34d.PNG)
@@ -130,24 +130,24 @@ Finally the angles are saved in the .csv file created.
 
 ***Load and reproduce a body posture***
 
-To load an animation created and saved previously, the system come back the name of the .avi and .csv files digited by the user, and clear the lists used to have the angles information to each joint. The files are loaded and the angles information is saved in the corresponding lists, if the .avi file was loaded succesfull, the video and the angles information are playing at the same time, show them in the GUI. 
+To load an animation created and saved previously, the system come back the name of the .avi and .csv files digited by the user, and clear the lists used to have the angles information to each joint. The files are loaded and the angles information is saved in the corresponding lists, if the .avi file was loaded succesful, the video and the angles information are playing at the same time, show them in the GUI. 
 
 * The image shows the flowchart of the load animation process.
 ![flowchart body posture data base creator load a body posture](https://user-images.githubusercontent.com/31509775/33281012-d0351516-d371-11e7-8bc9-3489fb279a96.PNG)
 
 ### System user guide:
 
-When the system is stated the GUI es thrown and the user has two options: Create a new posture performing a emotion with his body or, load a posture created. 
+When the system is started the GUI is thrown and the user has two options: Create a new posture performing an emotion with his body or, load a posture created. 
 
 * The image shows the GUI of the system.
 ![data base creator gui](https://user-images.githubusercontent.com/31509775/33323936-ff653c76-d41b-11e7-96d6-a0afca092560.PNG)
 
 To create a new file that contain the body joints orientation that describe the posture that is performing the user, is necessary connect the kinect camera and select the emotion that is going to represent, then the user must to digit the name which he wants save the file, and finally record the posture.
 
-* The image shows an examples to create files with the body orientantion angles.
+* The image shows an examples to create files with the body orientation angles.
 ![create posture gif](https://user-images.githubusercontent.com/31509775/33324698-5c035268-d41e-11e7-83d9-a831d6b114c9.gif)
 
-To load a file (video and data) created previouly the user must digit the name of the file and just click on "load file".
+To load a file (video and data) created previously the user must digit the name of the file and just click on "load file".
 
 * The image shows an examples to load files created.
 

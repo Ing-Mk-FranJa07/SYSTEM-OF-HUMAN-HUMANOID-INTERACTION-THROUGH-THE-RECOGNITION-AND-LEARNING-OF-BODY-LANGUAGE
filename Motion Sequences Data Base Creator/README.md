@@ -141,7 +141,7 @@ To get the eulerian angles (Yaw, Roll, Pitch) is necessary verify if the respect
 * The image shows the flowchart to the computing eulerian angles process.
 ![flowchart animation data base creator get eulerian angles process](https://user-images.githubusercontent.com/31509775/33232586-d3922a10-d1d6-11e7-8d90-f8e26f40c44a.PNG)
 
-To ***send to Pepper the motion sequence*** first is ordered to the robot put its joints in the initial position, then the angles are verified to delete any "none" value, if is found a none value this is replaced by the previous correct value. The control of the body start sending the waist angles values, and then the head angles values, next is sent the right arm angles values and finally the left arms angles values. All angles values must to be verify before to be sent, because the robot has a limitation in its joints moves ranges.
+To ***send to Pepper the motion sequence*** first is ordered to the robot put its joints in the initial position, then the angles are verified to delete any "none" value, if is found a none value this is replaced by the previous correct value. The control of the body start sending the waist angles values, and then the head angles values, next is sent the right arm angles values and finally the left arms angles values. All angles values must to be verify before to be sent, because the robot has limitations in its joints moves ranges.
 
 * The image shows the flowchart to send the angles values to the robot Pepper joints.
 ![flowchart animation data base creator send to pepper motion sequence process](https://user-images.githubusercontent.com/31509775/33232735-1a7ece54-d1d9-11e7-9e11-2753260ce3be.PNG)

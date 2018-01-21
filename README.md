@@ -40,7 +40,7 @@ Around the world, various companies, research centers and universities are makin
 
 ### Repository structure:
 
-This repository has all the tools developed to create a system that allow try to increase the interaction between humans and humanoids throght the emotions recognition and the body lenguage. 
+This repository has all the tools developed to create a system that allow try to increase the interaction between humans and humanoids throgh the emotions recognition and the body language. 
 
 * The folder **Complet project** has the complet system developed with the explanation of the scripts and the tool used.
 
@@ -48,12 +48,12 @@ This repository has all the tools developed to create a system that allow try to
 
 * The folder **Emotions recognition** has the tool developed to test the performing of the ANN built to recognize the mood of the humans, and also it allows use the speech recognition system to test the LSTM model used to have conversations between humans and the system.
 
-* The folder **Motion sequences Data Base Creator** has the tool developed to create and save the motion sequences used to "teach" the robot how behave in differents situations using the imitation of the moves performed by the humans.
+* The folder **Motion sequences Data Base Creator** has the tool developed to create and save the motion sequences used to "teach" the robot how behave in different situations using the imitation of the moves performed by the humans.
 
-* The folder **Neural Networks** has the scripts used to created the neural networks used in the system to recognize the emotions and create originals motion sequences.
+* The folder **Neural Networks** has the scripts used to create the neural networks used in the system to recognize the emotions and create originals motion sequences.
 
 ### Acknowledgement:
 
-I want render thanks frist than all to God, and my parents by the support and the confidence that ever they have gave me. Also, I want render special thanks to the Ph.D Jesus Alfonso López Sotelo and Ph.D Andres Perez to the oportunity to travel and develop this research project in Switzerland lead me enojoy of a real life sperience and the enrichment in my personal and professional learning. 
+I want render thanks first than all to God, and my parents by the support and the confidence that ever they have given me. Also, I want render special thanks to the Ph.D Jesus Alfonso López Sotelo and Ph.D Andres Perez to the opportunity to travel and develop this research project in Switzerland lead me enjoy of a real life experience and the enrichment in my personal and professional learning. 
 
 ![switzerland experiences](https://user-images.githubusercontent.com/31509775/33626958-245f9ee6-d9ca-11e7-8e0d-c30be837d94e.PNG)

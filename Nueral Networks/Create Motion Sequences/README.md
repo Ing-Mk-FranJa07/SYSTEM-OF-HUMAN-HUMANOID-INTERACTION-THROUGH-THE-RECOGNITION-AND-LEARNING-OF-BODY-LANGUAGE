@@ -2,15 +2,15 @@
 
 ### Description:
 
-The [Genrative Adversarial Network](http://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf) is a recent development in deep learning introduced by Ian Goodfellow en 2014. This model attend the problem of unsupervised learning by training two deep networks called Generator and Discriminator. The both networks compete and cooperate with the other to learn how to perform their tasks.
+The [Generative Adversarial Network](http://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf) is a recent development in deep learning introduced by Ian Goodfellow en 2014. This model attends the problem of unsupervised learning by training two deep networks called Generator and Discriminator. The both networks compete and cooperate with the other to learn how to perform their tasks.
 
-The GAN model has been explained in the most of the times like a case of a counterfeiter (Generative network) and a policeman (Discriminator network), initially the counterfeiter create and show to the policeman a "fake money" (the data); the policeman says that it's fake or real, and gives feedback to the counterfeiter why the money is fake. Now the counterfeiter trys to make new fake money based on the feedback that it received, and show to the policeman the fake money again. Policeman decide if the money is or not fake and offers a new feedback to counterfeiter. This cycle continues indefinitely while the counterfeiter goes to creating each time a better fake money and it will be looking so similar to the real money, finally the policeman is fooled.
+The GAN model has been explained in the most of the times like a case of a counterfeiter (Generative network) and a policeman (Discriminator network), initially the counterfeiter creates and show to the policeman a "fake money" (the data); the policeman says that it's fake or real, and gives feedback to the counterfeiter why the money is fake. Now the counterfeiter tries to make new fake money based on the feedback that it received, and show to the policeman the fake money again. Policeman decide if the money is or not fake and offers a new feedback to counterfeiter. This cycle continues indefinitely while the counterfeiter goes to creating each time a better fake money and it will be looking so similar to the real money, finally the policeman is fooled.
 
-Teoretically the GAN is very simple, but build a model that works correctly is very difficult, because there are two deep networks coupled together making back propagation of gradients twice as challenging. Exist an interesting example of the application to the GAN models using [Deep Convolutional GAN (DCGAN)](https://arxiv.org/pdf/1511.06434.pdf%C3%AF%C2%BC%E2%80%B0) that demonstrated how to build a practical GAN to learn by itselvef how to synthesize new images.
+Theoretically the GAN is very simple, but build a model that works correctly is very difficult, because there are two deep networks coupled together making back propagation of gradients twice as challenging. Exist an interesting example of the application to the GAN models using [Deep Convolutional GAN (DCGAN)](https://arxiv.org/pdf/1511.06434.pdf%C3%AF%C2%BC%E2%80%B0) that demonstrated how to build a practical GAN to learn by itself how to synthesize new images.
 
-In this case, the script [RNA_Generate_Animations_GAN.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Nueral%20Networks/Create%20Motion%20Sequences/RNA_Generate_Animations_GAN.py) build a GAN model used to try to create new motion sequences, and not images, very similar to the original motion sequences that was created to be played to the [Robot Pepper](https://www.ald.softbankrobotics.com/en/robots/pepper). Was decided try to build a GAN model, because the structure of the data is a matrix similar to the structure of the a gray image.
+In this case, the script [RNA_Generate_Animations_GAN.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Nueral%20Networks/Create%20Motion%20Sequences/RNA_Generate_Animations_GAN.py) build a GAN model used to try to create new motion sequences, and not images, very similar to the original motion sequences that was created to be played to the [Robot Pepper](https://www.ald.softbankrobotics.com/en/robots/pepper). Was decided try to build a GAN model, because the structure of the data is a matrix similar to the structure of a gray image.
 
-The image show a representation of the GAN model created.
+The image shows a representation of the GAN model created.
 
 ![gan model](https://user-images.githubusercontent.com/31509775/35186134-2b8dab0e-fddd-11e7-8fad-0e60e305e5c2.PNG)
 
@@ -32,13 +32,13 @@ To use correctly this script, please consider the follow steps.
 
 It's necessary to have a data base, and it's possible create it with the tool: [AnimationDataBaseCreator.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Motion%20Sequences%20Data%20Base%20Creator), this tool generate a .csv file in which is saved a matrix that containing 40 rows and 17 columns (The first row has the header and the first column has the name of the motion sequence), there are 16 columns that have the information about a specific joint of the Robot Pepper; and there are 39 angles values (rads) of each joint. The [Animation 1.csv](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/blob/master/Motion%20Sequences%20Data%20Base%20Creator/Motion%20Sequences/Animation%201.csv) is an example of a motion sequence developed by the author with the tool.
 
-For the implementation of the system developed [Recognition_And_Learning_BodyLenguage_System.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Complet%20Project) were created 10 [motion sequences](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Motion%20Sequences%20Data%20Base%20Creator/Motion%20Sequences) used to the Robot Pepper interactue with the humans being coherent with their mood, and 22 used to the Robot Pepper interactue with the humans being coherente with the conversation.
+For the implementation of the system developed [Recognition_And_Learning_BodyLenguage_System.py](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Complet%20Project) were created 10 [motion sequences](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Motion%20Sequences%20Data%20Base%20Creator/Motion%20Sequences) used to the Robot Pepper interact with the humans being coherent with their mood, and 22 used to the Robot Pepper interactue with the humans being coherente with the conversation.
 
 ### Second step: Neural Network Structure.
 
 The script developed has two classes, the first class "TakeTime" is used to calculate the time spent to train the GAN model. The second class "DCGAN" is used to build and train the GAN model, also save the models and the motion sequences created by the GAN model; the init function allow load the data and organize it in the structure used by the model.
 
-**The data structure** used by the model is an array that contain the data in a matrix that has: (40 rows, 16 columns, 1 channel), like a gray image = 1 channel, to generate this, the whole data, that is to say, all movement sequences are grouped, and to each sequences is added one raw copying the first raw. This is done, because the structure of the Generative model goes increasing the kernel in a multiple of 2. Also the data is normalize, dividing the whole data by the maximmun value, to put the all values in the interval -1.0 to 1.0.
+**The data structure** used by the model is an array that contain the data in a matrix that has: (40 rows, 16 columns, 1 channel), like a gray image = 1 channel, to generate this, the whole data, that is to say, all motion sequences are grouped, and to each sequence is added one raw copying the first raw. This is done, because the structure of the Generative model goes increasing the kernel in a multiple of 2. Also the data is normalize, dividing the whole data by the maximun value, to put the all values in the interval -1.0 to 1.0.
 
 ```python
     96        # Set up the input data.
@@ -132,10 +132,10 @@ The class "DCGAN" has a function named "CreateGen" which build the **Generative 
    185        return Gen
 ```
 
-* The image represent the structure of the Generative network.
+* The image represents the structure of the Generative network.
 ![generative model7](https://user-images.githubusercontent.com/31509775/32303654-e7969c1e-bf37-11e7-83f8-d0871afc6ae4.PNG)
 
-The function named "CreateDis" build the **Discriminative network model** which decide if the data is real (original motion sequences) or fake (motion sequences created by the generative network) and is a deep convolutional neural netwrok. The input is a matrix that follows the structure (40 rows x 16 columns x 1 channel), the output of this model is obtained with the sigmoid function that determine the probability of how real is the data; (0.0 = complete fake, 1.0 = complete real); this model is different to a typical convolutional network is the absence of max-pooling bweteen layers, instead is used a stride convolution for down sampling. The activation function used in each convolutional layer is leaky Relu, and the dropout between layers prevent overfitting and memorization.
+The function named "CreateDis" build the **Discriminative network model** which decide if the data is real (original motion sequences) or fake (motion sequences created by the generative network) and is a deep convolutional neural network. The input is a matrix that follows the structure (40 rows x 16 columns x 1 channel), the output of this model is obtained with the sigmoid function that determine the probability of how real is the data; (0.0 = complete fake, 1.0 = complete real); this model is different to a typical convolutional network is the absence of max-pooling bewteen layers, instead is used a stride convolution for down sampling. The activation function used in each convolutional layer is leaky Relu, and the dropout between layers prevent overfitting and memorization.
 
 ```python
    186    def CreateDis(self):
@@ -184,11 +184,11 @@ The function named "CreateDis" build the **Discriminative network model** which 
 * The image represent the structure of the Discriminative network.
 ![discriminative model](https://user-images.githubusercontent.com/31509775/32345300-c775c43c-bfd7-11e7-824c-e1d53ca4f967.PNG)
 
-Before the start with the training of the neural networks, is necessary create the GAN model, and for this is necesary two models the first one is the **Disciminator model** (DiscriminatorModel function) that is the discriminative network with the loss function definied, the second model is the **Adversarial model** (AdversarialModel function) that is the generative and the discriminative networks stacked together; the generative part is trying to foll the discriminative and learning from its feedback at the same time. The models uses the binary cross entropy like optimization function, and RMSprop optimization algorithm.
+Before the start with the training of the neural networks, is necessary create the GAN model, and for this is necessary two models the first one is the **Discriminator model** (DiscriminatorModel function) that is the discriminative network with the loss function definied, the second model is the **Adversarial model** (AdversarialModel function) that is the generative and the discriminative networks stacked together; the generative part is trying to cheat the discriminative and learning from its feedback at the same time. The models use the binary cross entropy like optimization function, and RMSprop optimization algorithm.
 
 **WARNINGS**
 
-Finaly, the GAN model is trained. **The GAN model training** is developed following two steps in each epoch. First, is necessary train the discriminator, showing it some examples of the real data and some examples of the fake data created by the generative network using just noise; the second step is train the generative network via the chained models, that is to say, train the adversarial model generating sample data and try to push the chained generative network and the discriminative network to tell if the data is real or not; however is necessary don't alter the weights of the discriminative network during this step, so that's why the training of the discriminative network is freeze. 
+Finally, the GAN model is trained. **The GAN model training** is developed following two steps in each epoch. First, is necessary train the discriminator, showing it some examples of the real data and some examples of the fake data created by the generative network using just noise; the second step is train the generative network via the chained models, that is to say, train the adversarial model generating sample data and try to push the chained generative network and the discriminative network to tell if the data is real or not; however is necessary don't alter the weights of the discriminative network during this step, so that's why the training of the discriminative network is freeze. 
 
 ```python
    286        # The networks are trained.
@@ -224,10 +224,10 @@ Finaly, the GAN model is trained. **The GAN model training** is developed follow
    315            print(log_mesg)
 ```
 
-* The image represente the train loop of the GAN model.
+* The image represents the train loop of the GAN model.
 ![gan training loop](https://user-images.githubusercontent.com/31509775/32347817-e3cae3b2-bfdf-11e7-9786-eae586f0dbf8.PNG)
 
-* The next image show the loss and accuracy of the Adversarial and Generator models built and trained by the author after 1000 epochs.
+* The next image shows the loss and accuracy of the Adversarial and Generator models built and trained by the author after 1000 epochs.
 ![acc and loss gan](https://user-images.githubusercontent.com/31509775/35189625-da20310c-fe1c-11e7-9d84-c92d473011c7.PNG)
 
 After the GAN model has been trained, the models of the networks: Generative, Discriminative and Adversarial, are saved. Also, the motion sequences created in the training process are saved to, after they have been reshaped and denormalize to have the structure of the original data. 
@@ -256,7 +256,7 @@ After the GAN model has been trained, the models of the networks: Generative, Di
    348                DataFrame.to_csv("...\DataBaseGeneratedByRNA\ NewAnimation " + Version + " " + str(L+1) + "-" + str(A+1) + ".csv", sep = ",", header = False, index = False, index_label = 'Node')
 ```
 
-The GAN model presented here, can develop ["originals" motion sequences](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Nueral%20Networks/Create%20Motion%20Sequences/DataBaseGeneratedByRNA), but this sequences are not exactly to the motion sequences developed by the author, whatever, tuning more the model, its possible to get a better result.
+The GAN model presented here, can develop ["originals" motion sequences](https://github.com/Ing-Mk-FranJa07/SYSTEM-OF-HUMAN-HUMANID-INTERACTION-THROUGH-THE-RECOGNITION-AND-LEARNING-OF-BODY-LANGUAGE/tree/master/Nueral%20Networks/Create%20Motion%20Sequences/DataBaseGeneratedByRNA), but this sequences are not exactly to the motion sequences developed by the author, whatever, tuning more the model, it's possible to get a better result.
 
 ```python
    350 if __name__ == '__main__':

@@ -21,8 +21,7 @@ in real time, and playing motion sequences coherent with the conversation.
 With this script is possible to make that the Robot Pepper imitate the body posture 
 of one human in real time.
 
-The system has a mode which try that Pepper "create" its owns motions sequences
-using examples provides to the person in front the kinect camera.
+The system has a mode which try that Pepper "create" its owns motions sequencesusing examples provides to the person in front the kinect camera.
 
 Also, is possible "teach" to the Robot Pepper, new motion sequences using the 
 imitation mode with a time limit.
@@ -68,7 +67,7 @@ class Recognition_And_Learning_BodyLenguage_System(QtGui.QWidget):
         super(Recognition_And_Learning_BodyLenguage_System, self).__init__()
         
         # Is "imported" the file that get the GUI.                
-        self.MyGUI = uic.loadUi('...\Recognition_And_Learning_BodyLenguageGUI.ui', self)
+        self.MyGUI = uic.loadUi('...\Recognition_And_Learning_BodyLanguageGUI.ui', self)
         
         # Are created timers to have interruptions that allow execute functions.
         self.TimerKinect = QtCore.QTimer(self.MyGUI)                            # Timer that control the image tracking.
